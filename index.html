@@ -276,7 +276,7 @@
   <div class="logo-icon"><div class="logo-inner"></div></div>
   <div>
     <h1>Kalkulator Pojazdu</h1>
-    <p>Wycena pojazdu wraz z tuningiem i ulepszeniami &nbsp;<span style="opacity:0.4;font-size:10px;letter-spacing:2px">v1.2</span></p>
+    <p>Wycena pojazdu wraz z tuningiem i ulepszeniami &nbsp;<span style="opacity:0.4;font-size:10px;letter-spacing:2px">v1.4</span></p>
   </div>
 </header>
 
@@ -520,12 +520,9 @@
 // ─── DATA loaded from JSON files in same directory ───
 let SALONY=[], SILNIKI=[], WARIANTY=[], MECHANICZNY={}, WIZUALNY=[], KOMPONENTY={}, WULKANIZACJA={}, FELGI=[];
 
-const CAT_NAMES = {
-  spoilers:'Spojlery', side_skirts:'Progi boczne', exhausts:'Wydechy',
-  front_bumpers:'Zderzaki przednie', rear_bumpers:'Zderzaki tylne',
-  roofs:'Dachy', hoods:'Maski', tail_lights:'Tylne światła',
-  headlights:'Przednie światła', fog_lights:'Światła p-mgielne', vents:'Kratki wentylacyjne'
-};
+// CAT_NAMES — kategorie są teraz polskimi nazwami wprost z wizualny.json
+// Zostawiony jako pusty obiekt dla kompatybilności; label = cat.category
+const CAT_NAMES = {};
 
 // RGB map for headlight colors that don't exist in gauge_backlight data
 const EXTRA_RGB = {
@@ -1014,19 +1011,23 @@ function autoFillFromURL() {
   if (!p.has('model')) return;
 
   const modelName      = p.get('model')          || '';
+  const engineSize     = p.get('engine')         || ''; // np. "2.2" — pojemność silnika
   const ecuVer         = p.get('ecu')            || '';
   const turboVer       = p.get('turbo')          || '';
   const cfiVer         = p.get('cfi')            || '';
   const zestawKey      = p.get('zestaw')         || '';
+  const drivetrainType = p.get('drivetrain')     || ''; // np. "AWD", "MZN"
+  const fuelTankL      = p.get('fuelTank')       || ''; // np. "150"
+  const lpgL           = p.get('lpg')            || ''; // np. "75"
   const tintPct        = p.get('tint')           || '';
   const felgiName      = p.get('felgiName')      || '';
   const wydechId       = p.get('wydechId')       || '';
   const progiId        = p.get('progiId')        || '';
   const zderzakFrontId = p.get('zderzakFrontId') || '';
   const zderzakRearId  = p.get('zderzakRearId')  || '';
-  const wulkSize       = p.get('wulkSize')       || ''; // np. "Duże"
-  const poszerzenieF   = p.get('poszerzenieF')   || ''; // np. "2"
-  const poszerzenieR   = p.get('poszerzenieR')   || ''; // np. "2"
+  const wulkSize       = p.get('wulkSize')       || '';
+  const poszerzenieF   = p.get('poszerzenieF')   || '';
+  const poszerzenieR   = p.get('poszerzenieR')   || '';
   const miscRaw        = p.get('misc')           || '';
   const lightsColor    = p.get('lightsColor')    || '';
   const gaugeColor     = p.get('gaugeColor')     || '';
@@ -1050,6 +1051,45 @@ function autoFillFromURL() {
   const vehSel = document.getElementById('sel-vehicle');
   vehSel.value = foundVehIdx;
   onVehicleChange();
+
+  // ── Silnik — dopasuj po pojemności (np. "2.2" → engine_level z ulepszenia-silnikow) ──
+  if (engineSize) {
+    const engNum = parseFloat(engineSize);
+    const found  = SILNIKI.find(s => s.name === currentVehicle.name);
+    if (found) {
+      const lvlIdx = found.engine_levels.findIndex(l => Math.abs(l.engine - engNum) < 0.01);
+      if (lvlIdx !== -1) {
+        const sel = document.getElementById('sel-engine');
+        if (sel) sel.value = lvlIdx;
+      }
+    }
+  }
+
+  // ── Napęd (FWD / RWD / AWD / MZN) ──
+  if (drivetrainType) {
+    const sel = document.getElementById('mech-drivetrain');
+    if (sel) setSelectByText(sel, drivetrainType);
+  }
+
+  // ── Zbiornik paliwa (np. 150 → capacity_l: 150) ──
+  if (fuelTankL && MECHANICZNY.fuel_tank) {
+    const cap = parseInt(fuelTankL);
+    const idx = MECHANICZNY.fuel_tank.findIndex(t => t.capacity_l === cap);
+    if (idx !== -1) {
+      const sel = document.getElementById('mech-fuel_tank');
+      if (sel) sel.value = idx;
+    }
+  }
+
+  // ── LPG (np. 75 → capacity_l: 75) ──
+  if (lpgL && MECHANICZNY.lpg) {
+    const cap = parseInt(lpgL);
+    const idx = MECHANICZNY.lpg.findIndex(t => t.capacity_l === cap);
+    if (idx !== -1) {
+      const sel = document.getElementById('sel-lpg');
+      if (sel) sel.value = idx;
+    }
+  }
 
   // ── ECU ──
   if (ecuVer) { const s = document.getElementById('mech-ecu'); if (s) setSelectByText(s, ecuVer); }
@@ -1099,10 +1139,10 @@ function autoFillFromURL() {
   }
 
   // ── Tuning wizualny — po ID ──
-  setVisById('vis-exhausts',      wydechId);
-  setVisById('vis-side_skirts',   progiId);
-  setVisById('vis-front_bumpers', zderzakFrontId);
-  setVisById('vis-rear_bumpers',  zderzakRearId);
+  setVisById('vis-wydechy',             wydechId);
+  setVisById('vis-progi',               progiId);
+  setVisById('vis-zderzaki przednie',   zderzakFrontId);
+  setVisById('vis-zderzaki tylnie',     zderzakRearId);
 
   // ── Wulkanizacja — rozmiar felg (case-insensitive, np. "Duże" → "duże") ──
   if (wulkSize) {

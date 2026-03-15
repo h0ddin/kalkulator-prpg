@@ -1,6 +1,6 @@
 [
   {
-    "category": "spoilers",
+    "category": "spoilery",
     "parts": [
       { "id": 1000, "price": 7000 },
       { "id": 1001, "price": 9000 },
@@ -23,7 +23,7 @@
     ]
   },
   {
-    "category": "side_skirts",
+    "category": "progi",
     "parts": [
       { "id": 1007, "price": 2100 },
       { "id": 1026, "price": 3500 },
@@ -46,7 +46,7 @@
     ]
   },
   {
-    "category": "exhausts",
+    "category": "wydechy",
     "parts": [
       { "id": 1018, "price": 2400 },
       { "id": 1019, "price": 1800 },
@@ -76,7 +76,7 @@
     ]
   },
   {
-    "category": "front_bumpers",
+    "category": "zderzaki przednie",
     "parts": [
       { "id": 1117, "price": 2800 },
       { "id": 1152, "price": 6500 },
@@ -101,7 +101,7 @@
     ]
   },
   {
-    "category": "rear_bumpers",
+    "category": "zderzaki tylnie",
     "parts": [
       { "id": 1140, "price": 5500 },
       { "id": 1141, "price": 6000 },
@@ -124,7 +124,7 @@
     ]
   },
   {
-    "category": "roofs",
+    "category": "dachy",
     "parts": [
       { "id": 1006, "price": 900 },
       { "id": 1032, "price": 1800 },
@@ -143,7 +143,7 @@
     ]
   },
   {
-    "category": "hoods",
+    "category": "maski",
     "parts": [
       { "id": 1011, "price": 3900 },
       { "id": 1012, "price": 4200 },
@@ -152,28 +152,28 @@
     ]
   },
   {
-    "category": "tail_lights",
+    "category": "tylne lampy",
     "parts": [
       { "id": 1109, "price": 1800 },
       { "id": 1110, "price": 1500 }
     ]
   },
   {
-    "category": "headlights",
+    "category": "przednie lampy",
     "parts": [
       { "id": 1115, "price": 2800 },
       { "id": 1116, "price": 3500 }
     ]
   },
   {
-    "category": "fog_lights",
+    "category": "reflektory",
     "parts": [
       { "id": 1013, "price": 500 },
       { "id": 1024, "price": 500 }
     ]
   },
   {
-    "category": "vents",
+    "category": "wentyle",
     "parts": [
       { "id": 1004, "price": 4200 },
       { "id": 1005, "price": 3900 }
