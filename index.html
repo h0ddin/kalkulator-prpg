@@ -276,7 +276,7 @@
   <div class="logo-icon"><div class="logo-inner"></div></div>
   <div>
     <h1>Kalkulator Pojazdu</h1>
-    <p>Wycena pojazdu wraz z tuningiem i ulepszeniami &nbsp;<span style="opacity:0.4;font-size:10px;letter-spacing:2px">v1.7</span></p>
+    <p>Wycena pojazdu wraz z tuningiem i ulepszeniami &nbsp;<span style="opacity:0.4;font-size:10px;letter-spacing:2px">v1.8</span></p>
   </div>
 </header>
 
@@ -1158,7 +1158,11 @@ function autoFillFromURL() {
     };
     const norm = s => s.replace(/[-. ]/g,'').toLowerCase();
 
-    const miscItems = miscRaw.split('|').map(s => s.trim().toLowerCase());
+    // Odfiltruj elementy misc obsługiwane przez dedykowane pola (np. aplikacja transportowa)
+    const MISC_SKIP = [/aplikacja transportowa/i];
+    const miscItems = miscRaw.split('|')
+      .map(s => s.trim().toLowerCase())
+      .filter(s => !MISC_SKIP.some(rx => rx.test(s)));
     MECHANICZNY.misc.forEach((item, i) => {
       const jsonNorm = norm(item.name);
       const matched = miscItems.some(m => {
