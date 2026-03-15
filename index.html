@@ -276,7 +276,7 @@
   <div class="logo-icon"><div class="logo-inner"></div></div>
   <div>
     <h1>Kalkulator Pojazdu</h1>
-    <p>Wycena pojazdu wraz z tuningiem i ulepszeniami &nbsp;<span style="opacity:0.4;font-size:10px;letter-spacing:2px">v1.4</span></p>
+    <p>Wycena pojazdu wraz z tuningiem i ulepszeniami &nbsp;<span style="opacity:0.4;font-size:10px;letter-spacing:2px">v1.5</span></p>
   </div>
 </header>
 
@@ -1025,6 +1025,9 @@ function autoFillFromURL() {
   const progiId        = p.get('progiId')        || '';
   const zderzakFrontId = p.get('zderzakFrontId') || '';
   const zderzakRearId  = p.get('zderzakRearId')  || '';
+  const spoilerId      = p.get('spoilerId')      || '';
+  const dachId         = p.get('dachId')         || '';
+  const appTransport   = p.get('appTransport')   || ''; // 'apka' | 'apka_pro'
   const wulkSize       = p.get('wulkSize')       || '';
   const poszerzenieF   = p.get('poszerzenieF')   || '';
   const poszerzenieR   = p.get('poszerzenieR')   || '';
@@ -1143,6 +1146,21 @@ function autoFillFromURL() {
   setVisById('vis-progi',               progiId);
   setVisById('vis-zderzaki przednie',   zderzakFrontId);
   setVisById('vis-zderzaki tylnie',     zderzakRearId);
+  setVisById('vis-spoilery',            spoilerId);
+  setVisById('vis-dachy',               dachId);
+
+  // ── Aplikacja transportowa ──
+  if (appTransport) {
+    const sel = document.getElementById('komp-app');
+    if (sel && KOMPONENTY.transport_app) {
+      const opts = KOMPONENTY.transport_app.options || [];
+      // 'apka_pro' → szukaj 'PRO', 'apka' → szukaj 'Apka' ale nie PRO
+      const idx = appTransport === 'apka_pro'
+        ? opts.findIndex(o => /pro/i.test(o.name))
+        : opts.findIndex(o => /apka/i.test(o.name) && !/pro/i.test(o.name));
+      if (idx !== -1) sel.value = idx;
+    }
+  }
 
   // ── Wulkanizacja — rozmiar felg (case-insensitive, np. "Duże" → "duże") ──
   if (wulkSize) {
