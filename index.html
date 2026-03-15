@@ -276,7 +276,7 @@
   <div class="logo-icon"><div class="logo-inner"></div></div>
   <div>
     <h1>Kalkulator Pojazdu</h1>
-    <p>Wycena pojazdu wraz z tuningiem i ulepszeniami &nbsp;<span style="opacity:0.4;font-size:10px;letter-spacing:2px">v1.6</span></p>
+    <p>Wycena pojazdu wraz z tuningiem i ulepszeniami &nbsp;<span style="opacity:0.4;font-size:10px;letter-spacing:2px">v1.7</span></p>
   </div>
 </header>
 
@@ -1150,12 +1150,28 @@ function autoFillFromURL() {
 
   // ── Misc checkboxy ──
   if (miscRaw && MECHANICZNY.misc) {
+    // Alias map: norm(popup) → norm(json) — gdy alias istnieje, używamy TYLKO aliasu (bez fallback)
+    const MISC_ALIASES = {
+      'gwint':    'gwintowanezawieszenie', // "Gwint. zawieszenie" → "Gwintowane zawieszenie"
+      'gwintzaw': 'gwintowanezawieszenie',
+      'cbradio':  'cbradio',              // "CB-Radio" → "CB-radio" (nie "Radio")
+    };
+    const norm = s => s.replace(/[-. ]/g,'').toLowerCase();
+
     const miscItems = miscRaw.split('|').map(s => s.trim().toLowerCase());
     MECHANICZNY.misc.forEach((item, i) => {
-      const jsonName = item.name.toLowerCase();
+      const jsonNorm = norm(item.name);
       const matched = miscItems.some(m => {
-        const norm = s => s.replace(/[-. ]/g,'');
-        return norm(jsonName).includes(norm(m)) || norm(m).includes(norm(jsonName));
+        const mNorm = norm(m);
+        const alias = MISC_ALIASES[mNorm] || MISC_ALIASES[mNorm.substring(0,8)];
+        if (alias) {
+          // Gdy jest alias — tylko alias decyduje (dokładne lub prefix)
+          return jsonNorm === alias || jsonNorm.startsWith(alias) || alias.startsWith(jsonNorm);
+        }
+        // Bez aliasu — prefix lub contains (min 4 znaki)
+        if (jsonNorm.startsWith(mNorm) || mNorm.startsWith(jsonNorm)) return true;
+        if (mNorm.length >= 4 && (jsonNorm.includes(mNorm) || mNorm.includes(jsonNorm))) return true;
+        return false;
       });
       if (matched) {
         const cb = document.getElementById('misc-' + i);
@@ -1164,10 +1180,12 @@ function autoFillFromURL() {
     });
     // Zaloguj misc-itemy z URL które nie zostały dopasowane
     miscItems.forEach(m => {
-      const norm = s => s.replace(/[-. ]/g,'');
+      const mNorm = norm(m);
+      const alias = MISC_ALIASES[mNorm] || MISC_ALIASES[mNorm.substring(0,8)];
       const anyMatch = MECHANICZNY.misc.some(item => {
-        const j = item.name.toLowerCase();
-        return norm(j).includes(norm(m)) || norm(m).includes(norm(j));
+        const j = norm(item.name);
+        if (alias) return j === alias || j.startsWith(alias) || alias.startsWith(j);
+        return j.startsWith(mNorm) || mNorm.startsWith(j) || (mNorm.length >= 4 && (j.includes(mNorm) || mNorm.includes(j)));
       });
       if (!anyMatch) LOG('misc', m, 'nie znaleziono pasującego checkboxa w misc', 'BRAK');
     });
