@@ -276,7 +276,7 @@
   <div class="logo-icon"><div class="logo-inner"></div></div>
   <div>
     <h1>Kalkulator Pojazdu</h1>
-    <p>Wycena pojazdu wraz z tuningiem i ulepszeniami</p>
+    <p>Wycena pojazdu wraz z tuningiem i ulepszeniami &nbsp;<span style="opacity:0.4;font-size:10px;letter-spacing:2px">v1.2</span></p>
   </div>
 </header>
 
@@ -1013,19 +1013,25 @@ function autoFillFromURL() {
   const p = new URLSearchParams(window.location.search);
   if (!p.has('model')) return;
 
-  const modelName   = p.get('model')     || '';
-  const ecuVer      = p.get('ecu')       || '';   // np. "V4"
-  const turboVer    = p.get('turbo')     || '';   // np. "V5"
-  const cfiVer      = p.get('cfi')       || '';
-  const zestawKey   = p.get('zestaw')    || '';   // np. "T"
-  const tintPct     = p.get('tint')      || '';   // np. "100"
-  const felgiName   = p.get('felgiName') || '';
-  const wydechId    = p.get('wydechId')  || '';   // ID wydechu (liczba)
-  const miscRaw     = p.get('misc')      || '';
-  const lightsColor = p.get('lightsColor') || ''; // np. "Kobaltowy - Limitowane"
-  const gaugeColor  = p.get('gaugeColor')  || ''; // np. "Kobaltowy - Limitowane"
-  const lightsRgb   = p.get('lightsRgb')  || ''; // np. "0,71,171"
-  const gaugeRgb    = p.get('gaugeRgb')   || ''; // np. "0,71,171"
+  const modelName      = p.get('model')          || '';
+  const ecuVer         = p.get('ecu')            || '';
+  const turboVer       = p.get('turbo')          || '';
+  const cfiVer         = p.get('cfi')            || '';
+  const zestawKey      = p.get('zestaw')         || '';
+  const tintPct        = p.get('tint')           || '';
+  const felgiName      = p.get('felgiName')      || '';
+  const wydechId       = p.get('wydechId')       || '';
+  const progiId        = p.get('progiId')        || '';
+  const zderzakFrontId = p.get('zderzakFrontId') || '';
+  const zderzakRearId  = p.get('zderzakRearId')  || '';
+  const wulkSize       = p.get('wulkSize')       || ''; // np. "Duże"
+  const poszerzenieF   = p.get('poszerzenieF')   || ''; // np. "2"
+  const poszerzenieR   = p.get('poszerzenieR')   || ''; // np. "2"
+  const miscRaw        = p.get('misc')           || '';
+  const lightsColor    = p.get('lightsColor')    || '';
+  const gaugeColor     = p.get('gaugeColor')     || '';
+  const lightsRgb      = p.get('lightsRgb')      || '';
+  const gaugeRgb       = p.get('gaugeRgb')       || '';
 
   // ── Znajdź salon i pojazd po nazwie modelu ──
   let foundSalon = null, foundVehIdx = -1;
@@ -1046,34 +1052,28 @@ function autoFillFromURL() {
   onVehicleChange();
 
   // ── ECU ──
-  if (ecuVer) {
-    const sel = document.getElementById('mech-ecu');
-    if (sel) setSelectByText(sel, ecuVer);
-  }
+  if (ecuVer) { const s = document.getElementById('mech-ecu'); if (s) setSelectByText(s, ecuVer); }
 
   // ── Turbo ──
-  if (turboVer) {
-    const sel = document.getElementById('mech-turbo');
-    if (sel) setSelectByText(sel, turboVer);
-  }
+  if (turboVer) { const s = document.getElementById('mech-turbo'); if (s) setSelectByText(s, turboVer); }
 
   // ── CFI ──
-  if (cfiVer) {
-    const sel = document.getElementById('sel-cfi');
-    if (sel) setSelectByText(sel, cfiVer);
-  }
+  if (cfiVer) { const s = document.getElementById('sel-cfi'); if (s) setSelectByText(s, cfiVer); }
 
-  // ── Zestaw ──
-  if (zestawKey) {
-    const sel = document.getElementById('sel-zestaw');
-    if (sel) setSelectByText(sel, zestawKey);
-  }
+  // ── Zestaw (pełna nazwa np. "Uliczny", "Wyścigowy") ──
+  if (zestawKey) { const s = document.getElementById('sel-zestaw'); if (s) setSelectByText(s, zestawKey); }
 
-  // ── Misc checkboxy ──
+  // ── Misc checkboxy — fuzzy match (obsługuje skrócone nazwy z popup) ──
   if (miscRaw && MECHANICZNY.misc) {
     const miscItems = miscRaw.split('|').map(s => s.trim().toLowerCase());
     MECHANICZNY.misc.forEach((item, i) => {
-      if (miscItems.some(m => item.name.toLowerCase().includes(m) || m.includes(item.name.toLowerCase()))) {
+      const jsonName = item.name.toLowerCase();
+      const matched = miscItems.some(m => {
+        // Normalizuj oba stringi: usuń spacje, myślniki, kropki
+        const norm = s => s.replace(/[-. ]/g,'');
+        return norm(jsonName).includes(norm(m)) || norm(m).includes(norm(jsonName));
+      });
+      if (matched) {
         const cb = document.getElementById('misc-' + i);
         if (cb) cb.checked = true;
       }
@@ -1087,80 +1087,95 @@ function autoFillFromURL() {
       const tintNum = parseInt(tintPct);
       Array.from(sel.options).forEach((opt, i) => {
         if (KOMPONENTY.window_tint.options[i] &&
-            KOMPONENTY.window_tint.options[i].percent === tintNum) {
-          sel.value = i;
-        }
+            KOMPONENTY.window_tint.options[i].percent === tintNum) sel.value = i;
       });
     }
   }
 
-  // ── Felgi (po nazwie) ──
+  // ── Felgi (po nazwie, case-insensitive) ──
   if (felgiName) {
     const sel = document.getElementById('vis-felgi');
+    if (sel) setSelectByText(sel, felgiName);
+  }
+
+  // ── Tuning wizualny — po ID ──
+  setVisById('vis-exhausts',      wydechId);
+  setVisById('vis-side_skirts',   progiId);
+  setVisById('vis-front_bumpers', zderzakFrontId);
+  setVisById('vis-rear_bumpers',  zderzakRearId);
+
+  // ── Wulkanizacja — rozmiar felg (case-insensitive, np. "Duże" → "duże") ──
+  if (wulkSize) {
+    const sel = document.getElementById('wulk-size');
+    if (sel) setSelectByText(sel, wulkSize);
+  }
+
+  // ── Wulkanizacja — szerokość kół (Poszerzenia X,Y → poziom)
+  //    JSON ma level jako int (1,2) lub string "domyślne" — porównaj jako Number ──
+  if (poszerzenieF && WULKANIZACJA.wheel_width) {
+    const levelF = Number(poszerzenieF);
+    const sel = document.getElementById('wulk-front');
     if (sel) {
-      const needle = felgiName.toLowerCase();
-      Array.from(sel.options).forEach(opt => {
-        if (opt.text.toLowerCase().includes(needle)) sel.value = opt.value;
-      });
+      const idx = WULKANIZACJA.wheel_width.front_axle.findIndex(w => Number(w.level) === levelF);
+      if (idx !== -1) sel.value = idx;
+    }
+  }
+  if (poszerzenieR && WULKANIZACJA.wheel_width) {
+    const levelR = Number(poszerzenieR);
+    const sel = document.getElementById('wulk-rear');
+    if (sel) {
+      const idx = WULKANIZACJA.wheel_width.rear_axle.findIndex(w => Number(w.level) === levelR);
+      if (idx !== -1) sel.value = idx;
     }
   }
 
-  // ── Wydech (po ID) ──
-  if (wydechId) {
-    const sel = document.getElementById('vis-exhausts');
-    if (sel) {
-      Array.from(sel.options).forEach(opt => {
-        if (opt.text.includes('ID ' + wydechId) || opt.text.includes(wydechId)) sel.value = opt.value;
-      });
-    }
-  }
-
-  // ── Kolor świateł (po RGB) ──
+  // ── Kolor świateł (po RGB → priorytet, fallback po nazwie) ──
   if (lightsRgb && KOMPONENTY.headlight_color) {
     const rgb = lightsRgb.split(',').map(Number);
     const idx = KOMPONENTY.headlight_color.options.findIndex(o =>
-      o.rgb && o.rgb[0]===rgb[0] && o.rgb[1]===rgb[1] && o.rgb[2]===rgb[2]
-    );
+      o.rgb && o.rgb[0]===rgb[0] && o.rgb[1]===rgb[1] && o.rgb[2]===rgb[2]);
     if (idx !== -1) {
-      const o   = KOMPONENTY.headlight_color.options[idx];
-      const bg  = `rgb(${o.rgb.join(',')})`;
-      const glow= `0 0 6px rgba(${o.rgb.join(',')},0.7)`;
-      selectColor('hl-wrap', String(idx), o.name, bg, glow);
+      const o = KOMPONENTY.headlight_color.options[idx];
+      selectColor('hl-wrap', String(idx), o.name, `rgb(${o.rgb.join(',')})`, `0 0 6px rgba(${o.rgb.join(',')},0.7)`);
     }
   } else if (lightsColor && KOMPONENTY.headlight_color) {
-    // fallback – dopasowanie po nazwie (pierwsza część przed " - ")
     const needle = lightsColor.split(' - ')[0].toLowerCase().trim();
     const idx = KOMPONENTY.headlight_color.options.findIndex(o => o.name.toLowerCase() === needle);
     if (idx !== -1) {
-      const o   = KOMPONENTY.headlight_color.options[idx];
-      const bg  = o.rgb ? `rgb(${o.rgb.join(',')})` : '#aaa';
-      const glow= o.rgb ? `0 0 6px rgba(${o.rgb.join(',')},0.7)` : 'none';
-      selectColor('hl-wrap', String(idx), o.name, bg, glow);
+      const o = KOMPONENTY.headlight_color.options[idx];
+      const bg = o.rgb ? `rgb(${o.rgb.join(',')})` : '#aaa';
+      selectColor('hl-wrap', String(idx), o.name, bg, o.rgb ? `0 0 6px rgba(${o.rgb.join(',')},0.7)` : 'none');
     }
   }
 
-  // ── Kolor licznika (po RGB) ──
+  // ── Kolor licznika (po RGB → priorytet, fallback po nazwie) ──
   if (gaugeRgb && KOMPONENTY.gauge_backlight) {
     const rgb = gaugeRgb.split(',').map(Number);
     const idx = KOMPONENTY.gauge_backlight.options.findIndex(o =>
-      o.rgb && o.rgb[0]===rgb[0] && o.rgb[1]===rgb[1] && o.rgb[2]===rgb[2]
-    );
+      o.rgb && o.rgb[0]===rgb[0] && o.rgb[1]===rgb[1] && o.rgb[2]===rgb[2]);
     if (idx !== -1) {
-      const o   = KOMPONENTY.gauge_backlight.options[idx];
-      const bg  = `rgb(${o.rgb.join(',')})`;
-      const glow= `0 0 6px rgba(${o.rgb.join(',')},0.7)`;
-      selectColor('gauge-wrap', String(idx), o.name, bg, glow);
+      const o = KOMPONENTY.gauge_backlight.options[idx];
+      selectColor('gauge-wrap', String(idx), o.name, `rgb(${o.rgb.join(',')})`, `0 0 6px rgba(${o.rgb.join(',')},0.7)`);
     }
   } else if (gaugeColor && KOMPONENTY.gauge_backlight) {
     const needle = gaugeColor.split(' - ')[0].toLowerCase().trim();
     const idx = KOMPONENTY.gauge_backlight.options.findIndex(o => o.name.toLowerCase() === needle);
     if (idx !== -1) {
-      const o   = KOMPONENTY.gauge_backlight.options[idx];
-      const bg  = o.rgb ? `rgb(${o.rgb.join(',')})` : '#aaa';
-      const glow= o.rgb ? `0 0 6px rgba(${o.rgb.join(',')},0.7)` : 'none';
-      selectColor('gauge-wrap', String(idx), o.name, bg, glow);
+      const o = KOMPONENTY.gauge_backlight.options[idx];
+      const bg = o.rgb ? `rgb(${o.rgb.join(',')})` : '#aaa';
+      selectColor('gauge-wrap', String(idx), o.name, bg, o.rgb ? `0 0 6px rgba(${o.rgb.join(',')},0.7)` : 'none');
     }
   }
+}
+
+// Ustaw select tuning wizualnego po ID (opcje mają tekst "ID 1127 — ...")
+function setVisById(selId, partId) {
+  if (!partId) return;
+  const sel = document.getElementById(selId);
+  if (!sel) return;
+  Array.from(sel.options).forEach(opt => {
+    if (opt.text.includes('ID ' + partId)) sel.value = opt.value;
+  });
 }
 
 // Pomocnik: ustaw <select> na pierwszą opcję zawierającą needle (case-insensitive)
