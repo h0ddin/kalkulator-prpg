@@ -1,0 +1,321 @@
+Admiral, Admiral Kombi				
+Ulepszenie	2.1 - 2.3	2.3 - 2.5	2.5 - 2.7	2.7 - 2.9
+Cena	14000	16000	18000	20000
+Alpha				
+Ulepszenie	2.2 - 2.4	2.4 - 2.6	2.6 - 2.8	2.8 - 3.0
+Cena	14000	16000	18000	20000
+Banshee, Banshee Viper GTS				
+Ulepszenie	3.7 - 4.0	4.0 - 4.3	4.3 - 4.6	4.6 - 4.9
+Cena	32000	36000	40000	44000
+Benson				
+Ulepszenie	1.1 - 1.2	1.2 - 1.3	1.3 - 1.4	1.4 - 1.5
+Cena	6000	6000	6000	8000
+BF Injection				
+Ulepszenie	3.2 - 3.5	3.5 - 3.8	3.8 - 4.1	4.1 - 4.4
+Cena	26000	30000	34000	36000
+BF-400				
+Ulepszenie	0.4 - 0.45	0.45 - 0.5	0.5 - 0.55	0.55 - 0.6
+Cena	6000	8000	8000	8000
+Blade				
+Ulepszenie	2.3 - 2.5	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1
+Cena	16000	18000	20000	22000
+Blista Compact				
+Ulepszenie	2.6 - 2.8	2.8 - 3.0	3.0 - 3.2	3.2 - 3.4
+Cena	18000	20000	22000	26000
+Bobcat				
+Ulepszenie	1.8 - 1.9	1.9 - 2.0	2.0 - 2.1	2.1 - 2.2
+Cena	10000	12000	12000	14000
+Boxville				
+Ulepszenie	1.1-1.2	1.2-1.3	1.3-1.4	1.4-1.5
+Cena	6000	6000	6000	8000
+Bravura				
+Ulepszenie	1.2 - 1.3	1.3 - 1.4	1.4 - 1.5	1.5 - 1.6
+Cena	6000	6000	8000	8000
+Broadway				
+Ulepszenie	1.8 - 1.9	1.9 - 2.0	2.0 - 2.1	2.1 - 2.2
+Cena	10000	12000	12000	14000
+Buccanner				
+Ulepszenie	2.3 - 2.5	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1
+Cena	16000	18000	20000	22000
+Buffalo				
+Ulepszenie	2.9 - 3.1	3.1 - 3.3	3.3 - 3.5	3.5 - 3.7
+Cena	22000	24000	26000	28000
+Bullet, Bullet GT				
+Ulepszenie	3.2 - 3.5	3.5 - 3.8	3.8 - 4.1	4.1 - 4.4
+Cena	26000	30000	34000	36000
+Burrito				
+Ulepszenie	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1	3.1 - 3.3
+Cena	18000	20000	22000	24000
+Cadrona, Cadrona DTM				
+Ulepszenie	1.8 - 1.9	1.9 - 2.0	2.0 - 2.1	2.1 - 2.2
+Cena	10000	12000	12000	14000
+Camper				
+Ulepszenie	1.3 - 1.4	1.4 - 1.5	1.5 - 1.6	1.6 - 1.7
+Cena	6000	8000	8000	8000
+Celsion				
+Ulepszenie	2.4 - 2.8	2.8 - 3.2	3.2 - 3.6	3.6 - 4.0
+Cena	18000	22000	28000	32000
+Cheetah				
+Ulepszenie	3.2 - 3.5	3.5 - 3.8	3.8 - 4.1	4.1 - 4.4
+Cena	26000	30000	34000	36000
+Cheetah 76'				
+Ulepszenie	2.9 - 3.1	3.1 - 3.3	3.3 - 3.5	3.5 - 3.7
+Cena	22000	24000	26000	28000
+Clover, Clover Wagon				
+Ulepszenie	2.3 - 2.5	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1
+Cena	16000	18000	20000	22000
+Club				
+Ulepszenie	3.2 - 3.5	3.5 - 3.8	3.8 - 4.1	4.1 - 4.4
+Cena	26000	30000	34000	36000
+Comet 				
+Ulepszenie	3.2 - 3.5	3.5 - 3.8	3.8 - 4.1	4.1 - 4.4
+Cena	26000	30000	34000	36000
+Contander				
+Ulepszenie	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1	3.1 - 3.3
+Cena	18000	20000	22000	24000
+DeLuxo				
+Ulepszenie	2.8 - 3.0	3.0 - 3.2	3.2 - 3.4	3.4 - 3.6
+Cena	20000	22000	26000	28000
+Elegant				
+Ulepszenie	1.8 - 1.9	1.9 - 2.0	2.0 - 2.1	2.1 - 2.2
+Cena	10000	12000	12000	14000
+Elegy				
+Ulepszenie	2.9 - 3.1	3.1 - 3.3	3.3 - 3.5	3.5 - 3.7
+Cena	22000	24000	26000	28000
+Emperor				
+Ulepszenie	1.9 - 2.0	2.0 - 2.1	2.1 - 2.2	2.2 - 2.3
+Cena	12000	12000	14000	14000
+Esperanto				
+Ulepszenie	1.5 - 1.6	1.6 - 1.7	1.7 - 1.8	1.8 - 1.9
+Cena	8000	8000	10000	10000
+Euros				
+Ulepszenie	2.3 - 2.5	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1
+Cena	16000	18000	20000	22000
+Faggio				
+Ulepszenie	0.05 - 0.07	0.07 - 0.09	0.09 - 0.11	0.11 - 0.13
+Cena	4000	4000	4000	4000
+FCR-900, FCR-900 RR				
+Ulepszenie	0.8 - 0.85	0.85 - 0.9	0.9 - 0.95	0.95 - 1.0
+Cena	10000	10000	10000	4000
+Feltzer, Feltzer GT				
+Ulepszenie	2.9 - 3.1	3.1 - 3.3	3.3 - 3.5	3.5 - 3.7
+Cena	22000	24000	26000	28000
+Feroci				
+Ulepszenie	3.0 - 3.3	3.3 - 3.6	3.5 - 3.9	3.9 - 4.2
+Cena	24000	28000	30000	34000
+Flash				
+Ulepszenie	2.3 - 2.5	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1
+Cena	16000	18000	20000	22000
+Fortune, Fortune 240SX				
+Ulepszenie	1.8 - 1.9	1.9 - 2.0	2.0 - 2.1	2.1 - 2.2
+Cena	10000	12000	12000	14000
+Freeway 				
+Ulepszenie	1.0 - 1.1	1.1 - 1.2	1.2 - 1.3 	1.3 - 1.4
+Cena	4000	6000	6000	6000
+Glendale 				
+Ulepszenie	2.1 - 2.3	2.1 - 2.3	2.5 - 2.7	2.7 - 2.9
+Cena	14000	16000	18000	20000
+Greenwood 				
+Ulepszenie	1.8 - 1.9	1.9 - 2.0	2.0 - 2.1	2.1 - 2.2
+Cena	10000	12000	12000	14000
+Hermes 				
+Ulepszenie	1.5 - 1.6	1.6 - 1.7	1.7 - 1.8	1.8 - 1.9
+Cena	8000	8000	10000	10000
+Hotknife				
+Ulepszenie	2.9 - 3.1	3.1 - 3.3	3.3 - 3.5	3.5 - 3.7
+Cena	22000	24000	26000	28000
+Huntley 				
+Ulepszenie	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1	3.1 - 3.3
+Cena	18000	20000	22000	24000
+Hustler 				
+Ulepszenie	2.1 - 2.3	2.3 - 2.5	2.5 - 2.7	2.7 - 2.9
+Cena	14000	16000	18000	20000
+Infernus, Infernus Kakimoto, Infernus NSX, Infernus Pandem				
+Ulepszenie	3.2 - 3.5	3.5 - 3.8	3.8 - 4.1	4.1 - 4.4
+Cena	26000	30000	34000	36000
+Intruder 				
+Ulepszenie	1.5 - 1.6	1.6 - 1.7	1.7 - 1.8	1.8 - 1.9
+Cena	8000	8000	10000	10000
+Jester 				
+Ulepszenie	2.9 - 3.1	3.1 - 3.3	3.3 - 3.5	3.5 - 3.7
+Cena	22000	24000	26000	28000
+Journey				
+Ulepszenie	1.1 - 1.2	1.2 - 1.3	1.3 - 1.4	1.4 - 1.5
+Cena	6000	6000	6000	8000
+Landstalker				
+Ulepszenie	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1	3.1 - 3.3
+Cena	18000	20000	22000	24000
+Majestic				
+Ulepszenie	2.1 - 2.3	2.3 - 2.5	2.5 - 2.7	2.7 - 2.9
+Cena	14000	16000	18000	20000
+Manana, Manana DTM				
+Ulepszenie	1.7 - 1.8	1.8 - 1.9	1.9 - 2.0	2.0 - 2.1
+Cena	10000	10000	12000	12000
+Merit 				
+Ulepszenie	2.1 - 2.3	2.3 - 2.5	2.5 - 2.7	2.7 - 2.9
+Cena	14000	16000	18000	20000
+Mesa, Mesa Rubicon				
+Ulepszenie	2.3 - 2.5	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1
+Cena	16000	18000	20000	22000
+Monroe				
+Ulepszenie	3.0 - 3.3	3.3 - 3.6	3.6 - 3.9	3.9 - 4.2
+Cena	24000	28000	30000	34000
+Moonbeam				
+Ulepszenie	1.2 - 1.3	1.3 - 1.4	1.4 - 1.5	1.5 - 1.6
+Cena	6000	8000	8000	8000
+Mule 				
+Ulepszenie	1.5 - 1.6	1.6 - 1.7	1.7 - 1.8	1.8 - 1.9
+Cena	8000	8000	10000	10000
+Nebula				
+Ulepszenie	1.8 - 1.9	1.9 - 2.0	2.0 - 2.1	2.1 - 2.2
+Cena	10000	12000	12000	14000
+NRG-500 				
+Ulepszenie	1.0 - 1.05	1.05 - 1.1	1.1 - 1.15	1.15 - 1.2
+Cena	4000	4000	4000	6000
+Oceanic 				
+Ulepszenie	1.3 - 1.4	1.4 - 1.5	1.5 - 1.6	1.6 - 1.7
+Cena	6000	8000	8000	8000
+Patriot 				
+Ulepszenie	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1	3.1 - 3.3
+Cena	18000	20000	22000	24000
+PCJ-600, PCJ-600 XR				
+Ulepszenie	0.5 - 0.55	0.55 - 0.6	0.6 - 0.65	0.65 - 0.7
+Cena	8000	8000	8000	8000
+Perennial				
+Ulepszenie	1.5 - 1.6	1.6 - 1.7	1.7 - 1.8	1.8 - 1.9
+Cena	8000	8000	10000	10000
+Phoenix 				
+Ulepszenie	2.6 - 2.8	2.8 - 3.0	3.0 - 3.2	3.2 - 3.4
+Cena	18000	20000	22000	26000
+Picador 				
+Ulepszenie	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1	3.1 - 3.3
+Cena	18000	20000	22000	24000
+Premier				
+Ulepszenie	2.1 - 2.3	2.3 - 2.5	2.5 - 2.7	2.7 - 2.9
+Cena	14000	16000	18000	20000
+Previon				
+Ulepszenie	1.5 - 1.6	1.6 - 1.7	1.7 - 1.8	1.8 - 1.9
+Cena	8000	8000	10000	10000
+Primo, Primo Kombi				
+Ulepszenie	1.5 - 1.6	1.6 - 1.7	1.7 - 1.8	1.8 - 1.9
+Cena	8000	8000	10000	10000
+Quadbike				
+Ulepszenie	0.4 - 0.48	0.48 - 0.56	0.56 - 0.64	0.64 - 0.72
+Cena	8000	8000	8000	10000
+Rancher				
+Ulepszenie	1.8 - 1.9	1.9 - 2.0	2.0 - 2.1	2.1 - 2.2
+Cena	10000	12000	12000	14000
+Regina, Regina Sedan				
+Ulepszenie	3.6 - 4.0 	4.0 - 4.4	4.4 - 4.8	4.8 - 5.2
+Cena	32000	36000	42000	48000
+Remington				
+Ulepszenie	2.2 - 2.4	2.4 - 2.6	2.6 - 2.8	2.8 - 3.0
+Cena	14000	16000	18000	20000
+Rumpo				
+Ulepszenie	1.5 - 1.6	1.6 - 1.7	1.7 - 1.8	1.8 - 1.9
+Cena	8000	8000	10000	10000
+Sabre				
+Ulepszenie	2.3 - 2.5	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1
+Cena	16000	18000	20000	22000
+Sadler				
+Ulepszenie	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1	3.1 - 3.3
+Cena	18000	20000	22000	24000
+Sanchez				
+Ulepszenie	0.3 - 0.375	0.375 - 0.45	0.45 - 0.525	0.525 - 0.6
+Cena	6000	6000	8000	8000
+Sandking				
+Ulepszenie	2.9 - 3.1	3.1 - 3.3	3.3 - 3.5	3.5 - 3.7
+Cena	22000	24000	26000	28000
+Savanna				
+Ulepszenie	2.3 - 2.5	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1
+Cena	16000	18000	20000	22000
+Schafter				
+Ulepszenie	2.1 - 2.3	2.3 - 2.5	2.5 - 2.7	2.7 - 2.9
+Cena	14000	16000	18000	20000
+Securicar 				
+Ulepszenie	1.2 - 1.3	1.3 - 1.4	1.4 - 1.5	1.5 - 1.6
+Cena	6000	6000	8000	8000
+Sentinel, Sentinel Kombi				
+Ulepszenie	2.3 - 2.5	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1
+Cena	16000	18000	20000	22000
+Slamvan				
+Ulepszenie	4.8 - 5.2	5.2 - 5.6	5.6 - 6.0	6.0 - 6.4
+Cena	48000	54000	58000	64000
+Solair				
+Ulepszenie	1.8 - 1.9	1.9 - 2.0	2.0 - 2.1	2.1 - 2.2
+Cena	10000	12000	12000	14000
+Speedvan				
+Ulepszenie	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1	3.1 - 3.3
+Cena	18000	20000	22000	24000
+Stafford				
+Ulepszenie	2.3 - 2.5	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1
+Cena	16000	18000	20000	22000
+Stallion, Stallion GTT				
+Ulepszenie	2.2 - 2.4	2.4 - 2.6	2.6 - 2.8	2.8 - 3.0
+Cena	14000	16000	18000	20000
+Stanier				
+Ulepszenie	3.0 - 3.4	3.4 - 3.8	3.8 - 4.2	4.2 - 4.6
+Cena	26000	30000	34000	40000
+Stratum				
+Ulepszenie	1.8 - 1.9	1.9 - 2.0	2.0 - 2.1	2.1 - 2.2
+Cena	10000	12000	12000	14000
+Stretch				
+Ulepszenie	1.5 - 1.6	1.6 - 1.7	1.7 - 1.8	1.8 - 1.9
+Cena	8000	8000	10000	10000
+Sultan, Sultan Kombi				
+Ulepszenie	2.9 - 3.1	3.1 - 3.3	3.3 - 3.5	3.5 - 3.7
+Cena	22000	24000	26000	28000
+Sunrise, Sunrise Kombi				
+Ulepszenie	1.4 - 1.5	1.5 - 1.6	1.6 - 1.7	1.7 - 1.8
+Cena	8000	8000	8000	10000
+Super GT 				
+Ulepszenie	2.6 - 2.8	2.8 - 3.0	3.0 - 3.2	3.2 - 3.4
+Cena	18000	20000	22000	26000
+Tahoma 				
+Ulepszenie	2.3 - 2.5	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1
+Cena	16000	18000	20000	22000
+Tampa				
+Ulepszenie	2.3 - 2.5	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1
+Cena	16000	18000	20000	22000
+Tornado 				
+Ulepszenie	1.8 - 1.9	1.9 - 2.0	2.0 - 2.1	2.1 - 2.2
+Cena	10000	12000	12000	14000
+Turismo, Turismo Competizione				
+Ulepszenie	3.2 - 3.5	3.5 - 3.8	3.8 - 4.1	4.1 - 4.4
+Cena	26000	30000	34000	36000
+Uranus				
+Ulepszenie	1.8 - 1.9	1.9 - 2.0	2.0 - 2.1	2.1 - 2.2
+Cena	10000	12000	12000	14000
+Vincent				
+Ulepszenie	1.5 - 1.6	1.6 - 1.7	1.7 - 1.8	1.8 - 1.9
+Cena	8000	8000	10000	10000
+Virgo 				
+Ulepszenie	1.5 - 1.6	1.6 - 1.7	1.7 - 1.8	1.8 - 1.9
+Cena	8000	8000	10000	10000
+Voodoo 				
+Ulepszenie	2.2 - 2.4	2.4 - 2.6	2.6 - 2.8	2.8 - 3.0
+Cena	14000	16000	18000	20000
+Walton 				
+Ulepszenie	1.1 - 1.2	1.2 - 1.3	1.3 - 1.4	1.4 - 1.5
+Cena	6000	6000	6000	8000
+Washington				
+Ulepszenie	1.9 - 2.0	2.0 - 2.1	2.1 - 2.2	2.2 - 2.3
+Cena	12000	12000	14000	14000
+Wayfarer 				
+Ulepszenie	1.4 - 1.5	1.5 - 1.6	1.6 - 1.7	1.7 - 1.8
+Cena	8000	8000	8000	10000
+Willard, Willard Kombi				
+Ulepszenie	1.5 - 1.6	1.6 - 1.7	1.7 - 1.8	1.8 - 1.9
+Cena	8000	8000	10000	10000
+Windsor 				
+Ulepszenie	3.2 - 3.5	3.5 - 3.8	3.8 - 4.1	4.1 - 4.4
+Cena	26000	30000	34000	36000
+Yankee 				
+Ulepszenie	1.1 - 1.2	1.2 - 1.3	1.3 - 1.4	1.4 - 1.5
+Cena	6000	6000	6000	8000
+Yosemite 				
+Ulepszenie	2.5 - 2.7	2.7 - 2.9	2.9 - 3.1	3.1 - 3.3
+Cena	18000	20000	22000	24000
+ZR-350 				
+Ulepszenie	2.9 - 3.1	3.1 - 3.3	3.3 - 3.5	3.5 - 3.7
+Cena	22000	24000	26000	28000

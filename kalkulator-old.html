@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulator Pojazdu</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #262626;
+    --bg2: #1e1e1e;
+    --bg3: #2f2f2f;
+    --gold: #CFA33E;
+    --gold-dim: #9a7820;
+    --gold-light: #e8c464;
+    --text: #d4d4d4;
+    --text-dim: #888;
+    --border: #3a3a3a;
+    --border-gold: rgba(207,163,62,0.3);
+    --danger: #c0392b;
+    --green: #27ae60;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    min-height: 100vh;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    background: linear-gradient(135deg, #1a1a1a 0%, #222 50%, #1a1a1a 100%);
+    border-bottom: 2px solid var(--gold);
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.6);
+  }
+
+  .logo-icon {
+    width: 48px; height: 48px;
+    background: var(--gold);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .logo-inner {
+    width: 28px; height: 28px;
+    background: var(--bg);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  header p {
+    font-size: 13px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+  }
+
+  /* ─── LAYOUT ─── */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px 60px;
+  }
+
+  /* ─── SECTION ─── */
+  .section {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .section.active {
+    border-color: var(--border-gold);
+  }
+
+  .section.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    background: var(--bg3);
+    border-bottom: 1px solid var(--border);
+    gap: 12px;
+    cursor: default;
+    user-select: none;
+  }
+
+  .section-num {
+    width: 28px; height: 28px;
+    background: var(--gold);
+    color: var(--bg);
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    flex: 1;
+  }
+
+  .section-badge {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .section-body {
+    padding: 20px;
+  }
+
+  /* ─── FORM ELEMENTS ─── */
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  select, input[type="number"] {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px 14px;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23CFA33E' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+
+  select:focus {
+    border-color: var(--gold);
+    background-color: #333;
+  }
+
+  select option {
+    background: #222;
+    color: var(--text);
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+
+  @media (max-width: 700px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  .form-group { margin-bottom: 16px; }
+  .form-group:last-child { margin-bottom: 0; }
+
+  /* ─── SLIDER ─── */
+  .slider-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: rgba(207,163,62,0.05);
+    border: 1px solid var(--border-gold);
+    border-radius: 3px;
+    margin-bottom: 20px;
+  }
+
+  .slider-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  input[type="range"] {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    background: linear-gradient(to right, var(--gold) 0%, var(--gold) 50%, var(--border) 50%, var(--border) 100%);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px; height: 16px;
+    background: var(--gold);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(207,163,62,0.5);
+    transition: transform 0.1s;
+  }
+
+  input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+  }
+
+  .slider-val {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold);
+    min-width: 42px;
+    text-align: right;
+  }
+
+  /* ─── CHECKBOX GRID ─── */
+  .checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px;
+  }
+
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    user-select: none;
+  }
+
+  .checkbox-item:hover {
+    border-color: var(--gold-dim);
+    background: #333;
+  }
+
+  .checkbox-item input[type="checkbox"] {
+    width: 16px; height: 16px;
+    appearance: none;
+    -webkit-appearance: none;
+    background: var(--bg);
+    border: 2px solid var(--border);
+    border-radius: 2px;
+    flex-shrink: 0;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  .checkbox-item input[type="checkbox"]:checked {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+
+  .checkbox-item input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 3px; top: 0px;
+    width: 5px; height: 9px;
+    border: 2px solid var(--bg);
+    border-top: none; border-left: none;
+    transform: rotate(45deg);
+  }
+
+  .checkbox-item label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    text-transform: none;
+    letter-spacing: 0;
+    margin: 0;
+    cursor: pointer;
+    flex: 1;
+  }
+
+  .checkbox-price {
+    font-size: 13px;
+    color: var(--gold-dim);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .checkbox-item:has(input:checked) {
+    border-color: var(--gold);
+    background: rgba(207,163,62,0.08);
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 18px 0;
+  }
+
+  /* ─── CATEGORY SUBSECTION ─── */
+  .subsection {
+    margin-bottom: 16px;
+  }
+
+  .subsection-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ─── CALCULATE BUTTON ─── */
+  .calc-btn-wrap {
+    text-align: center;
+    margin: 28px 0;
+  }
+
+  #calcBtn {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+    border: none;
+    padding: 16px 56px;
+    clip-path: polygon(12px 0%, calc(100% - 12px) 0%, 100% 50%, calc(100% - 12px) 100%, 12px 100%, 0% 50%);
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 20px rgba(207,163,62,0.3);
+  }
+
+  #calcBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(207,163,62,0.5);
+  }
+
+  #calcBtn:active { transform: translateY(0); }
+
+  /* ─── RESULTS ─── */
+  #results {
+    display: none;
+    background: var(--bg2);
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(207,163,62,0.15);
+  }
+
+  .results-header {
+    background: linear-gradient(135deg, #1a1a1a, #222);
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .results-header h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--gold);
+  }
+
+  .results-body {
+    padding: 20px 24px;
+  }
+
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+  }
+
+  .result-row:last-child { border-bottom: none; }
+
+  .result-name {
+    font-size: 14px;
+    color: var(--text-dim);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .result-detail {
+    font-size: 12px;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  .result-price {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  .result-price.zero { color: #555; }
+
+  .result-row.total {
+    padding-top: 16px;
+    margin-top: 4px;
+    border-bottom: none;
+    border-top: 2px solid var(--gold);
+  }
+
+  .result-row.total .result-name {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .result-row.total .result-price {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    color: var(--gold);
+  }
+
+  .slider-pct-badge {
+    font-size: 11px;
+    color: var(--gold-dim);
+    margin-left: 4px;
+    font-weight: 400;
+  }
+
+  /* ─── NOTICE ─── */
+  .notice {
+    font-size: 13px;
+    color: #666;
+    font-style: italic;
+    padding: 10px 0 4px;
+    letter-spacing: 0.3px;
+  }
+
+  /* scroll reveal */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section {
+    animation: fadeUp 0.3s ease both;
+  }
+
+  .section:nth-child(1) { animation-delay: 0.05s; }
+  .section:nth-child(2) { animation-delay: 0.10s; }
+  .section:nth-child(3) { animation-delay: 0.15s; }
+  .section:nth-child(4) { animation-delay: 0.20s; }
+  .section:nth-child(5) { animation-delay: 0.25s; }
+  .section:nth-child(6) { animation-delay: 0.30s; }
+  .section:nth-child(7) { animation-delay: 0.35s; }
+  .section:nth-child(8) { animation-delay: 0.40s; }
+
+  #results { animation: fadeUp 0.4s ease both; }
+
+  .tag-disabled {
+    font-size: 11px;
+    background: rgba(255,255,255,0.06);
+    color: #666;
+    padding: 2px 8px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-icon"><div class="logo-inner"></div></div>
+  <div>
+    <h1>Kalkulator Pojazdu</h1>
+    <p>Wycena pojazdu wraz z tuningiem i ulepszeniami</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- 1. SALON -->
+  <div class="section active" id="sec-salon">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">Salon Samochodowy</div>
+    </div>
+    <div class="section-body">
+      <div class="slider-row">
+        <span class="slider-label">Wartość sekcji</span>
+        <input type="range" min="0" max="100" value="50" id="slider-salon">
+        <span class="slider-val" id="sval-salon">50%</span>
+      </div>
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Salon</label>
+          <select id="sel-salon" onchange="onSalonChange()">
+            <option value="">— wybierz salon —</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Pojazd</label>
+          <select id="sel-vehicle" onchange="onVehicleChange()">
+            <option value="">— najpierw wybierz salon —</option>
+          </select>
+        </div>
+      </div>
+      <div id="vehicle-info" class="notice" style="display:none"></div>
+    </div>
+  </div>
+
+  <!-- 2. SILNIK -->
+  <div class="section" id="sec-engine">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">Ulepszenie Silnika</div>
+      <span class="section-badge" id="badge-engine">opcjonalne</span>
+    </div>
+    <div class="section-body">
+      <div class="slider-row">
+        <span class="slider-label">Wartość sekcji</span>
+        <input type="range" min="0" max="100" value="50" id="slider-engine">
+        <span class="slider-val" id="sval-engine">50%</span>
+      </div>
+      <div class="form-group">
+        <label>Poziom silnika</label>
+        <select id="sel-engine">
+          <option value="">— najpierw wybierz pojazd —</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. WARIANT -->
+  <div class="section" id="sec-variant">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title">Wariant Pojazdu</div>
+      <span class="section-badge" id="badge-variant">opcjonalne</span>
+    </div>
+    <div class="section-body">
+      <div class="slider-row">
+        <span class="slider-label">Wartość sekcji</span>
+        <input type="range" min="0" max="100" value="50" id="slider-variant">
+        <span class="slider-val" id="sval-variant">50%</span>
+      </div>
+      <div class="form-group">
+        <label>Wariant</label>
+        <select id="sel-variant">
+          <option value="">— brak wariantów —</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. TUNING MECHANICZNY -->
+  <div class="section" id="sec-mech">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title">Tuning Mechaniczny</div>
+      <span id="badge-mech" class="section-badge">opcjonalne</span>
+    </div>
+    <div class="section-body" id="body-mech">
+      <div class="slider-row">
+        <span class="slider-label">Wartość sekcji</span>
+        <input type="range" min="0" max="100" value="50" id="slider-mech">
+        <span class="slider-val" id="sval-mech">50%</span>
+      </div>
+      <div id="mech-content"></div>
+    </div>
+  </div>
+
+  <!-- 5. TUNING WIZUALNY -->
+  <div class="section" id="sec-visual">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div class="section-title">Tuning Wizualny</div>
+      <span id="badge-visual" class="section-badge">opcjonalne</span>
+    </div>
+    <div class="section-body">
+      <div class="slider-row">
+        <span class="slider-label">Wartość sekcji</span>
+        <input type="range" min="0" max="100" value="50" id="slider-visual">
+        <span class="slider-val" id="sval-visual">50%</span>
+      </div>
+      <div id="visual-content"></div>
+    </div>
+  </div>
+
+  <!-- 6. KOMPONENTY -->
+  <div class="section" id="sec-komp">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div class="section-title">Komponenty</div>
+      <span id="badge-komp" class="section-badge">opcjonalne</span>
+    </div>
+    <div class="section-body">
+      <div class="slider-row">
+        <span class="slider-label">Wartość sekcji</span>
+        <input type="range" min="0" max="100" value="50" id="slider-komp">
+        <span class="slider-val" id="sval-komp">50%</span>
+      </div>
+      <div id="komp-content"></div>
+    </div>
+  </div>
+
+  <!-- 7. WULKANIZACJA -->
+  <div class="section" id="sec-wulk">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <div class="section-title">Wulkanizacja</div>
+      <span id="badge-wulk" class="section-badge">opcjonalne</span>
+    </div>
+    <div class="section-body">
+      <div class="slider-row">
+        <span class="slider-label">Wartość sekcji</span>
+        <input type="range" min="0" max="100" value="50" id="slider-wulk">
+        <span class="slider-val" id="sval-wulk">50%</span>
+      </div>
+      <div id="wulk-content"></div>
+    </div>
+  </div>
+
+  <!-- CALCULATE -->
+  <div class="calc-btn-wrap">
+    <button id="calcBtn" onclick="calculate()">&#9670; POLICZ &#9670;</button>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="results">
+    <div class="results-header">
+      <div class="section-num" style="width:32px;height:32px">&#9670;</div>
+      <h2>WYNIKI WYCENY</h2>
+    </div>
+    <div class="results-body" id="results-body"></div>
+  </div>
+
+</div>
+
+<script>
+// ─── DATA ───
+const SALONY = [{"dealership":"Cygan","vehicles":[{"model":422,"name":"Bobcat","engine":1.8,"price":33500},{"model":401,"name":"Bravura","engine":1.2,"price":22000},{"model":542,"name":"Clover","engine":2.3,"price":18000},{"model":542,"name":"Clover Wagon","engine":2.3,"price":18000},{"model":410,"name":"Manana","engine":1.7,"price":5500},{"model":418,"name":"Moonbeam","engine":1.2,"price":7100},{"model":404,"name":"Perennial","engine":1.5,"price":6200},{"model":600,"name":"Picador","engine":2.5,"price":15750},{"model":436,"name":"Previon","engine":1.5,"price":10000},{"model":543,"name":"Sadler","engine":2.5,"price":18500},{"model":549,"name":"Tampa","engine":2.3,"price":24500},{"model":478,"name":"Walton","engine":1.1,"price":3850}]},{"dealership":"Doherty","vehicles":[{"model":445,"name":"Admiral","engine":2.1,"price":46500},{"model":445,"name":"Admiral Kombi","engine":2.1,"price":42500},{"model":496,"name":"Blista Compact","engine":2.6,"price":77000},{"model":518,"name":"Buccaneer","engine":2.3,"price":34000},{"model":527,"name":"Cadrona","engine":1.8,"price":31500},{"model":420,"name":"Celsion","engine":2.4,"price":142500},{"model":589,"name":"Club","engine":3.2,"price":77000},{"model":507,"name":"Elegant","engine":1.8,"price":39500},{"model":585,"name":"Emperor","engine":1.9,"price":31000},{"model":587,"name":"Euros","engine":2.3,"price":66500},{"model":533,"name":"Feltzer","engine":2.9,"price":101000},{"model":533,"name":"Feltzer GT","engine":2.9,"price":275000},{"model":526,"name":"Fortune","engine":1.8,"price":39000},{"model":526,"name":"Fortune 240SX","engine":1.8,"price":111000},{"model":466,"name":"Glendale","engine":2.1,"price":36500},{"model":492,"name":"Greenwood","engine":1.8,"price":19000},{"model":508,"name":"Journey","engine":1.1,"price":72500},{"model":517,"name":"Majestic","engine":2.1,"price":34500},{"model":410,"name":"Manana DTM","engine":1.7,"price":89000},{"model":551,"name":"Merit","engine":2.1,"price":71000},{"model":516,"name":"Nebula","engine":1.8,"price":39500},{"model":426,"name":"Premier","engine":2.1,"price":64000},{"model":547,"name":"Primo","engine":1.5,"price":26500},{"model":547,"name":"Primo Kombi","engine":1.5,"price":26500},{"model":479,"name":"Regina","engine":1.3,"price":38000},{"model":475,"name":"Sabre","engine":2.3,"price":59000},{"model":604,"name":"Schafter","engine":2.1,"price":127500},{"model":405,"name":"Sentinel","engine":2.3,"price":66500},{"model":405,"name":"Sentinel Kombi","engine":2.3,"price":66500},{"model":458,"name":"Solair","engine":1.8,"price":39500},{"model":439,"name":"Stallion","engine":2.2,"price":76000},{"model":439,"name":"Stallion GTT","engine":2.2,"price":95500},{"model":596,"name":"Stanier","engine":3.0,"price":122500},{"model":561,"name":"Stratum","engine":1.8,"price":55500},{"model":550,"name":"Sunrise","engine":1.4,"price":21500},{"model":550,"name":"Sunrise Kombi","engine":1.4,"price":21500},{"model":566,"name":"Tahoma","engine":2.3,"price":61000},{"model":540,"name":"Vincent","engine":1.5,"price":29000},{"model":540,"name":"Vincent Kombi","engine":1.5,"price":29000},{"model":491,"name":"Virgo","engine":1.5,"price":41500},{"model":421,"name":"Washington","engine":1.9,"price":48000},{"model":529,"name":"Willard","engine":1.5,"price":45000},{"model":529,"name":"Willard Kombi","engine":1.5,"price":45000},{"model":555,"name":"Windsor","engine":3.2,"price":121500}]},{"dealership":"Downtown","vehicles":[{"model":602,"name":"Alpha","engine":2.2,"price":111500},{"model":429,"name":"Banshee","engine":3.7,"price":561500},{"model":402,"name":"Buffalo","engine":2.9,"price":270000},{"model":541,"name":"Bullet","engine":3.2,"price":742500},{"model":483,"name":"Camper","engine":1.3,"price":145000},{"model":415,"name":"Cheetah","engine":3.2,"price":555000},{"model":480,"name":"Comet","engine":3.2,"price":375000},{"model":562,"name":"Elegy","engine":2.9,"price":272500},{"model":565,"name":"Flash","engine":2.3,"price":120000},{"model":411,"name":"Infernus","engine":3.2,"price":1702500},{"model":559,"name":"Jester","engine":2.9,"price":181500},{"model":603,"name":"Phoenix","engine":2.6,"price":121500},{"model":490,"name":"Rancher Long","engine":2.1,"price":1345000},{"model":560,"name":"Sultan","engine":2.9,"price":356500},{"model":560,"name":"Sultan Kombi","engine":2.9,"price":356500},{"model":506,"name":"Super GT","engine":2.6,"price":190000},{"model":451,"name":"Turismo","engine":3.2,"price":1635000},{"model":558,"name":"Uranus","engine":1.8,"price":72500},{"model":477,"name":"ZR-350","engine":2.9,"price":281500}]},{"dealership":"Terenowy","vehicles":[{"model":424,"name":"BF Injection","engine":3.2,"price":79000},{"model":605,"name":"Contander","engine":2.5,"price":71000},{"model":579,"name":"Huntley","engine":2.5,"price":135000},{"model":400,"name":"Landstalker","engine":2.5,"price":57000},{"model":500,"name":"Mesa","engine":2.3,"price":46000},{"model":500,"name":"Mesa Rubicon","engine":2.3,"price":66000},{"model":470,"name":"Patriot","engine":2.5,"price":760000},{"model":489,"name":"Rancher","engine":1.8,"price":56000},{"model":495,"name":"Sandking","engine":2.9,"price":242500},{"model":554,"name":"Yosemite","engine":2.5,"price":87500}]},{"dealership":"Exclusive","vehicles":[{"model":429,"name":"Banshee Viper GTS","engine":3.7,"price":840000},{"model":541,"name":"Bullet GT","engine":3.2,"price":1110000},{"model":502,"name":"Cheetah '76","engine":2.9,"price":732500},{"model":504,"name":"DeLuxo","engine":2.8,"price":1005000},{"model":503,"name":"Feroci","engine":3.0,"price":972500},{"model":411,"name":"Infernus Kakimoto","engine":3.2,"price":2285000},{"model":411,"name":"Infernus NSX","engine":3.2,"price":1995000},{"model":411,"name":"Infernus Pandem","engine":3.2,"price":2525000},{"model":494,"name":"Monroe","engine":3.0,"price":781000},{"model":451,"name":"Turismo Competizione","engine":3.2,"price":2125000}]},{"dealership":"Motocyklowy","vehicles":[{"model":581,"name":"BF-400","engine":0.4,"price":117500},{"model":462,"name":"Faggio","engine":0.05,"price":29000},{"model":521,"name":"FCR-900","engine":0.8,"price":187500},{"model":521,"name":"FCR-900 RR","engine":0.8,"price":855000},{"model":463,"name":"Freeway","engine":1.0,"price":102500},{"model":522,"name":"NRG-500","engine":1.0,"price":1035000},{"model":461,"name":"PCJ-600","engine":0.5,"price":126500},{"model":461,"name":"PCJ-600 XR","engine":0.5,"price":605000},{"model":471,"name":"Quadbike","engine":0.4,"price":71500},{"model":468,"name":"Sanchez","engine":0.3,"price":61000},{"model":586,"name":"Wayfarer","engine":1.4,"price":53500}]},{"dealership":"Lowriders","vehicles":[{"model":536,"name":"Blade","engine":2.3,"price":205000},{"model":575,"name":"Broadway","engine":1.8,"price":187500},{"model":534,"name":"Remington","engine":2.2,"price":175000},{"model":567,"name":"Savanna","engine":2.3,"price":222500},{"model":535,"name":"Slamvan","engine":4.8,"price":185000},{"model":576,"name":"Tornado","engine":1.8,"price":62500},{"model":412,"name":"Voodoo","engine":2.2,"price":155000},{"model":474,"name":"Hermes","engine":1.5,"price":357500}]},{"dealership":"Dostawczy","vehicles":[{"model":499,"name":"Benson","engine":1.1,"price":41500},{"model":498,"name":"Boxville","engine":1.1,"price":53500},{"model":482,"name":"Burrito","engine":2.5,"price":57500},{"model":414,"name":"Mule","engine":1.5,"price":101500},{"model":428,"name":"Securicar","engine":1.2,"price":272500},{"model":459,"name":"Speedvan","engine":2.5,"price":122500},{"model":456,"name":"Yankee","engine":1.1,"price":179500}]},{"dealership":"Łodzi","vehicles":[{"model":473,"name":"Dinghy","engine":null,"price":74000},{"model":493,"name":"Jetmax","engine":null,"price":753000},{"model":595,"name":"Launch","engine":null,"price":1205000},{"model":484,"name":"Marquis","engine":null,"price":1102500},{"model":452,"name":"Speeder","engine":null,"price":552500},{"model":446,"name":"Squalo","engine":null,"price":605000},{"model":454,"name":"Tropic","engine":null,"price":1055000}]},{"dealership":"Helikopterów","vehicles":[{"model":487,"name":"Maverick","engine":5.9,"price":2900000},{"model":488,"name":"News Chopper","engine":5.9,"price":2100000}]}];
+
+const SILNIKI = [{"name":"Admiral","engine_levels":[{"engine":2.3,"total_cost":14000},{"engine":2.5,"total_cost":30000},{"engine":2.7,"total_cost":48000},{"engine":2.9,"total_cost":68000}]},{"name":"Admiral Kombi","engine_levels":[{"engine":2.3,"total_cost":14000},{"engine":2.5,"total_cost":30000},{"engine":2.7,"total_cost":48000},{"engine":2.9,"total_cost":68000}]},{"name":"Alpha","engine_levels":[{"engine":2.4,"total_cost":14000},{"engine":2.6,"total_cost":30000},{"engine":2.8,"total_cost":48000},{"engine":3.0,"total_cost":68000}]},{"name":"Banshee","engine_levels":[{"engine":4.0,"total_cost":32000},{"engine":4.3,"total_cost":68000},{"engine":4.6,"total_cost":108000},{"engine":4.9,"total_cost":152000}]},{"name":"Banshee Viper GTS","engine_levels":[{"engine":4.0,"total_cost":32000},{"engine":4.3,"total_cost":68000},{"engine":4.6,"total_cost":108000},{"engine":4.9,"total_cost":152000}]},{"name":"Benson","engine_levels":[{"engine":1.2,"total_cost":6000},{"engine":1.3,"total_cost":12000},{"engine":1.4,"total_cost":18000},{"engine":1.5,"total_cost":26000}]},{"name":"BF Injection","engine_levels":[{"engine":3.5,"total_cost":26000},{"engine":3.8,"total_cost":56000},{"engine":4.1,"total_cost":90000},{"engine":4.4,"total_cost":126000}]},{"name":"BF-400","engine_levels":[{"engine":0.45,"total_cost":6000},{"engine":0.5,"total_cost":14000},{"engine":0.55,"total_cost":22000},{"engine":0.6,"total_cost":30000}]},{"name":"Blade","engine_levels":[{"engine":2.5,"total_cost":16000},{"engine":2.7,"total_cost":34000},{"engine":2.9,"total_cost":54000},{"engine":3.1,"total_cost":76000}]},{"name":"Blista Compact","engine_levels":[{"engine":2.8,"total_cost":18000},{"engine":3.0,"total_cost":38000},{"engine":3.2,"total_cost":60000},{"engine":3.4,"total_cost":86000}]},{"name":"Bobcat","engine_levels":[{"engine":1.9,"total_cost":10000},{"engine":2.0,"total_cost":22000},{"engine":2.1,"total_cost":34000},{"engine":2.2,"total_cost":48000}]},{"name":"Boxville","engine_levels":[{"engine":1.2,"total_cost":6000},{"engine":1.3,"total_cost":12000},{"engine":1.4,"total_cost":18000},{"engine":1.5,"total_cost":26000}]},{"name":"Bravura","engine_levels":[{"engine":1.3,"total_cost":6000},{"engine":1.4,"total_cost":12000},{"engine":1.5,"total_cost":20000},{"engine":1.6,"total_cost":28000}]},{"name":"Broadway","engine_levels":[{"engine":1.9,"total_cost":10000},{"engine":2.0,"total_cost":22000},{"engine":2.1,"total_cost":34000},{"engine":2.2,"total_cost":48000}]},{"name":"Buccaneer","engine_levels":[{"engine":2.5,"total_cost":16000},{"engine":2.7,"total_cost":34000},{"engine":2.9,"total_cost":54000},{"engine":3.1,"total_cost":76000}]},{"name":"Buffalo","engine_levels":[{"engine":3.1,"total_cost":22000},{"engine":3.3,"total_cost":46000},{"engine":3.5,"total_cost":72000},{"engine":3.7,"total_cost":100000}]},{"name":"Bullet","engine_levels":[{"engine":3.5,"total_cost":26000},{"engine":3.8,"total_cost":56000},{"engine":4.1,"total_cost":90000},{"engine":4.4,"total_cost":126000}]},{"name":"Bullet GT","engine_levels":[{"engine":3.5,"total_cost":26000},{"engine":3.8,"total_cost":56000},{"engine":4.1,"total_cost":90000},{"engine":4.4,"total_cost":126000}]},{"name":"Burrito","engine_levels":[{"engine":2.7,"total_cost":18000},{"engine":2.9,"total_cost":38000},{"engine":3.1,"total_cost":60000},{"engine":3.3,"total_cost":84000}]},{"name":"Cadrona","engine_levels":[{"engine":1.9,"total_cost":10000},{"engine":2.0,"total_cost":22000},{"engine":2.1,"total_cost":34000},{"engine":2.2,"total_cost":48000}]},{"name":"Cadrona DTM","engine_levels":[{"engine":1.9,"total_cost":10000},{"engine":2.0,"total_cost":22000},{"engine":2.1,"total_cost":34000},{"engine":2.2,"total_cost":48000}]},{"name":"Camper","engine_levels":[{"engine":1.4,"total_cost":6000},{"engine":1.5,"total_cost":14000},{"engine":1.6,"total_cost":22000},{"engine":1.7,"total_cost":30000}]},{"name":"Celsion","engine_levels":[{"engine":2.8,"total_cost":18000},{"engine":3.2,"total_cost":40000},{"engine":3.6,"total_cost":68000},{"engine":4.0,"total_cost":100000}]},{"name":"Cheetah","engine_levels":[{"engine":3.5,"total_cost":26000},{"engine":3.8,"total_cost":56000},{"engine":4.1,"total_cost":90000},{"engine":4.4,"total_cost":126000}]},{"name":"Cheetah '76","engine_levels":[{"engine":3.1,"total_cost":22000},{"engine":3.3,"total_cost":46000},{"engine":3.5,"total_cost":72000},{"engine":3.7,"total_cost":100000}]},{"name":"Clover","engine_levels":[{"engine":2.5,"total_cost":16000},{"engine":2.7,"total_cost":34000},{"engine":2.9,"total_cost":54000},{"engine":3.1,"total_cost":76000}]},{"name":"Clover Wagon","engine_levels":[{"engine":2.5,"total_cost":16000},{"engine":2.7,"total_cost":34000},{"engine":2.9,"total_cost":54000},{"engine":3.1,"total_cost":76000}]},{"name":"Club","engine_levels":[{"engine":3.5,"total_cost":26000},{"engine":3.8,"total_cost":56000},{"engine":4.1,"total_cost":90000},{"engine":4.4,"total_cost":126000}]},{"name":"Comet","engine_levels":[{"engine":3.5,"total_cost":26000},{"engine":3.8,"total_cost":56000},{"engine":4.1,"total_cost":90000},{"engine":4.4,"total_cost":126000}]},{"name":"Contander","engine_levels":[{"engine":2.7,"total_cost":18000},{"engine":2.9,"total_cost":38000},{"engine":3.1,"total_cost":60000},{"engine":3.3,"total_cost":84000}]},{"name":"DeLuxo","engine_levels":[{"engine":3.0,"total_cost":20000},{"engine":3.2,"total_cost":42000},{"engine":3.4,"total_cost":68000},{"engine":3.6,"total_cost":96000}]},{"name":"Elegant","engine_levels":[{"engine":1.9,"total_cost":10000},{"engine":2.0,"total_cost":22000},{"engine":2.1,"total_cost":34000},{"engine":2.2,"total_cost":48000}]},{"name":"Elegy","engine_levels":[{"engine":3.1,"total_cost":22000},{"engine":3.3,"total_cost":46000},{"engine":3.5,"total_cost":72000},{"engine":3.7,"total_cost":100000}]},{"name":"Emperor","engine_levels":[{"engine":2.0,"total_cost":12000},{"engine":2.1,"total_cost":24000},{"engine":2.2,"total_cost":38000},{"engine":2.3,"total_cost":52000}]},{"name":"Euros","engine_levels":[{"engine":2.5,"total_cost":16000},{"engine":2.7,"total_cost":34000},{"engine":2.9,"total_cost":54000},{"engine":3.1,"total_cost":76000}]},{"name":"Faggio","engine_levels":[{"engine":0.07,"total_cost":4000},{"engine":0.09,"total_cost":8000},{"engine":0.11,"total_cost":12000},{"engine":0.13,"total_cost":16000}]},{"name":"FCR-900","engine_levels":[{"engine":0.85,"total_cost":10000},{"engine":0.9,"total_cost":20000},{"engine":0.95,"total_cost":30000},{"engine":1.0,"total_cost":34000}]},{"name":"FCR-900 RR","engine_levels":[{"engine":0.85,"total_cost":10000},{"engine":0.9,"total_cost":20000},{"engine":0.95,"total_cost":30000},{"engine":1.0,"total_cost":34000}]},{"name":"Feltzer","engine_levels":[{"engine":3.1,"total_cost":22000},{"engine":3.3,"total_cost":46000},{"engine":3.5,"total_cost":72000},{"engine":3.7,"total_cost":100000}]},{"name":"Feltzer GT","engine_levels":[{"engine":3.1,"total_cost":22000},{"engine":3.3,"total_cost":46000},{"engine":3.5,"total_cost":72000},{"engine":3.7,"total_cost":100000}]},{"name":"Feroci","engine_levels":[{"engine":3.3,"total_cost":24000},{"engine":3.6,"total_cost":52000},{"engine":3.9,"total_cost":82000},{"engine":4.2,"total_cost":116000}]},{"name":"Flash","engine_levels":[{"engine":2.5,"total_cost":16000},{"engine":2.7,"total_cost":34000},{"engine":2.9,"total_cost":54000},{"engine":3.1,"total_cost":76000}]},{"name":"Fortune","engine_levels":[{"engine":1.9,"total_cost":10000},{"engine":2.0,"total_cost":22000},{"engine":2.1,"total_cost":34000},{"engine":2.2,"total_cost":48000}]},{"name":"Fortune 240SX","engine_levels":[{"engine":1.9,"total_cost":10000},{"engine":2.0,"total_cost":22000},{"engine":2.1,"total_cost":34000},{"engine":2.2,"total_cost":48000}]},{"name":"Freeway","engine_levels":[{"engine":1.1,"total_cost":4000},{"engine":1.2,"total_cost":10000},{"engine":1.3,"total_cost":16000},{"engine":1.4,"total_cost":22000}]},{"name":"Glendale","engine_levels":[{"engine":2.3,"total_cost":14000},{"engine":2.3,"total_cost":30000},{"engine":2.7,"total_cost":48000},{"engine":2.9,"total_cost":68000}]},{"name":"Greenwood","engine_levels":[{"engine":1.9,"total_cost":10000},{"engine":2.0,"total_cost":22000},{"engine":2.1,"total_cost":34000},{"engine":2.2,"total_cost":48000}]},{"name":"Hermes","engine_levels":[{"engine":1.6,"total_cost":8000},{"engine":1.7,"total_cost":16000},{"engine":1.8,"total_cost":26000},{"engine":1.9,"total_cost":36000}]},{"name":"Huntley","engine_levels":[{"engine":2.7,"total_cost":18000},{"engine":2.9,"total_cost":38000},{"engine":3.1,"total_cost":60000},{"engine":3.3,"total_cost":84000}]},{"name":"Infernus","engine_levels":[{"engine":3.5,"total_cost":26000},{"engine":3.8,"total_cost":56000},{"engine":4.1,"total_cost":90000},{"engine":4.4,"total_cost":126000}]},{"name":"Infernus Kakimoto","engine_levels":[{"engine":3.5,"total_cost":26000},{"engine":3.8,"total_cost":56000},{"engine":4.1,"total_cost":90000},{"engine":4.4,"total_cost":126000}]},{"name":"Infernus NSX","engine_levels":[{"engine":3.5,"total_cost":26000},{"engine":3.8,"total_cost":56000},{"engine":4.1,"total_cost":90000},{"engine":4.4,"total_cost":126000}]},{"name":"Infernus Pandem","engine_levels":[{"engine":3.5,"total_cost":26000},{"engine":3.8,"total_cost":56000},{"engine":4.1,"total_cost":90000},{"engine":4.4,"total_cost":126000}]},{"name":"Jester","engine_levels":[{"engine":3.1,"total_cost":22000},{"engine":3.3,"total_cost":46000},{"engine":3.5,"total_cost":72000},{"engine":3.7,"total_cost":100000}]},{"name":"Journey","engine_levels":[{"engine":1.2,"total_cost":6000},{"engine":1.3,"total_cost":12000},{"engine":1.4,"total_cost":18000},{"engine":1.5,"total_cost":26000}]},{"name":"Landstalker","engine_levels":[{"engine":2.7,"total_cost":18000},{"engine":2.9,"total_cost":38000},{"engine":3.1,"total_cost":60000},{"engine":3.3,"total_cost":84000}]},{"name":"Majestic","engine_levels":[{"engine":2.3,"total_cost":14000},{"engine":2.5,"total_cost":30000},{"engine":2.7,"total_cost":48000},{"engine":2.9,"total_cost":68000}]},{"name":"Manana","engine_levels":[{"engine":1.8,"total_cost":10000},{"engine":1.9,"total_cost":20000},{"engine":2.0,"total_cost":32000},{"engine":2.1,"total_cost":44000}]},{"name":"Manana DTM","engine_levels":[{"engine":1.8,"total_cost":10000},{"engine":1.9,"total_cost":20000},{"engine":2.0,"total_cost":32000},{"engine":2.1,"total_cost":44000}]},{"name":"Merit","engine_levels":[{"engine":2.3,"total_cost":14000},{"engine":2.5,"total_cost":30000},{"engine":2.7,"total_cost":48000},{"engine":2.9,"total_cost":68000}]},{"name":"Mesa","engine_levels":[{"engine":2.5,"total_cost":16000},{"engine":2.7,"total_cost":34000},{"engine":2.9,"total_cost":54000},{"engine":3.1,"total_cost":76000}]},{"name":"Mesa Rubicon","engine_levels":[{"engine":2.5,"total_cost":16000},{"engine":2.7,"total_cost":34000},{"engine":2.9,"total_cost":54000},{"engine":3.1,"total_cost":76000}]},{"name":"Monroe","engine_levels":[{"engine":3.3,"total_cost":24000},{"engine":3.6,"total_cost":52000},{"engine":3.9,"total_cost":82000},{"engine":4.2,"total_cost":116000}]},{"name":"Moonbeam","engine_levels":[{"engine":1.3,"total_cost":6000},{"engine":1.4,"total_cost":14000},{"engine":1.5,"total_cost":22000},{"engine":1.6,"total_cost":30000}]},{"name":"Mule","engine_levels":[{"engine":1.6,"total_cost":8000},{"engine":1.7,"total_cost":16000},{"engine":1.8,"total_cost":26000},{"engine":1.9,"total_cost":36000}]},{"name":"Nebula","engine_levels":[{"engine":1.9,"total_cost":10000},{"engine":2.0,"total_cost":22000},{"engine":2.1,"total_cost":34000},{"engine":2.2,"total_cost":48000}]},{"name":"NRG-500","engine_levels":[{"engine":1.05,"total_cost":4000},{"engine":1.1,"total_cost":8000},{"engine":1.15,"total_cost":12000},{"engine":1.2,"total_cost":18000}]},{"name":"Patriot","engine_levels":[{"engine":2.7,"total_cost":18000},{"engine":2.9,"total_cost":38000},{"engine":3.1,"total_cost":60000},{"engine":3.3,"total_cost":84000}]},{"name":"PCJ-600","engine_levels":[{"engine":0.55,"total_cost":8000},{"engine":0.6,"total_cost":16000},{"engine":0.65,"total_cost":24000},{"engine":0.7,"total_cost":32000}]},{"name":"PCJ-600 XR","engine_levels":[{"engine":0.55,"total_cost":8000},{"engine":0.6,"total_cost":16000},{"engine":0.65,"total_cost":24000},{"engine":0.7,"total_cost":32000}]},{"name":"Perennial","engine_levels":[{"engine":1.6,"total_cost":8000},{"engine":1.7,"total_cost":16000},{"engine":1.8,"total_cost":26000},{"engine":1.9,"total_cost":36000}]},{"name":"Phoenix","engine_levels":[{"engine":2.8,"total_cost":18000},{"engine":3.0,"total_cost":38000},{"engine":3.2,"total_cost":60000},{"engine":3.4,"total_cost":86000}]},{"name":"Picador","engine_levels":[{"engine":2.7,"total_cost":18000},{"engine":2.9,"total_cost":38000},{"engine":3.1,"total_cost":60000},{"engine":3.3,"total_cost":84000}]},{"name":"Premier","engine_levels":[{"engine":2.3,"total_cost":14000},{"engine":2.5,"total_cost":30000},{"engine":2.7,"total_cost":48000},{"engine":2.9,"total_cost":68000}]},{"name":"Previon","engine_levels":[{"engine":1.6,"total_cost":8000},{"engine":1.7,"total_cost":16000},{"engine":1.8,"total_cost":26000},{"engine":1.9,"total_cost":36000}]},{"name":"Primo","engine_levels":[{"engine":1.6,"total_cost":8000},{"engine":1.7,"total_cost":16000},{"engine":1.8,"total_cost":26000},{"engine":1.9,"total_cost":36000}]},{"name":"Primo Kombi","engine_levels":[{"engine":1.6,"total_cost":8000},{"engine":1.7,"total_cost":16000},{"engine":1.8,"total_cost":26000},{"engine":1.9,"total_cost":36000}]},{"name":"Quadbike","engine_levels":[{"engine":0.48,"total_cost":8000},{"engine":0.56,"total_cost":16000},{"engine":0.64,"total_cost":24000},{"engine":0.72,"total_cost":34000}]},{"name":"Rancher","engine_levels":[{"engine":1.9,"total_cost":10000},{"engine":2.0,"total_cost":22000},{"engine":2.1,"total_cost":34000},{"engine":2.2,"total_cost":48000}]},{"name":"Regina","engine_levels":[{"engine":4.0,"total_cost":32000},{"engine":4.4,"total_cost":68000},{"engine":4.8,"total_cost":110000},{"engine":5.2,"total_cost":158000}]},{"name":"Remington","engine_levels":[{"engine":2.4,"total_cost":14000},{"engine":2.6,"total_cost":30000},{"engine":2.8,"total_cost":48000},{"engine":3.0,"total_cost":68000}]},{"name":"Sabre","engine_levels":[{"engine":2.5,"total_cost":16000},{"engine":2.7,"total_cost":34000},{"engine":2.9,"total_cost":54000},{"engine":3.1,"total_cost":76000}]},{"name":"Sadler","engine_levels":[{"engine":2.7,"total_cost":18000},{"engine":2.9,"total_cost":38000},{"engine":3.1,"total_cost":60000},{"engine":3.3,"total_cost":84000}]},{"name":"Sanchez","engine_levels":[{"engine":0.375,"total_cost":6000},{"engine":0.45,"total_cost":12000},{"engine":0.525,"total_cost":20000},{"engine":0.6,"total_cost":28000}]},{"name":"Sandking","engine_levels":[{"engine":3.1,"total_cost":22000},{"engine":3.3,"total_cost":46000},{"engine":3.5,"total_cost":72000},{"engine":3.7,"total_cost":100000}]},{"name":"Savanna","engine_levels":[{"engine":2.5,"total_cost":16000},{"engine":2.7,"total_cost":34000},{"engine":2.9,"total_cost":54000},{"engine":3.1,"total_cost":76000}]},{"name":"Schafter","engine_levels":[{"engine":2.3,"total_cost":14000},{"engine":2.5,"total_cost":30000},{"engine":2.7,"total_cost":48000},{"engine":2.9,"total_cost":68000}]},{"name":"Securicar","engine_levels":[{"engine":1.3,"total_cost":6000},{"engine":1.4,"total_cost":12000},{"engine":1.5,"total_cost":20000},{"engine":1.6,"total_cost":28000}]},{"name":"Sentinel","engine_levels":[{"engine":2.5,"total_cost":16000},{"engine":2.7,"total_cost":34000},{"engine":2.9,"total_cost":54000},{"engine":3.1,"total_cost":76000}]},{"name":"Sentinel Kombi","engine_levels":[{"engine":2.5,"total_cost":16000},{"engine":2.7,"total_cost":34000},{"engine":2.9,"total_cost":54000},{"engine":3.1,"total_cost":76000}]},{"name":"Slamvan","engine_levels":[{"engine":5.2,"total_cost":48000},{"engine":5.6,"total_cost":102000},{"engine":6.0,"total_cost":160000},{"engine":6.4,"total_cost":224000}]},{"name":"Solair","engine_levels":[{"engine":1.9,"total_cost":10000},{"engine":2.0,"total_cost":22000},{"engine":2.1,"total_cost":34000},{"engine":2.2,"total_cost":48000}]},{"name":"Speedvan","engine_levels":[{"engine":2.7,"total_cost":18000},{"engine":2.9,"total_cost":38000},{"engine":3.1,"total_cost":60000},{"engine":3.3,"total_cost":84000}]},{"name":"Stallion","engine_levels":[{"engine":2.4,"total_cost":14000},{"engine":2.6,"total_cost":30000},{"engine":2.8,"total_cost":48000},{"engine":3.0,"total_cost":68000}]},{"name":"Stallion GTT","engine_levels":[{"engine":2.4,"total_cost":14000},{"engine":2.6,"total_cost":30000},{"engine":2.8,"total_cost":48000},{"engine":3.0,"total_cost":68000}]},{"name":"Stanier","engine_levels":[{"engine":3.4,"total_cost":26000},{"engine":3.8,"total_cost":56000},{"engine":4.2,"total_cost":90000},{"engine":4.6,"total_cost":130000}]},{"name":"Stratum","engine_levels":[{"engine":1.9,"total_cost":10000},{"engine":2.0,"total_cost":22000},{"engine":2.1,"total_cost":34000},{"engine":2.2,"total_cost":48000}]},{"name":"Sultan","engine_levels":[{"engine":3.1,"total_cost":22000},{"engine":3.3,"total_cost":46000},{"engine":3.5,"total_cost":72000},{"engine":3.7,"total_cost":100000}]},{"name":"Sultan Kombi","engine_levels":[{"engine":3.1,"total_cost":22000},{"engine":3.3,"total_cost":46000},{"engine":3.5,"total_cost":72000},{"engine":3.7,"total_cost":100000}]},{"name":"Sunrise","engine_levels":[{"engine":1.5,"total_cost":8000},{"engine":1.6,"total_cost":16000},{"engine":1.7,"total_cost":24000},{"engine":1.8,"total_cost":34000}]},{"name":"Sunrise Kombi","engine_levels":[{"engine":1.5,"total_cost":8000},{"engine":1.6,"total_cost":16000},{"engine":1.7,"total_cost":24000},{"engine":1.8,"total_cost":34000}]},{"name":"Super GT","engine_levels":[{"engine":2.8,"total_cost":18000},{"engine":3.0,"total_cost":38000},{"engine":3.2,"total_cost":60000},{"engine":3.4,"total_cost":86000}]},{"name":"Tahoma","engine_levels":[{"engine":2.5,"total_cost":16000},{"engine":2.7,"total_cost":34000},{"engine":2.9,"total_cost":54000},{"engine":3.1,"total_cost":76000}]},{"name":"Tampa","engine_levels":[{"engine":2.5,"total_cost":16000},{"engine":2.7,"total_cost":34000},{"engine":2.9,"total_cost":54000},{"engine":3.1,"total_cost":76000}]},{"name":"Tornado","engine_levels":[{"engine":1.9,"total_cost":10000},{"engine":2.0,"total_cost":22000},{"engine":2.1,"total_cost":34000},{"engine":2.2,"total_cost":48000}]},{"name":"Turismo","engine_levels":[{"engine":3.5,"total_cost":26000},{"engine":3.8,"total_cost":56000},{"engine":4.1,"total_cost":90000},{"engine":4.4,"total_cost":126000}]},{"name":"Turismo Competizione","engine_levels":[{"engine":3.5,"total_cost":26000},{"engine":3.8,"total_cost":56000},{"engine":4.1,"total_cost":90000},{"engine":4.4,"total_cost":126000}]},{"name":"Uranus","engine_levels":[{"engine":1.9,"total_cost":10000},{"engine":2.0,"total_cost":22000},{"engine":2.1,"total_cost":34000},{"engine":2.2,"total_cost":48000}]},{"name":"Vincent","engine_levels":[{"engine":1.6,"total_cost":8000},{"engine":1.7,"total_cost":16000},{"engine":1.8,"total_cost":26000},{"engine":1.9,"total_cost":36000}]},{"name":"Virgo","engine_levels":[{"engine":1.6,"total_cost":8000},{"engine":1.7,"total_cost":16000},{"engine":1.8,"total_cost":26000},{"engine":1.9,"total_cost":36000}]},{"name":"Voodoo","engine_levels":[{"engine":2.4,"total_cost":14000},{"engine":2.6,"total_cost":30000},{"engine":2.8,"total_cost":48000},{"engine":3.0,"total_cost":68000}]},{"name":"Walton","engine_levels":[{"engine":1.2,"total_cost":6000},{"engine":1.3,"total_cost":12000},{"engine":1.4,"total_cost":18000},{"engine":1.5,"total_cost":26000}]},{"name":"Washington","engine_levels":[{"engine":2.0,"total_cost":12000},{"engine":2.1,"total_cost":24000},{"engine":2.2,"total_cost":38000},{"engine":2.3,"total_cost":52000}]},{"name":"Wayfarer","engine_levels":[{"engine":1.5,"total_cost":8000},{"engine":1.6,"total_cost":16000},{"engine":1.7,"total_cost":24000},{"engine":1.8,"total_cost":34000}]},{"name":"Willard","engine_levels":[{"engine":1.6,"total_cost":8000},{"engine":1.7,"total_cost":16000},{"engine":1.8,"total_cost":26000},{"engine":1.9,"total_cost":36000}]},{"name":"Willard Kombi","engine_levels":[{"engine":1.6,"total_cost":8000},{"engine":1.7,"total_cost":16000},{"engine":1.8,"total_cost":26000},{"engine":1.9,"total_cost":36000}]},{"name":"Windsor","engine_levels":[{"engine":3.5,"total_cost":26000},{"engine":3.8,"total_cost":56000},{"engine":4.1,"total_cost":90000},{"engine":4.4,"total_cost":126000}]},{"name":"Yankee","engine_levels":[{"engine":1.2,"total_cost":6000},{"engine":1.3,"total_cost":12000},{"engine":1.4,"total_cost":18000},{"engine":1.5,"total_cost":26000}]},{"name":"Yosemite","engine_levels":[{"engine":2.7,"total_cost":18000},{"engine":2.9,"total_cost":38000},{"engine":3.1,"total_cost":60000},{"engine":3.3,"total_cost":84000}]},{"name":"ZR-350","engine_levels":[{"engine":3.1,"total_cost":22000},{"engine":3.3,"total_cost":46000},{"engine":3.5,"total_cost":72000},{"engine":3.7,"total_cost":100000}]}];
+
+const WARIANTY = [{"name":"Admiral","id":445,"wariants":[{"name":"Brak wariantu","price":2500},{"name":"Szyberdach","price":10000},{"name":"Relingi","price":5000},{"name":"Szyberdach + relingi","price":15000}]},{"name":"Benson","id":499,"wariants":[{"name":"Brak reklam","price":10000},{"name":"Reklama: Shady Industries","price":5000},{"name":"Reklama: Los Santos Deliverye","price":5000},{"name":"Reklama: The Uphill Gardener","price":5000},{"name":"Reklama: Discount Furniture","price":5000}]},{"name":"BF Injection","id":424,"wariants":[{"name":"Bez paneli bocznych","price":5000},{"name":"Dodatkowe panele boczne","price":10000}]},{"name":"BF-400","id":581,"wariants":[{"name":"Domyślny (bez owiewek i tłumików)","price":2000},{"name":"Pojedynczy tłumik","price":5000},{"name":"Pojedynczy karbonowy tłumik","price":7000},{"name":"Podwójny tłumik","price":9500},{"name":"Owiewki niepełne","price":5000},{"name":"Pojedynczy tłumik + owiewki niepełne","price":7000},{"name":"Pojedynczy karbonowy tłumik + owiewki niepełne","price":9000},{"name":"Pojedynczy tłumik + owiewki pełne","price":11500},{"name":"Pojedynczy karbonowy tłumik + owiewki pełne","price":13500},{"name":"Podwójny tłumik + owiewki niepełne","price":15000},{"name":"Podwójny tłumik + owiewki pełne","price":18000}]},{"name":"Blista Compact","id":496,"wariants":[{"name":"Podstawowy grill","price":2500},{"name":"Niestandardowy grill","price":7500}]},{"name":"Bobcat","id":422,"wariants":[{"name":"Pusta paka","price":6000},{"name":"Koło zapasowe","price":3000},{"name":"Puszki po napojach","price":3000},{"name":"Zabudowa","price":10000}]},{"name":"Buccaneer","id":518,"wariants":[{"name":"Twardy dach","price":5000},{"name":"Cabrio","price":15000},{"name":"Vinylowy dach","price":7500},{"name":"Osłony błotników","price":10000},{"name":"Cabrio + osłony błotników","price":25000},{"name":"Vinylowy dach + osłony błotników","price":17500}]},{"name":"Burrito","id":482,"wariants":[{"name":"Bez dodaktów na dachu","price":5000},{"name":"Reflektory + spojler","price":12500}]},{"name":"Cadrona","id":527,"wariants":[{"name":"Twardy dach","price":5000},{"name":"Cabrio","price":15000}]},{"name":"Camper","id":483,"wariants":[{"name":"Bez dodaktów","price":5000},{"name":"Odsłonięte zasłony","price":10000},{"name":"Otwarty wywietrznik dachowy, zasłonięte zasłony","price":10000},{"name":"Bagażnik dachowy z deskami surfingowymi","price":15000},{"name":"Bagażnik dachowy z deskami surfingowymi, odsłonięte zasłony","price":15000}]},{"name":"Celsion","id":420,"wariants":[{"name":"Brak wariantu","price":2500},{"name":"Lotka na dachu","price":5000},{"name":"Szyberdach","price":10000},{"name":"Szyberdach + lotka na dachu","price":15000}]},{"name":"Cheetah","id":415,"wariants":[{"name":"Bez dodatków","price":1000},{"name":"Klatka bezpieczeństwa","price":10000},{"name":"Spojler LM","price":12500},{"name":"Spojler LBWK","price":15000},{"name":"Spojler GT","price":15000},{"name":"Klatka bezpieczeństwa + spojler LM","price":22500},{"name":"Klatka bezpieczeństwa + spojler LBWK","price":25000},{"name":"Klatka bezpieczeństwa + spojler GT","price":25000}]},{"name":"Clover","id":542,"wariants":[{"name":"Twardy dach","price":2500},{"name":"Cabrio","price":10000},{"name":"Brak dodatków","price":1000},{"name":"Bagażnik dachowy","price":5000},{"name":"Bagażnik dachowy z bagażem","price":10000}]},{"name":"Comet","id":480,"wariants":[{"name":"Twardy dach targa","price":15000},{"name":"Targa","price":12500},{"name":"Cabrio","price":12500}]},{"name":"Contander","id":605,"wariants":[{"name":"Brak dodatków","price":5000},{"name":"Klatka","price":10000}]},{"name":"DeLuxo","id":504,"wariants":[{"name":"Domyślny","price":2000},{"name":"Spojler 1","price":14000},{"name":"Spojler 2","price":14000},{"name":"Roleta","price":6000},{"name":"Roleta + spojler 1","price":20000},{"name":"Roleta + spojler 2","price":20000}]},{"name":"Elegant","id":507,"wariants":[{"name":"Brak wariantu","price":2500},{"name":"Szyberdach","price":10000}]},{"name":"Elegy","id":562,"wariants":[{"name":"Bez dodatków","price":1000},{"name":"Klatka bezpieczeństwa","price":10000}]},{"name":"Emperor","id":585,"wariants":[{"name":"Brak wariantu","price":2500},{"name":"Szyberdach","price":10000}]},{"name":"Euros","id":587,"wariants":[{"name":"Przeszklony dach","price":5000},{"name":"Twardy dach","price":7500},{"name":"Przeszklony dach + żaluzja","price":15000},{"name":"Twardy dach + żaluzja","price":17500}]},{"name":"FCR-900","id":521,"wariants":[{"name":"Domyślny (bez owiewek i tłumików)","price":5000},{"name":"Pojedynczy tłumik","price":6500},{"name":"Podwójny tłumik","price":8000},{"name":"Podwójny karbonowy tłumik","price":10500},{"name":"Owiewki niepełne","price":6500},{"name":"Pojedynczy tłumik + owiewki niepełne","price":8500},{"name":"Podwójny tłumik + owiewki niepełne","price":10500},{"name":"Pojedynczy tłumik + owiewki pełne","price":13000},{"name":"Podwójny tłumik + owiewki pełne","price":15000},{"name":"Podwójny karbonowy tłumik + owiewki niepełne","price":17000},{"name":"Podwójny karbonowy tłumik + owiewki pełne","price":19000}]},{"name":"Feltzer","id":533,"wariants":[{"name":"Brak wariantu","price":1000},{"name":"Cabrio","price":15000},{"name":"Twardy dach z szyberdachem","price":25000}]},{"name":"Feroci","id":503,"wariants":[{"name":"Brak dachu","price":10000},{"name":"Z dachem","price":15000}]},{"name":"Flash","id":565,"wariants":[{"name":"Bez dodatków","price":1000},{"name":"Klatka bezpieczeństwa","price":10000},{"name":"Szyberdach","price":15000},{"name":"Szyberdach + klatka","price":25000}]},{"name":"Freeway","id":463,"wariants":[{"name":"Bez dodaktów","price":1000},{"name":"Skórzane torby","price":2500},{"name":"Plastikowe kufry","price":5000},{"name":"Owiewka","price":5000},{"name":"Owiewka + skórzane torby","price":7500},{"name":"Owiewka + plastikowe kufry","price":10000}]},{"name":"Hermes","id":474,"wariants":[{"name":"Twardy dach","price":5000},{"name":"Cabrio","price":15000}]},{"name":"Hotknife","id":434,"wariants":[{"name":"Odkryty silnik","price":5000},{"name":"Częściowo zabudowany silnik","price":10000}]},{"name":"Jester","id":559,"wariants":[{"name":"Bez dodatków","price":1000},{"name":"Klatka bezpieczeństwa","price":10000},{"name":"Targa","price":15000},{"name":"Targa + klatka","price":25000}]},{"name":"Kart","id":571,"wariants":[{"name":"Brak obudowy karoserii","price":5000},{"name":"Boczna obudowa karoserii","price":10000}]},{"name":"Manana","id":410,"wariants":[{"name":"Twardy dach","price":2500},{"name":"Cabrio","price":10000}]},{"name":"Merit","id":551,"wariants":[{"name":"Brak wariantu","price":2500},{"name":"Szyberdach","price":10000}]},{"name":"Mesa","id":500,"wariants":[{"name":"Brak dachu i klatki","price":5000},{"name":"Dach","price":7500},{"name":"Klatka","price":7500},{"name":"Dach + klatka","price":15000}]},{"name":"Mule","id":414,"wariants":[{"name":"Brak reklamy","price":10000},{"name":"Reklama: Toy Corne","price":5000},{"name":"Reklama: Binco","price":5000},{"name":"Reklama: Semi","price":5000},{"name":"Reklama: Shafted Appliances","price":5000}]},{"name":"NRG-500","id":522,"wariants":[{"name":"Zwykła karoseria","price":5000},{"name":"Karoseria z wcięciami","price":10000},{"name":"Tłumik karbonowy","price":8000},{"name":"Tłumik zwykły","price":5000},{"name":"Tłumik karbonowy podwójny","price":15000},{"name":"Tłumik karbonowy, karoseria z wcięciami","price":17500},{"name":"Tłumik zwykły, karoseria z wcięciami","price":15500},{"name":"Tłumik karbonowy podwójny, karoseria z wcięciami","price":20500}]},{"name":"Patriot","id":470,"wariants":[{"name":"Brak tkaniny","price":5000},{"name":"Niepełna tkanina","price":7000},{"name":"Zabudowa do bodykitu","price":25000},{"name":"Pełna tkanina","price":12500},{"name":"Klatka","price":12500}]},{"name":"Perennial","id":404,"wariants":[{"name":"Brak dodatków","price":5000},{"name":"Kratka na dachu","price":5000},{"name":"Kratka na dachu z zapasowym kołem","price":10000}]},{"name":"Picador","id":600,"wariants":[{"name":"Pusta paka","price":6000},{"name":"Deski","price":3000},{"name":"Puszki po napojach","price":3000},{"name":"Zapasowe koła","price":5000},{"name":"Zasłonięta paka","price":7500}]},{"name":"Previon","id":436,"wariants":[{"name":"Brak wariantu","price":2500},{"name":"Szyberdach","price":10000}]},{"name":"Primo","id":547,"wariants":[{"name":"Brak wariantu","price":2500},{"name":"Szyberdach","price":7500},{"name":"Relingi","price":5000},{"name":"Bagażnik dachowy","price":10000},{"name":"Szyberdach + relingi","price":12500},{"name":"Szyberdach + bagażnik dachowy","price":17500}]},{"name":"Regina / Regina Sedan","id":479,"wariants":[{"name":"Brak wariantu","price":2500},{"name":"Bagażnik dachowy","price":7500},{"name":"Bagażnik dachowy z bagażem #1","price":10000},{"name":"Bagażnik dachowy z bagażem #2","price":10000},{"name":"Bagażnik dachowy z bagażem #3","price":10000}]},{"name":"Sadler","id":543,"wariants":[{"name":"Brak dodatków","price":1000},{"name":"Zabudowa","price":10000},{"name":"Zasłonięta paka","price":7500},{"name":"Tylna lotka","price":7500},{"name":"Zasłonięta paka + tylna lotka","price":15000}]},{"name":"Schafter","id":604,"wariants":[{"name":"Brak wariantu","price":2500},{"name":"Szyberdach","price":10000},{"name":"Relingi","price":5000},{"name":"Bagażnik dachowy","price":10000},{"name":"Szyberdach + relingi","price":15000},{"name":"Szyberdach + bagażnik dachowy","price":20000}]},{"name":"Securicar","id":428,"wariants":[{"name":"Brak reklamy","price":10000},{"name":"Reklama: Lock&Load","price":5000}]},{"name":"Sentinel","id":405,"wariants":[{"name":"Brak wariantu","price":2500},{"name":"Szyberdach","price":10000},{"name":"Relingi","price":5000},{"name":"Bagażnik dachowy","price":10000},{"name":"Szyberdach + relingi","price":15000},{"name":"Szyberdach + bagażnik dachowy","price":20000}]},{"name":"Slamvan","id":535,"wariants":[{"name":"Zwykła kierownica","price":5000},{"name":"Kierownica z łańcucha","price":7500}]},{"name":"Solair","id":458,"wariants":[{"name":"Brak wariantu","price":2500},{"name":"Szyberdach","price":10000},{"name":"Relingi","price":5000},{"name":"Bagażnik dachowy","price":10000},{"name":"Szyberdach + relingi","price":15000},{"name":"Szyberdach + bagażnik dachowy","price":20000}]},{"name":"Speedvan","id":459,"wariants":[{"name":"Bez dodaktów na dachu","price":5000},{"name":"Reflektory + spojler","price":12500},{"name":"Bagażnik dachowy","price":15000}]},{"name":"Stratum","id":561,"wariants":[{"name":"Brak wariantu","price":1000},{"name":"Relingi","price":5000},{"name":"Bagażnik dachowy","price":7500},{"name":"Szyberdach","price":10000},{"name":"Szyberdach + relingi","price":15000},{"name":"Szyberdach + bagażnik dachowy","price":17500}]},{"name":"Sunrise","id":550,"wariants":[{"name":"Brak wariantu","price":2500},{"name":"Szyberdach","price":10000},{"name":"Relingi","price":5000},{"name":"Bagażnik dachowy","price":10000},{"name":"Szyberdach + relingi","price":15000},{"name":"Szyberdach + bagażnik dachowy","price":20000}]},{"name":"Super GT","id":506,"wariants":[{"name":"Brak dachu","price":7000},{"name":"Dach","price":15000}]},{"name":"Uranus","id":558,"wariants":[{"name":"Standardowy dach","price":2500},{"name":"Czarny dach","price":7500},{"name":"Targa","price":15000}]},{"name":"Washington","id":421,"wariants":[{"name":"Brak wariantu","price":2500},{"name":"Szyberdach","price":10000},{"name":"Relingi","price":5000},{"name":"Bagażnik dachowy","price":10000},{"name":"Szyberdach + relingi","price":15000},{"name":"Szyberdach + bagażnik dachowy","price":20000}]},{"name":"Willard","id":529,"wariants":[{"name":"Brak wariantu","price":2500},{"name":"Szyberdach","price":10000},{"name":"Relingi #1","price":5000},{"name":"Relingi #2","price":10000},{"name":"Szyberdach + relingi #1","price":15000},{"name":"Szyberdach + relingi #2","price":20000}]},{"name":"Windsor","id":555,"wariants":[{"name":"Brak dachu","price":15000},{"name":"Dach","price":25000}]},{"name":"Yankee","id":456,"wariants":[{"name":"Brak reklamy","price":10000},{"name":"Reklama: Big Gas","price":5000},{"name":"Reklama: RS Haul","price":5000},{"name":"Reklama: Star Balls","price":5000},{"name":"Reklama: Flower Power","price":5000}]},{"name":"ZR-350","id":477,"wariants":[{"name":"Brak spojlera","price":2500},{"name":"Spojler standardowy","price":7500},{"name":"Spojler RB","price":10000},{"name":"Wysoki spojler","price":12500},{"name":"Wysoki karbonowy spojler","price":15000}]}];
+
+const MECHANICZNY = {"ecu":[{"version":1,"price":10500},{"version":2,"price":18000},{"version":3,"price":30000},{"version":4,"price":40000}],"turbo":[{"version":1,"price":15000},{"version":2,"price":25000},{"version":3,"price":40000},{"version":4,"price":50000},{"version":5,"price":60000}],"lpg":[{"capacity_l":25,"price":20000},{"capacity_l":50,"price":25000},{"capacity_l":75,"price":35000}],"suspension_kit":[{"name":"Uliczny","price":50000},{"name":"Wyścigowy","price":100000},{"name":"Drifterski","price":150000},{"name":"Torowy","price":250000}],"cfi":[{"version":1,"price":125000},{"version":2,"price":150000},{"version":3,"price":175000},{"version":4,"price":225000},{"version":5,"price":250000}],"drivetrain":[{"type":"FWD","price":20000},{"type":"RWD","price":30000},{"type":"AWD","price":50000},{"type":"MZN","price":75000}],"fuel_tank":[{"capacity_l":100,"price":45000},{"capacity_l":125,"price":55000},{"capacity_l":150,"price":65000}],"misc":[{"name":"Radio","price":500},{"name":"CB-radio","price":1500},{"name":"Ogranicznik","price":2000},{"name":"Wykrywacz fotoradarów","price":2500},{"name":"System ABS","price":15000},{"name":"Gwintowane zawieszenie","price":32500},{"name":"Hydraulika","price":45000}]};
+
+const WIZUALNY = [{"category":"spoilers","parts":[{"id":1000,"price":7000},{"id":1001,"price":9000},{"id":1002,"price":6000},{"id":1003,"price":10000},{"id":1014,"price":5400},{"id":1015,"price":4000},{"id":1016,"price":4000},{"id":1023,"price":8500},{"id":1050,"price":3200},{"id":1058,"price":3800},{"id":1060,"price":5500},{"id":1138,"price":8700},{"id":1139,"price":9500},{"id":1146,"price":7800},{"id":1147,"price":7500},{"id":1158,"price":6000},{"id":1162,"price":5600},{"id":1163,"price":11500}]},{"category":"side_skirts","parts":[{"id":1007,"price":2100},{"id":1026,"price":3500},{"id":1036,"price":4000},{"id":1039,"price":3600},{"id":1047,"price":3000},{"id":1048,"price":2800},{"id":1056,"price":3400},{"id":1057,"price":2800},{"id":1069,"price":3400},{"id":1090,"price":2700},{"id":1093,"price":2400},{"id":1101,"price":3200},{"id":1102,"price":2300},{"id":1106,"price":2500},{"id":1107,"price":2100},{"id":1118,"price":2800},{"id":1119,"price":3300},{"id":1134,"price":1500}]},{"category":"exhausts","parts":[{"id":1018,"price":2400},{"id":1019,"price":1800},{"id":1020,"price":1600},{"id":1021,"price":1400},{"id":1028,"price":2400},{"id":1034,"price":2200},{"id":1037,"price":3600},{"id":1045,"price":2800},{"id":1046,"price":2100},{"id":1059,"price":2700},{"id":1064,"price":1900},{"id":1065,"price":2000},{"id":1066,"price":2800},{"id":1089,"price":2600},{"id":1092,"price":1800},{"id":1104,"price":2800},{"id":1105,"price":3200},{"id":1113,"price":2300},{"id":1114,"price":4100},{"id":1126,"price":2300},{"id":1127,"price":2500},{"id":1129,"price":2800},{"id":1132,"price":3400},{"id":1135,"price":2000},{"id":1136,"price":2500}]},{"category":"front_bumpers","parts":[{"id":1117,"price":2800},{"id":1152,"price":6500},{"id":1153,"price":6000},{"id":1155,"price":7000},{"id":1157,"price":6500},{"id":1160,"price":7500},{"id":1165,"price":5000},{"id":1166,"price":4700},{"id":1169,"price":8500},{"id":1170,"price":7000},{"id":1171,"price":8000},{"id":1172,"price":6500},{"id":1173,"price":5500},{"id":1179,"price":3800},{"id":1181,"price":3100},{"id":1182,"price":3300},{"id":1188,"price":3800},{"id":1189,"price":4100},{"id":1190,"price":1800},{"id":1191,"price":2000}]},{"category":"rear_bumpers","parts":[{"id":1140,"price":5500},{"id":1141,"price":6000},{"id":1148,"price":5000},{"id":1149,"price":5500},{"id":1151,"price":4000},{"id":1154,"price":5000},{"id":1156,"price":4750},{"id":1159,"price":5250},{"id":1161,"price":4500},{"id":1167,"price":4250},{"id":1168,"price":4000},{"id":1178,"price":2800},{"id":1180,"price":3800},{"id":1183,"price":3300},{"id":1184,"price":3100},{"id":1186,"price":4400},{"id":1187,"price":4000},{"id":1193,"price":2600}]},{"category":"roofs","parts":[{"id":1006,"price":900},{"id":1032,"price":1800},{"id":1033,"price":2600},{"id":1035,"price":2300},{"id":1053,"price":1800},{"id":1054,"price":1100},{"id":1055,"price":1200},{"id":1061,"price":1500},{"id":1067,"price":1400},{"id":1068,"price":2200},{"id":1088,"price":1300},{"id":1091,"price":1900},{"id":1128,"price":7000},{"id":1131,"price":null}]},{"category":"hoods","parts":[{"id":1011,"price":3900},{"id":1012,"price":4200},{"id":1142,"price":3500},{"id":1144,"price":3200}]},{"category":"tail_lights","parts":[{"id":1109,"price":1800},{"id":1110,"price":1500}]},{"category":"headlights","parts":[{"id":1115,"price":2800},{"id":1116,"price":3500}]},{"category":"fog_lights","parts":[{"id":1013,"price":500},{"id":1024,"price":500}]},{"category":"vents","parts":[{"id":1004,"price":4200},{"id":1005,"price":3900}]}];
+
+const KOMPONENTY = {"key_duplication":{"price":10000},"window_tint":{"illegal_above_percent":60,"options":[{"percent":0,"price":5000},{"percent":10,"price":25000},{"percent":20,"price":30000},{"percent":30,"price":35000},{"percent":40,"price":40000},{"percent":50,"price":45000},{"percent":60,"price":50000},{"percent":70,"price":55000},{"percent":80,"price":60000},{"percent":90,"price":65000},{"percent":100,"price":70000}]},"transport_app":{"price":15000,"note":"Only usable in 4-seat vehicles"},"gauge_backlight":{"options":[{"name":"brak","rgb":null,"price":5000},{"name":"biały","rgb":[255,255,255],"price":15000},{"name":"marchwiowy","rgb":[255,165,0],"price":25000},{"name":"pomarańczowy","rgb":[255,69,0],"price":25000},{"name":"żółty","rgb":[255,255,0],"price":25000},{"name":"czerwony","rgb":[255,0,0],"price":35000},{"name":"niebieski","rgb":[0,0,255],"price":35000},{"name":"czekoladowy","rgb":[102,51,0],"price":35000},{"name":"lazurowy","rgb":[0,127,255],"price":35000},{"name":"czarny","rgb":[0,0,0],"price":35000},{"name":"fioletowy","rgb":[128,0,128],"price":35000},{"name":"aqua","rgb":[30,200,255],"price":35000},{"name":"miętowy","rgb":[0,102,51],"price":35000},{"name":"zielony","rgb":[20,140,0],"price":35000},{"name":"limonkowy","rgb":[147,246,0],"price":35000},{"name":"różowy","rgb":[255,140,240],"price":35000},{"name":"złoty","rgb":[226,200,105],"price":35000},{"name":"kiwi","rgb":[66,245,182],"price":35000},{"name":"pistacja","rgb":[0,255,148],"price":35000},{"name":"jadeitowy","rgb":[0,128,128],"price":40000},{"name":"purpurowy","rgb":[102,0,51],"price":40000},{"name":"malinowy","rgb":[235,1,101],"price":40000},{"name":"magenta","rgb":[255,0,255],"price":40000},{"name":"herbaciany","rgb":[204,93,43],"price":40000},{"name":"cynamonowy","rgb":[157,91,3],"price":40000},{"name":"ocean","rgb":[51,102,204],"price":45000},{"name":"lodowy","rgb":[0,255,251],"price":45000},{"name":"butelkowa_zieleń","rgb":[50,102,71],"price":45000},{"name":"ametystowy","rgb":[153,102,204],"price":45000},{"name":"wiśniowy","rgb":[220,20,60],"price":45000},{"name":"eozyna","rgb":[195,92,111],"price":45000},{"name":"gruszkowy","rgb":[188,226,113],"price":45000},{"name":"luka","rgb":[12,60,99],"price":45000},{"name":"różany","rgb":[188,143,143],"price":50000},{"name":"very_peri","rgb":[104,104,172],"price":50000},{"name":"rubinowy","rgb":[120,18,11],"price":55000},{"name":"winogronowy","rgb":[102,5,181],"price":55000},{"name":"oliwkowy","rgb":[121,128,0],"price":55000}]},"headlight_color":{"options":[{"name":"biały","price":5000},{"name":"xenon","price":10000},{"name":"oldtimer","price":25000},{"name":"marchwiowy","price":45000},{"name":"pomarańczowy","price":45000},{"name":"żółty","price":45000},{"name":"limonka","price":55000},{"name":"różowy","price":55000},{"name":"niebieski","price":55000},{"name":"zielony","price":55000},{"name":"fioletowy","price":55000},{"name":"czerwony","price":60000},{"name":"lazurowy","price":65000},{"name":"aqua","price":65000},{"name":"miętowy","price":65000},{"name":"złoty","price":65000},{"name":"kiwi","price":65000},{"name":"pistacja","price":65000},{"name":"jadeitowy","price":70000},{"name":"purpurowy","price":70000},{"name":"malinowy","price":70000},{"name":"magenta","price":70000},{"name":"czekoladowy","price":70000},{"name":"eozyna","price":75000},{"name":"gruszkowy","price":75000},{"name":"luka","price":75000},{"name":"ocean","price":75000},{"name":"lodowy","price":75000},{"name":"herbaciany","price":75000},{"name":"wiśniowy","price":80000},{"name":"cynamonowy","price":80000},{"name":"butelkowa_zieleń","price":80000},{"name":"ametystowy","price":80000},{"name":"różany","price":85000},{"name":"very_peri","price":85000},{"name":"rubinowy","price":90000},{"name":"winogronowy","price":90000},{"name":"oliwkowy","price":90000}]}};
+
+const WULKANIZACJA = {"wheel_size":[{"name":"default","price":0,"compatible_tires":["standard","drift","sport"]},{"name":"very_small","price":10000,"compatible_tires":["standard","off_road"]},{"name":"small","price":12500,"compatible_tires":["standard","drift"]},{"name":"large","price":22500,"compatible_tires":["standard","drift","sport"]}],"wheel_width":{"front_axle":[{"level":"default","price":0},{"level":1,"price":8000},{"level":2,"price":15000}],"rear_axle":[{"level":"default","price":0},{"level":1,"price":10000},{"level":2,"price":18000}]}};
+
+// ─── VISUAL CATEGORY NAMES ───
+const CAT_NAMES = {
+  spoilers: 'Spojlery', side_skirts: 'Progi boczne', exhausts: 'Wydechy',
+  front_bumpers: 'Zderzaki przednie', rear_bumpers: 'Zderzaki tylne',
+  roofs: 'Dachy', hoods: 'Maski', tail_lights: 'Tylne światła',
+  headlights: 'Przednie światła', fog_lights: 'Światła przeciwmgielne', vents: 'Kratki wentylacyjne'
+};
+
+// ─── STATE ───
+let currentDealership = null;
+let currentVehicle = null;
+
+// ─── INIT ───
+const salonSel = document.getElementById('sel-salon');
+SALONY.forEach(s => {
+  const o = new Option(s.dealership, s.dealership);
+  salonSel.appendChild(o);
+});
+
+// Sliders
+['salon','engine','variant','mech','visual','komp','wulk'].forEach(id => {
+  const sl = document.getElementById('slider-'+id);
+  const lbl = document.getElementById('sval-'+id);
+  sl.addEventListener('input', () => {
+    lbl.textContent = sl.value + '%';
+    const pct = parseInt(sl.value)/100;
+    sl.style.background = `linear-gradient(to right, var(--gold) 0%, var(--gold) ${sl.value}%, var(--border) ${sl.value}%, var(--border) 100%)`;
+  });
+});
+
+function onSalonChange() {
+  const name = salonSel.value;
+  currentDealership = name;
+  currentVehicle = null;
+  const vSel = document.getElementById('sel-vehicle');
+  vSel.innerHTML = '<option value="">— wybierz pojazd —</option>';
+  document.getElementById('vehicle-info').style.display = 'none';
+
+  if (!name) return;
+  const salon = SALONY.find(s => s.dealership === name);
+  if (!salon) return;
+
+  salon.vehicles.forEach((v, i) => {
+    const engStr = v.engine !== null ? ` (${v.engine}L)` : '';
+    const o = new Option(`${v.name}${engStr} — ${fmtPrice(v.price)}`, i);
+    vSel.appendChild(o);
+  });
+
+  resetDependentSections();
+}
+
+function onVehicleChange() {
+  const idx = document.getElementById('sel-vehicle').value;
+  if (idx === '') {
+    currentVehicle = null;
+    resetDependentSections();
+    return;
+  }
+
+  const salon = SALONY.find(s => s.dealership === currentDealership);
+  currentVehicle = salon.vehicles[parseInt(idx)];
+
+  // show info
+  const info = document.getElementById('vehicle-info');
+  info.style.display = 'block';
+  const engStr = currentVehicle.engine !== null ? ` | Silnik bazowy: ${currentVehicle.engine}L` : '';
+  info.textContent = `Model ID: ${currentVehicle.model} | Cena bazowa: ${fmtPrice(currentVehicle.price)}${engStr}`;
+
+  updateEngineSection();
+  updateVariantSection();
+  updateMechSection();
+  updateVisualSection();
+  updateKompSection();
+  updateWulkSection();
+}
+
+function resetDependentSections() {
+  document.getElementById('sel-engine').innerHTML = '<option value="">— najpierw wybierz pojazd —</option>';
+  document.getElementById('sel-variant').innerHTML = '<option value="">— brak wariantów —</option>';
+  document.getElementById('mech-content').innerHTML = '';
+  document.getElementById('visual-content').innerHTML = '';
+  document.getElementById('komp-content').innerHTML = '';
+  document.getElementById('wulk-content').innerHTML = '';
+  ['engine','variant','mech','visual','komp','wulk'].forEach(id => {
+    document.getElementById('sec-'+id).classList.remove('active');
+  });
+}
+
+function isHeli() { return currentDealership === 'Helikopterów'; }
+function isBoat() { return currentDealership === 'Łodzi'; }
+function isMoto() { return currentDealership === 'Motocyklowy'; }
+function isLand() { return !isHeli() && !isBoat(); }
+
+function updateEngineSection() {
+  const sec = document.getElementById('sec-engine');
+  const sel = document.getElementById('sel-engine');
+  sel.innerHTML = '<option value="">— brak ulepszenia —</option>';
+
+  if (!currentVehicle) return;
+  const found = SILNIKI.find(s => s.name === currentVehicle.name);
+  if (!found) {
+    sec.classList.remove('active');
+    document.getElementById('badge-engine').textContent = 'brak dostępnych ulepszeń';
+    return;
+  }
+
+  sec.classList.add('active');
+  document.getElementById('badge-engine').textContent = 'opcjonalne';
+  found.engine_levels.forEach((lvl, i) => {
+    sel.appendChild(new Option(`${lvl.engine}L — ${fmtPrice(lvl.total_cost)}`, i));
+  });
+}
+
+function updateVariantSection() {
+  const sec = document.getElementById('sec-variant');
+  const sel = document.getElementById('sel-variant');
+  sel.innerHTML = '<option value="">— brak wyboru —</option>';
+
+  if (!currentVehicle) return;
+  const found = WARIANTY.find(w => w.name === currentVehicle.name || 
+    (currentVehicle.name === 'Regina' && w.name === 'Regina / Regina Sedan') ||
+    (currentVehicle.name === 'Regina Sedan' && w.name === 'Regina / Regina Sedan'));
+  if (!found) {
+    sec.classList.remove('active');
+    document.getElementById('badge-variant').textContent = 'brak wariantów';
+    return;
+  }
+
+  sec.classList.add('active');
+  document.getElementById('badge-variant').textContent = 'opcjonalne';
+  found.wariants.forEach((w, i) => {
+    sel.appendChild(new Option(`${w.name} — ${fmtPrice(w.price)}`, i));
+  });
+}
+
+function updateMechSection() {
+  const sec = document.getElementById('sec-mech');
+  const content = document.getElementById('mech-content');
+  content.innerHTML = '';
+
+  if (!currentVehicle || !isLand()) {
+    sec.classList.remove('active');
+    document.getElementById('badge-mech').innerHTML = '<span class="tag-disabled">niedostępne</span>';
+    return;
+  }
+
+  sec.classList.add('active');
+  document.getElementById('badge-mech').textContent = 'opcjonalne';
+
+  // Selects
+  const selects = [
+    { key: 'ecu', label: 'ECU', opts: MECHANICZNY.ecu.map((e,i) => ({label: `Wersja ${e.version} — ${fmtPrice(e.price)}`, val: i})) },
+    { key: 'turbo', label: 'Turbo', opts: MECHANICZNY.turbo.map((e,i) => ({label: `Wersja ${e.version} — ${fmtPrice(e.price)}`, val: i})) },
+    { key: 'lpg', label: 'LPG', opts: MECHANICZNY.lpg.map((e,i) => ({label: `${e.capacity_l}L — ${fmtPrice(e.price)}`, val: i})) },
+    { key: 'suspension_kit', label: 'Zestaw zawieszenia', opts: MECHANICZNY.suspension_kit.map((e,i) => ({label: `${e.name} — ${fmtPrice(e.price)}`, val: i})) },
+    { key: 'cfi', label: 'CFI', opts: MECHANICZNY.cfi.map((e,i) => ({label: `Wersja ${e.version} — ${fmtPrice(e.price)}`, val: i})) },
+    { key: 'drivetrain', label: 'Napęd', opts: MECHANICZNY.drivetrain.map((e,i) => ({label: `${e.type} — ${fmtPrice(e.price)}`, val: i})) },
+    { key: 'fuel_tank', label: 'Zbiornik paliwa', opts: MECHANICZNY.fuel_tank.map((e,i) => ({label: `${e.capacity_l}L — ${fmtPrice(e.price)}`, val: i})) },
+  ];
+
+  const grid = document.createElement('div');
+  grid.className = 'grid-2';
+
+  selects.forEach(s => {
+    const fg = document.createElement('div');
+    fg.className = 'form-group';
+    fg.innerHTML = `<label>${s.label}</label>
+      <select id="mech-${s.key}">
+        <option value="">— brak —</option>
+        ${s.opts.map(o => `<option value="${o.val}">${o.label}</option>`).join('')}
+      </select>`;
+    grid.appendChild(fg);
+  });
+
+  content.appendChild(grid);
+
+  // Misc checkboxes
+  const hr = document.createElement('hr');
+  hr.className = 'divider';
+  content.appendChild(hr);
+
+  const subT = document.createElement('div');
+  subT.className = 'subsection-title';
+  subT.textContent = 'Wyposażenie dodatkowe';
+  content.appendChild(subT);
+
+  const cbGrid = document.createElement('div');
+  cbGrid.className = 'checkbox-grid';
+
+  MECHANICZNY.misc.forEach((item, i) => {
+    const lbl = document.createElement('label');
+    lbl.className = 'checkbox-item';
+    lbl.innerHTML = `
+      <input type="checkbox" id="misc-${i}" value="${i}">
+      <label for="misc-${i}">${item.name}</label>
+      <span class="checkbox-price">${fmtPrice(item.price)}</span>`;
+    cbGrid.appendChild(lbl);
+  });
+
+  content.appendChild(cbGrid);
+}
+
+function updateVisualSection() {
+  const sec = document.getElementById('sec-visual');
+  const content = document.getElementById('visual-content');
+  content.innerHTML = '';
+
+  if (!currentVehicle || isHeli() || isBoat() || isMoto()) {
+    sec.classList.remove('active');
+    document.getElementById('badge-visual').innerHTML = '<span class="tag-disabled">niedostępne</span>';
+    return;
+  }
+
+  sec.classList.add('active');
+  document.getElementById('badge-visual').textContent = 'opcjonalne';
+
+  WIZUALNY.forEach(cat => {
+    const sub = document.createElement('div');
+    sub.className = 'subsection form-group';
+
+    const title = document.createElement('div');
+    title.className = 'subsection-title';
+    title.textContent = CAT_NAMES[cat.category] || cat.category;
+    sub.appendChild(title);
+
+    const sel = document.createElement('select');
+    sel.id = 'vis-' + cat.category;
+    sel.innerHTML = '<option value="">— brak —</option>';
+    cat.parts.forEach((p, i) => {
+      const price = p.price !== null ? fmtPrice(p.price) : 'bezpłatny';
+      sel.appendChild(new Option(`ID ${p.id} — ${price}`, i));
+    });
+    sub.appendChild(sel);
+    content.appendChild(sub);
+  });
+}
+
+function updateKompSection() {
+  const sec = document.getElementById('sec-komp');
+  const content = document.getElementById('komp-content');
+  content.innerHTML = '';
+
+  if (!currentVehicle || !isLand()) {
+    sec.classList.remove('active');
+    document.getElementById('badge-komp').innerHTML = '<span class="tag-disabled">niedostępne</span>';
+    return;
+  }
+
+  sec.classList.add('active');
+  document.getElementById('badge-komp').textContent = 'opcjonalne';
+
+  const grid = document.createElement('div');
+  grid.className = 'grid-2';
+
+  // key duplication checkbox
+  const keyWrap = document.createElement('div');
+  keyWrap.className = 'form-group';
+  keyWrap.innerHTML = `<label>Duplikat kluczyka</label>
+    <label class="checkbox-item" style="margin-top:4px">
+      <input type="checkbox" id="komp-key">
+      <label for="komp-key">Duplikat kluczyka</label>
+      <span class="checkbox-price">${fmtPrice(KOMPONENTY.key_duplication.price)}</span>
+    </label>`;
+  grid.appendChild(keyWrap);
+
+  // transport app
+  const appWrap = document.createElement('div');
+  appWrap.className = 'form-group';
+  appWrap.innerHTML = `<label>Aplikacja transportowa <small style="color:#555">(pojazdy 4-osobowe)</small></label>
+    <label class="checkbox-item" style="margin-top:4px">
+      <input type="checkbox" id="komp-app">
+      <label for="komp-app">Aplikacja transportowa</label>
+      <span class="checkbox-price">${fmtPrice(KOMPONENTY.transport_app.price)}</span>
+    </label>`;
+  grid.appendChild(appWrap);
+
+  content.appendChild(grid);
+
+  const hr = document.createElement('hr'); hr.className = 'divider';
+  content.appendChild(hr);
+
+  const grid2 = document.createElement('div');
+  grid2.className = 'grid-2';
+
+  // window tint
+  const tintWrap = document.createElement('div');
+  tintWrap.className = 'form-group';
+  let tintOpts = KOMPONENTY.window_tint.options.map((o,i) =>
+    `<option value="${i}">${o.percent}% — ${fmtPrice(o.price)}${o.percent > KOMPONENTY.window_tint.illegal_above_percent ? ' ⚠ nielegalne' : ''}</option>`
+  ).join('');
+  tintWrap.innerHTML = `<label>Przyciemnienie szyb</label>
+    <select id="komp-tint"><option value="">— brak —</option>${tintOpts}</select>`;
+  grid2.appendChild(tintWrap);
+
+  // gauge backlight
+  const gaugeWrap = document.createElement('div');
+  gaugeWrap.className = 'form-group';
+  let gaugeOpts = KOMPONENTY.gauge_backlight.options.map((o,i) => {
+    const swatch = o.rgb ? `<span style="display:inline-block;width:10px;height:10px;background:rgb(${o.rgb.join(',')});border-radius:50%;margin-right:4px;vertical-align:middle;"></span>` : '';
+    return `<option value="${i}">${o.name} — ${fmtPrice(o.price)}</option>`;
+  }).join('');
+  gaugeWrap.innerHTML = `<label>Podświetlenie zegarów</label>
+    <select id="komp-gauge"><option value="">— brak —</option>${gaugeOpts}</select>`;
+  grid2.appendChild(gaugeWrap);
+
+  // headlight color
+  const hlWrap = document.createElement('div');
+  hlWrap.className = 'form-group';
+  let hlOpts = KOMPONENTY.headlight_color.options.map((o,i) =>
+    `<option value="${i}">${o.name} — ${fmtPrice(o.price)}</option>`
+  ).join('');
+  hlWrap.innerHTML = `<label>Kolor reflektorów</label>
+    <select id="komp-hl"><option value="">— brak —</option>${hlOpts}</select>`;
+  grid2.appendChild(hlWrap);
+
+  content.appendChild(grid2);
+}
+
+function updateWulkSection() {
+  const sec = document.getElementById('sec-wulk');
+  const content = document.getElementById('wulk-content');
+  content.innerHTML = '';
+
+  if (!currentVehicle || !isLand()) {
+    sec.classList.remove('active');
+    document.getElementById('badge-wulk').innerHTML = '<span class="tag-disabled">niedostępne</span>';
+    return;
+  }
+
+  sec.classList.add('active');
+  document.getElementById('badge-wulk').textContent = 'opcjonalne';
+
+  const grid = document.createElement('div');
+  grid.className = 'grid-3';
+
+  // wheel size
+  const wsWrap = document.createElement('div');
+  wsWrap.className = 'form-group';
+  let wsOpts = WULKANIZACJA.wheel_size.map((w,i) =>
+    `<option value="${i}">${w.name} — ${fmtPrice(w.price)}</option>`
+  ).join('');
+  wsWrap.innerHTML = `<label>Rozmiar felg</label>
+    <select id="wulk-size"><option value="">— brak —</option>${wsOpts}</select>`;
+  grid.appendChild(wsWrap);
+
+  // front axle width
+  const fwWrap = document.createElement('div');
+  fwWrap.className = 'form-group';
+  let fwOpts = WULKANIZACJA.wheel_width.front_axle.map((w,i) =>
+    `<option value="${i}">Poziom ${w.level} — ${fmtPrice(w.price)}</option>`
+  ).join('');
+  fwWrap.innerHTML = `<label>Szerokość kół (przód)</label>
+    <select id="wulk-front"><option value="">— domyślna —</option>${fwOpts}</select>`;
+  grid.appendChild(fwWrap);
+
+  // rear axle width
+  const rwWrap = document.createElement('div');
+  rwWrap.className = 'form-group';
+  let rwOpts = WULKANIZACJA.wheel_width.rear_axle.map((w,i) =>
+    `<option value="${i}">Poziom ${w.level} — ${fmtPrice(w.price)}</option>`
+  ).join('');
+  rwWrap.innerHTML = `<label>Szerokość kół (tył)</label>
+    <select id="wulk-rear"><option value="">— domyślna —</option>${rwOpts}</select>`;
+  grid.appendChild(rwWrap);
+
+  content.appendChild(grid);
+}
+
+// ─── CALCULATE ───
+function calculate() {
+  if (!currentVehicle) {
+    alert('Wybierz salon i pojazd przed obliczeniem!');
+    return;
+  }
+
+  const rows = [];
+  let total = 0;
+
+  // Helper
+  function addRow(name, rawPrice, pct, detail = '') {
+    const adjusted = Math.round(rawPrice * pct / 100);
+    total += adjusted;
+    rows.push({ name, rawPrice, adjusted, pct, detail });
+  }
+
+  // 1. Salon
+  const salonPct = parseInt(document.getElementById('slider-salon').value);
+  addRow(`Zakup pojazdu — ${currentVehicle.name}`, currentVehicle.price, salonPct, currentDealership);
+
+  // 2. Silnik
+  const engPct = parseInt(document.getElementById('slider-engine').value);
+  const engIdx = document.getElementById('sel-engine').value;
+  if (engIdx !== '') {
+    const found = SILNIKI.find(s => s.name === currentVehicle.name);
+    if (found) {
+      const lvl = found.engine_levels[parseInt(engIdx)];
+      addRow(`Ulepszenie silnika — ${lvl.engine}L`, lvl.total_cost, engPct);
+    }
+  }
+
+  // 3. Wariant
+  const varPct = parseInt(document.getElementById('slider-variant').value);
+  const varIdx = document.getElementById('sel-variant').value;
+  if (varIdx !== '') {
+    const found = WARIANTY.find(w => w.name === currentVehicle.name ||
+      (currentVehicle.name === 'Regina' && w.name === 'Regina / Regina Sedan'));
+    if (found) {
+      const v = found.wariants[parseInt(varIdx)];
+      addRow(`Wariant — ${v.name}`, v.price, varPct);
+    }
+  }
+
+  // 4. Mech
+  if (isLand()) {
+    const mechPct = parseInt(document.getElementById('slider-mech').value);
+
+    const mechSelects = [
+      { key: 'ecu', data: MECHANICZNY.ecu, label: 'ECU', fmt: (e) => `Wersja ${e.version}` },
+      { key: 'turbo', data: MECHANICZNY.turbo, label: 'Turbo', fmt: (e) => `Wersja ${e.version}` },
+      { key: 'lpg', data: MECHANICZNY.lpg, label: 'LPG', fmt: (e) => `${e.capacity_l}L` },
+      { key: 'suspension_kit', data: MECHANICZNY.suspension_kit, label: 'Zawieszenie', fmt: (e) => e.name },
+      { key: 'cfi', data: MECHANICZNY.cfi, label: 'CFI', fmt: (e) => `Wersja ${e.version}` },
+      { key: 'drivetrain', data: MECHANICZNY.drivetrain, label: 'Napęd', fmt: (e) => e.type },
+      { key: 'fuel_tank', data: MECHANICZNY.fuel_tank, label: 'Zbiornik paliwa', fmt: (e) => `${e.capacity_l}L` },
+    ];
+
+    mechSelects.forEach(s => {
+      const el = document.getElementById('mech-' + s.key);
+      if (el && el.value !== '') {
+        const item = s.data[parseInt(el.value)];
+        addRow(`${s.label} — ${s.fmt(item)}`, item.price, mechPct, 'Tuning mechaniczny');
+      }
+    });
+
+    MECHANICZNY.misc.forEach((item, i) => {
+      const cb = document.getElementById('misc-' + i);
+      if (cb && cb.checked) {
+        addRow(`${item.name}`, item.price, mechPct, 'Tuning mechaniczny');
+      }
+    });
+  }
+
+  // 5. Visual
+  if (isLand() && !isMoto()) {
+    const visPct = parseInt(document.getElementById('slider-visual').value);
+
+    WIZUALNY.forEach(cat => {
+      const sel = document.getElementById('vis-' + cat.category);
+      if (sel && sel.value !== '') {
+        const part = cat.parts[parseInt(sel.value)];
+        if (part.price !== null) {
+          addRow(`${CAT_NAMES[cat.category]} — ID ${part.id}`, part.price, visPct, 'Tuning wizualny');
+        }
+      }
+    });
+  }
+
+  // 6. Komponenty
+  if (isLand()) {
+    const kompPct = parseInt(document.getElementById('slider-komp').value);
+
+    const keyEl = document.getElementById('komp-key');
+    if (keyEl && keyEl.checked) addRow('Duplikat kluczyka', KOMPONENTY.key_duplication.price, kompPct, 'Komponenty');
+
+    const appEl = document.getElementById('komp-app');
+    if (appEl && appEl.checked) addRow('Aplikacja transportowa', KOMPONENTY.transport_app.price, kompPct, 'Komponenty');
+
+    const tintEl = document.getElementById('komp-tint');
+    if (tintEl && tintEl.value !== '') {
+      const t = KOMPONENTY.window_tint.options[parseInt(tintEl.value)];
+      addRow(`Przyciemnienie szyb — ${t.percent}%${t.percent > 60 ? ' ⚠' : ''}`, t.price, kompPct, 'Komponenty');
+    }
+
+    const gaugeEl = document.getElementById('komp-gauge');
+    if (gaugeEl && gaugeEl.value !== '') {
+      const g = KOMPONENTY.gauge_backlight.options[parseInt(gaugeEl.value)];
+      addRow(`Podświetlenie zegarów — ${g.name}`, g.price, kompPct, 'Komponenty');
+    }
+
+    const hlEl = document.getElementById('komp-hl');
+    if (hlEl && hlEl.value !== '') {
+      const h = KOMPONENTY.headlight_color.options[parseInt(hlEl.value)];
+      addRow(`Kolor reflektorów — ${h.name}`, h.price, kompPct, 'Komponenty');
+    }
+  }
+
+  // 7. Wulkanizacja
+  if (isLand()) {
+    const wulkPct = parseInt(document.getElementById('slider-wulk').value);
+
+    const sizeEl = document.getElementById('wulk-size');
+    if (sizeEl && sizeEl.value !== '') {
+      const w = WULKANIZACJA.wheel_size[parseInt(sizeEl.value)];
+      if (w.price > 0) addRow(`Felgi — ${w.name}`, w.price, wulkPct, 'Wulkanizacja');
+    }
+
+    const frontEl = document.getElementById('wulk-front');
+    if (frontEl && frontEl.value !== '') {
+      const w = WULKANIZACJA.wheel_width.front_axle[parseInt(frontEl.value)];
+      if (w.price > 0) addRow(`Szerokość kół przód — poz. ${w.level}`, w.price, wulkPct, 'Wulkanizacja');
+    }
+
+    const rearEl = document.getElementById('wulk-rear');
+    if (rearEl && rearEl.value !== '') {
+      const w = WULKANIZACJA.wheel_width.rear_axle[parseInt(rearEl.value)];
+      if (w.price > 0) addRow(`Szerokość kół tył — poz. ${w.level}`, w.price, wulkPct, 'Wulkanizacja');
+    }
+  }
+
+  // Render results
+  const body = document.getElementById('results-body');
+  body.innerHTML = '';
+
+  rows.forEach(r => {
+    const row = document.createElement('div');
+    row.className = 'result-row';
+    row.innerHTML = `
+      <div>
+        <div class="result-name">${r.name}</div>
+        ${r.detail ? `<div class="result-detail">${r.detail}</div>` : ''}
+      </div>
+      <div style="text-align:right">
+        <div class="result-price${r.adjusted === 0 ? ' zero' : ''}">${fmtPrice(r.adjusted)}</div>
+        ${r.pct !== 100 ? `<div class="result-detail">${fmtPrice(r.rawPrice)} × ${r.pct}%</div>` : ''}
+      </div>`;
+    body.appendChild(row);
+  });
+
+  const totalRow = document.createElement('div');
+  totalRow.className = 'result-row total';
+  totalRow.innerHTML = `
+    <div class="result-name">ŁĄCZNY KOSZT</div>
+    <div class="result-price">${fmtPrice(total)}</div>`;
+  body.appendChild(totalRow);
+
+  const results = document.getElementById('results');
+  results.style.display = 'block';
+  setTimeout(() => results.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+}
+
+function fmtPrice(n) {
+  if (n === null || n === undefined) return '—';
+  return n.toLocaleString('pl-PL') + ' $';
+}
+</script>
+</body>
+</html>

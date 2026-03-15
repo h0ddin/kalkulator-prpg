@@ -1,0 +1,573 @@
+[
+  {
+    "name": "Admiral",
+    "id": 445,
+    "wariants": [
+      { "name": "Brak wariantu", "price": 2500 },
+      { "name": "Szyberdach", "price": 10000 },
+      { "name": "Relingi", "price": 5000 },
+      { "name": "Szyberdach + relingi", "price": 15000 }
+    ]
+  },
+  {
+    "name": "Benson",
+    "id": 499,
+    "wariants": [
+      { "name": "Brak reklam", "price": 10000 },
+      { "name": "Reklama: Shady Industries", "price": 5000 },
+      { "name": "Reklama: Los Santos Deliverye", "price": 5000 },
+      { "name": "Reklama: The Uphill Gardener", "price": 5000 },
+      { "name": "Reklama: Discount Furniture", "price": 5000 }
+    ]
+  },
+  {
+    "name": "BF Injection",
+    "id": 424,
+    "wariants": [
+      { "name": "Bez paneli bocznych", "price": 5000 },
+      { "name": "Dodatkowe panele boczne", "price": 10000 }
+    ]
+  },
+  {
+    "name": "BF-400",
+    "id": 581,
+    "wariants": [
+      { "name": "Domyślny (bez owiewek i tłumików)", "price": 2000 },
+      { "name": "Pojedynczy tłumik", "price": 5000 },
+      { "name": "Pojedynczy karbonowy tłumik", "price": 7000 },
+      { "name": "Podwójny tłumik", "price": 9500 },
+      { "name": "Owiewki niepełne", "price": 5000 },
+      { "name": "Pojedynczy tłumik + owiewki niepełne", "price": 7000 },
+      { "name": "Pojedynczy karbonowy tłumik + owiewki niepełne", "price": 9000 },
+      { "name": "Pojedynczy tłumik + owiewki pełne", "price": 11500 },
+      { "name": "Pojedynczy karbonowy tłumik + owiewki pełne", "price": 13500 },
+      { "name": "Podwójny tłumik + owiewki niepełne", "price": 15000 },
+      { "name": "Podwójny tłumik + owiewki pełne", "price": 18000 }
+    ]
+  },
+  {
+    "name": "Blista Compact",
+    "id": 496,
+    "wariants": [
+      { "name": "Podstawowy grill", "price": 2500 },
+      { "name": "Niestandardowy grill", "price": 7500 }
+    ]
+  },
+  {
+    "name": "Bobcat",
+    "id": 422,
+    "wariants": [
+      { "name": "Pusta paka", "price": 6000 },
+      { "name": "Koło zapasowe", "price": 3000 },
+      { "name": "Puszki po napojach", "price": 3000 },
+      { "name": "Zabudowa", "price": 10000 }
+    ]
+  },
+  {
+    "name": "Buccaneer",
+    "id": 518,
+    "wariants": [
+      { "name": "Twardy dach", "price": 5000 },
+      { "name": "Cabrio", "price": 15000 },
+      { "name": "Vinylowy dach", "price": 7500 },
+      { "name": "Osłony błotników", "price": 10000 },
+      { "name": "Cabrio + osłony błotników", "price": 25000 },
+      { "name": "Vinylowy dach + osłony błotników", "price": 17500 }
+    ]
+  },
+  {
+    "name": "Burrito",
+    "id": 482,
+    "wariants": [
+      { "name": "Bez dodaktów na dachu", "price": 5000 },
+      { "name": "Reflektory + spojler", "price": 12500 }
+    ]
+  },
+  {
+    "name": "Cadrona",
+    "id": 527,
+    "wariants": [
+      { "name": "Twardy dach", "price": 5000 },
+      { "name": "Cabrio", "price": 15000 }
+    ]
+  },
+  {
+    "name": "Camper",
+    "id": 483,
+    "wariants": [
+      { "name": "Bez dodaktów", "price": 5000 },
+      { "name": "Odsłonięte zasłony", "price": 10000 },
+      { "name": "Otwarty wywietrznik dachowy, zasłonięte zasłony", "price": 10000 },
+      { "name": "Bagażnik dachowy z deskami surfingowymi", "price": 15000 },
+      { "name": "Bagażnik dachowy z deskami surfingowymi, odsłonięte zasłony", "price": 15000 }
+    ]
+  },
+  {
+    "name": "Celsion",
+    "id": 420,
+    "wariants": [
+      { "name": "Brak wariantu", "price": 2500 },
+      { "name": "Lotka na dachu", "price": 5000 },
+      { "name": "Szyberdach", "price": 10000 },
+      { "name": "Szyberdach + lotka na dachu", "price": 15000 }
+    ]
+  },
+  {
+    "name": "Cheetah",
+    "id": 415,
+    "wariants": [
+      { "name": "Bez dodatków", "price": 1000 },
+      { "name": "Klatka bezpieczeństwa", "price": 10000 },
+      { "name": "Spojler LM", "price": 12500 },
+      { "name": "Spojler LBWK", "price": 15000 },
+      { "name": "Spojler GT", "price": 15000 },
+      { "name": "Klatka bezpieczeństwa + spojler LM", "price": 22500 },
+      { "name": "Klatka bezpieczeństwa + spojler LBWK", "price": 25000 },
+      { "name": "Klatka bezpieczeństwa + spojler GT", "price": 25000 }
+    ]
+  },
+  {
+    "name": "Clover",
+    "id": 542,
+    "wariants": [
+      { "name": "Twardy dach", "price": 2500 },
+      { "name": "Cabrio", "price": 10000 },
+      { "name": "Brak dodatków", "price": 1000 },
+      { "name": "Bagażnik dachowy", "price": 5000 },
+      { "name": "Bagażnik dachowy z bagażem", "price": 10000 }
+    ]
+  },
+  {
+    "name": "Comet",
+    "id": 480,
+    "wariants": [
+      { "name": "Twardy dach targa", "price": 15000 },
+      { "name": "Targa", "price": 12500 },
+      { "name": "Cabrio", "price": 12500 }
+    ]
+  },
+  {
+    "name": "Contander",
+    "id": 605,
+    "wariants": [
+      { "name": "Brak dodatków", "price": 5000 },
+      { "name": "Klatka", "price": 10000 }
+    ]
+  },
+  {
+    "name": "DeLuxo",
+    "id": 504,
+    "wariants": [
+      { "name": "Domyślny", "price": 2000 },
+      { "name": "Spojler 1", "price": 14000 },
+      { "name": "Spojler 2", "price": 14000 },
+      { "name": "Roleta", "price": 6000 },
+      { "name": "Roleta + spojler 1", "price": 20000 },
+      { "name": "Roleta + spojler 2", "price": 20000 }
+    ]
+  },
+  {
+    "name": "Elegant",
+    "id": 507,
+    "wariants": [
+      { "name": "Brak wariantu", "price": 2500 },
+      { "name": "Szyberdach", "price": 10000 }
+    ]
+  },
+  {
+    "name": "Elegy",
+    "id": 562,
+    "wariants": [
+      { "name": "Bez dodatków", "price": 1000 },
+      { "name": "Klatka bezpieczeństwa", "price": 10000 }
+    ]
+  },
+  {
+    "name": "Emperor",
+    "id": 585,
+    "wariants": [
+      { "name": "Brak wariantu", "price": 2500 },
+      { "name": "Szyberdach", "price": 10000 }
+    ]
+  },
+  {
+    "name": "Euros",
+    "id": 587,
+    "wariants": [
+      { "name": "Przeszklony dach", "price": 5000 },
+      { "name": "Twardy dach", "price": 7500 },
+      { "name": "Przeszklony dach + żaluzja", "price": 15000 },
+      { "name": "Twardy dach + żaluzja", "price": 17500 }
+    ]
+  },
+  {
+    "name": "FCR-900",
+    "id": 521,
+    "wariants": [
+      { "name": "Domyślny (bez owiewek i tłumików)", "price": 5000 },
+      { "name": "Pojedynczy tłumik", "price": 6500 },
+      { "name": "Podwójny tłumik", "price": 8000 },
+      { "name": "Podwójny karbonowy tłumik", "price": 10500 },
+      { "name": "Owiewki niepełne", "price": 6500 },
+      { "name": "Pojedynczy tłumik + owiewki niepełne", "price": 8500 },
+      { "name": "Podwójny tłumik + owiewki niepełne", "price": 10500 },
+      { "name": "Pojedynczy tłumik + owiewki pełne", "price": 13000 },
+      { "name": "Podwójny tłumik + owiewki pełne", "price": 15000 },
+      { "name": "Podwójny karbonowy tłumik + owiewki niepełne", "price": 17000 },
+      { "name": "Podwójny karbonowy tłumik + owiewki pełne", "price": 19000 }
+    ]
+  },
+  {
+    "name": "Feltzer",
+    "id": 533,
+    "wariants": [
+      { "name": "Brak wariantu", "price": 1000 },
+      { "name": "Cabrio", "price": 15000 },
+      { "name": "Twardy dach z szyberdachem", "price": 25000 }
+    ]
+  },
+  {
+    "name": "Feroci",
+    "id": 503,
+    "wariants": [
+      { "name": "Brak dachu", "price": 10000 },
+      { "name": "Z dachem", "price": 15000 }
+    ]
+  },
+  {
+    "name": "Flash",
+    "id": 565,
+    "wariants": [
+      { "name": "Bez dodatków", "price": 1000 },
+      { "name": "Klatka bezpieczeństwa", "price": 10000 },
+      { "name": "Szyberdach", "price": 15000 },
+      { "name": "Szyberdach + klatka", "price": 25000 }
+    ]
+  },
+  {
+    "name": "Freeway",
+    "id": 463,
+    "wariants": [
+      { "name": "Bez dodaktów", "price": 1000 },
+      { "name": "Skórzane torby", "price": 2500 },
+      { "name": "Plastikowe kufry", "price": 5000 },
+      { "name": "Owiewka", "price": 5000 },
+      { "name": "Owiewka + skórzane torby", "price": 7500 },
+      { "name": "Owiewka + plastikowe kufry", "price": 10000 }
+    ]
+  },
+  {
+    "name": "Hermes",
+    "id": 474,
+    "wariants": [
+      { "name": "Twardy dach", "price": 5000 },
+      { "name": "Cabrio", "price": 15000 }
+    ]
+  },
+  {
+    "name": "Hotknife",
+    "id": 434,
+    "wariants": [
+      { "name": "Odkryty silnik", "price": 5000 },
+      { "name": "Częściowo zabudowany silnik", "price": 10000 }
+    ]
+  },
+  {
+    "name": "Jester",
+    "id": 559,
+    "wariants": [
+      { "name": "Bez dodatków", "price": 1000 },
+      { "name": "Klatka bezpieczeństwa", "price": 10000 },
+      { "name": "Targa", "price": 15000 },
+      { "name": "Targa + klatka", "price": 25000 }
+    ]
+  },
+  {
+    "name": "Kart",
+    "id": 571,
+    "wariants": [
+      { "name": "Brak obudowy karoserii", "price": 5000 },
+      { "name": "Boczna obudowa karoserii", "price": 10000 }
+    ]
+  },
+  {
+    "name": "Manana",
+    "id": 410,
+    "wariants": [
+      { "name": "Twardy dach", "price": 2500 },
+      { "name": "Cabrio", "price": 10000 }
+    ]
+  },
+  {
+    "name": "Merit",
+    "id": 551,
+    "wariants": [
+      { "name": "Brak wariantu", "price": 2500 },
+      { "name": "Szyberdach", "price": 10000 }
+    ]
+  },
+  {
+    "name": "Mesa",
+    "id": 500,
+    "wariants": [
+      { "name": "Brak dachu i klatki", "price": 5000 },
+      { "name": "Dach", "price": 7500 },
+      { "name": "Klatka", "price": 7500 },
+      { "name": "Dach + klatka", "price": 15000 }
+    ]
+  },
+  {
+    "name": "Mule",
+    "id": 414,
+    "wariants": [
+      { "name": "Brak reklamy", "price": 10000 },
+      { "name": "Reklama: Toy Corne", "price": 5000 },
+      { "name": "Reklama: Binco", "price": 5000 },
+      { "name": "Reklama: Semi", "price": 5000 },
+      { "name": "Reklama: Shafted Appliances", "price": 5000 }
+    ]
+  },
+  {
+    "name": "NRG-500",
+    "id": 522,
+    "wariants": [
+      { "name": "Zwykła karoseria", "price": 5000 },
+      { "name": "Karoseria z wcięciami", "price": 10000 },
+      { "name": "Tłumik karbonowy", "price": 8000 },
+      { "name": "Tłumik zwykły", "price": 5000 },
+      { "name": "Tłumik karbonowy podwójny", "price": 15000 },
+      { "name": "Tłumik karbonowy, karoseria z wcięciami", "price": 17500 },
+      { "name": "Tłumik zwykły, karoseria z wcięciami", "price": 15500 },
+      { "name": "Tłumik karbonowy podwójny, karoseria z wcięciami", "price": 20500 }
+    ]
+  },
+  {
+    "name": "Patriot",
+    "id": 470,
+    "wariants": [
+      { "name": "Brak tkaniny", "price": 5000 },
+      { "name": "Niepełna tkanina", "price": 7000 },
+      { "name": "Zabudowa do bodykitu", "price": 25000 },
+      { "name": "Pełna tkanina", "price": 12500 },
+      { "name": "Klatka", "price": 12500 }
+    ]
+  },
+  {
+    "name": "Perennial",
+    "id": 404,
+    "wariants": [
+      { "name": "Brak dodatków", "price": 5000 },
+      { "name": "Kratka na dachu", "price": 5000 },
+      { "name": "Kratka na dachu z zapasowym kołem", "price": 10000 }
+    ]
+  },
+  {
+    "name": "Picador",
+    "id": 600,
+    "wariants": [
+      { "name": "Pusta paka", "price": 6000 },
+      { "name": "Deski", "price": 3000 },
+      { "name": "Puszki po napojach", "price": 3000 },
+      { "name": "Zapasowe koła", "price": 5000 },
+      { "name": "Zasłonięta paka", "price": 7500 }
+    ]
+  },
+  {
+    "name": "Previon",
+    "id": 436,
+    "wariants": [
+      { "name": "Brak wariantu", "price": 2500 },
+      { "name": "Szyberdach", "price": 10000 }
+    ]
+  },
+  {
+    "name": "Primo",
+    "id": 547,
+    "wariants": [
+      { "name": "Brak wariantu", "price": 2500 },
+      { "name": "Szyberdach", "price": 7500 },
+      { "name": "Relingi", "price": 5000 },
+      { "name": "Bagażnik dachowy", "price": 10000 },
+      { "name": "Szyberdach + relingi", "price": 12500 },
+      { "name": "Szyberdach + bagażnik dachowy", "price": 17500 }
+    ]
+  },
+  {
+    "name": "Regina / Regina Sedan",
+    "id": 479,
+    "wariants": [
+      { "name": "Brak wariantu", "price": 2500 },
+      { "name": "Bagażnik dachowy", "price": 7500 },
+      { "name": "Bagażnik dachowy z bagażem #1", "price": 10000 },
+      { "name": "Bagażnik dachowy z bagażem #2", "price": 10000 },
+      { "name": "Bagażnik dachowy z bagażem #3", "price": 10000 }
+    ]
+  },
+  {
+    "name": "Sadler",
+    "id": 543,
+    "wariants": [
+      { "name": "Brak dodatków", "price": 1000 },
+      { "name": "Zabudowa", "price": 10000 },
+      { "name": "Zasłonięta paka", "price": 7500 },
+      { "name": "Tylna lotka", "price": 7500 },
+      { "name": "Zasłonięta paka + tylna lotka", "price": 15000 }
+    ]
+  },
+  {
+    "name": "Schafter",
+    "id": 604,
+    "wariants": [
+      { "name": "Brak wariantu", "price": 2500 },
+      { "name": "Szyberdach", "price": 10000 },
+      { "name": "Relingi", "price": 5000 },
+      { "name": "Bagażnik dachowy", "price": 10000 },
+      { "name": "Szyberdach + relingi", "price": 15000 },
+      { "name": "Szyberdach + bagażnik dachowy", "price": 20000 }
+    ]
+  },
+  {
+    "name": "Securicar",
+    "id": 428,
+    "wariants": [
+      { "name": "Brak reklamy", "price": 10000 },
+      { "name": "Reklama: Lock&Load", "price": 5000 }
+    ]
+  },
+  {
+    "name": "Sentinel",
+    "id": 405,
+    "wariants": [
+      { "name": "Brak wariantu", "price": 2500 },
+      { "name": "Szyberdach", "price": 10000 },
+      { "name": "Relingi", "price": 5000 },
+      { "name": "Bagażnik dachowy", "price": 10000 },
+      { "name": "Szyberdach + relingi", "price": 15000 },
+      { "name": "Szyberdach + bagażnik dachowy", "price": 20000 }
+    ]
+  },
+  {
+    "name": "Slamvan",
+    "id": 535,
+    "wariants": [
+      { "name": "Zwykła kierownica", "price": 5000 },
+      { "name": "Kierownica z łańcucha", "price": 7500 }
+    ]
+  },
+  {
+    "name": "Solair",
+    "id": 458,
+    "wariants": [
+      { "name": "Brak wariantu", "price": 2500 },
+      { "name": "Szyberdach", "price": 10000 },
+      { "name": "Relingi", "price": 5000 },
+      { "name": "Bagażnik dachowy", "price": 10000 },
+      { "name": "Szyberdach + relingi", "price": 15000 },
+      { "name": "Szyberdach + bagażnik dachowy", "price": 20000 }
+    ]
+  },
+  {
+    "name": "Speedvan",
+    "id": 459,
+    "wariants": [
+      { "name": "Bez dodaktów na dachu", "price": 5000 },
+      { "name": "Reflektory + spojler", "price": 12500 },
+      { "name": "Bagażnik dachowy", "price": 15000 }
+    ]
+  },
+  {
+    "name": "Stratum",
+    "id": 561,
+    "wariants": [
+      { "name": "Brak wariantu", "price": 1000 },
+      { "name": "Relingi", "price": 5000 },
+      { "name": "Bagażnik dachowy", "price": 7500 },
+      { "name": "Szyberdach", "price": 10000 },
+      { "name": "Szyberdach + relingi", "price": 15000 },
+      { "name": "Szyberdach + bagażnik dachowy", "price": 17500 }
+    ]
+  },
+  {
+    "name": "Sunrise",
+    "id": 550,
+    "wariants": [
+      { "name": "Brak wariantu", "price": 2500 },
+      { "name": "Szyberdach", "price": 10000 },
+      { "name": "Relingi", "price": 5000 },
+      { "name": "Bagażnik dachowy", "price": 10000 },
+      { "name": "Szyberdach + relingi", "price": 15000 },
+      { "name": "Szyberdach + bagażnik dachowy", "price": 20000 }
+    ]
+  },
+  {
+    "name": "Super GT",
+    "id": 506,
+    "wariants": [
+      { "name": "Brak dachu", "price": 7000 },
+      { "name": "Dach", "price": 15000 }
+    ]
+  },
+  {
+    "name": "Uranus",
+    "id": 558,
+    "wariants": [
+      { "name": "Standardowy dach", "price": 2500 },
+      { "name": "Czarny dach", "price": 7500 },
+      { "name": "Targa", "price": 15000 }
+    ]
+  },
+  {
+    "name": "Washington",
+    "id": 421,
+    "wariants": [
+      { "name": "Brak wariantu", "price": 2500 },
+      { "name": "Szyberdach", "price": 10000 },
+      { "name": "Relingi", "price": 5000 },
+      { "name": "Bagażnik dachowy", "price": 10000 },
+      { "name": "Szyberdach + relingi", "price": 15000 },
+      { "name": "Szyberdach + bagażnik dachowy", "price": 20000 }
+    ]
+  },
+  {
+    "name": "Willard",
+    "id": 529,
+    "wariants": [
+      { "name": "Brak wariantu", "price": 2500 },
+      { "name": "Szyberdach", "price": 10000 },
+      { "name": "Relingi #1", "price": 5000 },
+      { "name": "Relingi #2", "price": 10000 },
+      { "name": "Szyberdach + relingi #1", "price": 15000 },
+      { "name": "Szyberdach + relingi #2", "price": 20000 }
+    ]
+  },
+  {
+    "name": "Windsor",
+    "id": 555,
+    "wariants": [
+      { "name": "Brak dachu", "price": 15000 },
+      { "name": "Dach", "price": 25000 }
+    ]
+  },
+  {
+    "name": "Yankee",
+    "id": 456,
+    "wariants": [
+      { "name": "Brak reklamy", "price": 10000 },
+      { "name": "Reklama: Big Gas", "price": 5000 },
+      { "name": "Reklama: RS Haul", "price": 5000 },
+      { "name": "Reklama: Star Balls", "price": 5000 },
+      { "name": "Reklama: Flower Power", "price": 5000 }
+    ]
+  },
+  {
+    "name": "ZR-350",
+    "id": 477,
+    "wariants": [
+      { "name": "Brak spojlera", "price": 2500 },
+      { "name": "Spojler standardowy", "price": 7500 },
+      { "name": "Spojler RB", "price": 10000 },
+      { "name": "Wysoki spojler", "price": 12500 },
+      { "name": "Wysoki karbonowy spojler", "price": 15000 }
+    ]
+  }
+]

@@ -1,0 +1,182 @@
+[
+  {
+    "category": "spoilers",
+    "parts": [
+      { "id": 1000, "price": 7000 },
+      { "id": 1001, "price": 9000 },
+      { "id": 1002, "price": 6000 },
+      { "id": 1003, "price": 10000 },
+      { "id": 1014, "price": 5400 },
+      { "id": 1015, "price": 4000 },
+      { "id": 1016, "price": 4000 },
+      { "id": 1023, "price": 8500 },
+      { "id": 1050, "price": 3200 },
+      { "id": 1058, "price": 3800 },
+      { "id": 1060, "price": 5500 },
+      { "id": 1138, "price": 8700 },
+      { "id": 1139, "price": 9500 },
+      { "id": 1146, "price": 7800 },
+      { "id": 1147, "price": 7500 },
+      { "id": 1158, "price": 6000 },
+      { "id": 1162, "price": 5600 },
+      { "id": 1163, "price": 11500 }
+    ]
+  },
+  {
+    "category": "side_skirts",
+    "parts": [
+      { "id": 1007, "price": 2100 },
+      { "id": 1026, "price": 3500 },
+      { "id": 1036, "price": 4000 },
+      { "id": 1039, "price": 3600 },
+      { "id": 1047, "price": 3000 },
+      { "id": 1048, "price": 2800 },
+      { "id": 1056, "price": 3400 },
+      { "id": 1057, "price": 2800 },
+      { "id": 1069, "price": 3400 },
+      { "id": 1090, "price": 2700 },
+      { "id": 1093, "price": 2400 },
+      { "id": 1101, "price": 3200 },
+      { "id": 1102, "price": 2300 },
+      { "id": 1106, "price": 2500 },
+      { "id": 1107, "price": 2100 },
+      { "id": 1118, "price": 2800 },
+      { "id": 1119, "price": 3300 },
+      { "id": 1134, "price": 1500 }
+    ]
+  },
+  {
+    "category": "exhausts",
+    "parts": [
+      { "id": 1018, "price": 2400 },
+      { "id": 1019, "price": 1800 },
+      { "id": 1020, "price": 1600 },
+      { "id": 1021, "price": 1400 },
+      { "id": 1028, "price": 2400 },
+      { "id": 1034, "price": 2200 },
+      { "id": 1037, "price": 3600 },
+      { "id": 1045, "price": 2800 },
+      { "id": 1046, "price": 2100 },
+      { "id": 1059, "price": 2700 },
+      { "id": 1064, "price": 1900 },
+      { "id": 1065, "price": 2000 },
+      { "id": 1066, "price": 2800 },
+      { "id": 1089, "price": 2600 },
+      { "id": 1092, "price": 1800 },
+      { "id": 1104, "price": 2800 },
+      { "id": 1105, "price": 3200 },
+      { "id": 1113, "price": 2300 },
+      { "id": 1114, "price": 4100 },
+      { "id": 1126, "price": 2300 },
+      { "id": 1127, "price": 2500 },
+      { "id": 1129, "price": 2800 },
+      { "id": 1132, "price": 3400 },
+      { "id": 1135, "price": 2000 },
+      { "id": 1136, "price": 2500 }
+    ]
+  },
+  {
+    "category": "front_bumpers",
+    "parts": [
+      { "id": 1117, "price": 2800 },
+      { "id": 1152, "price": 6500 },
+      { "id": 1153, "price": 6000 },
+      { "id": 1155, "price": 7000 },
+      { "id": 1157, "price": 6500 },
+      { "id": 1160, "price": 7500 },
+      { "id": 1165, "price": 5000 },
+      { "id": 1166, "price": 4700 },
+      { "id": 1169, "price": 8500 },
+      { "id": 1170, "price": 7000 },
+      { "id": 1171, "price": 8000 },
+      { "id": 1172, "price": 6500 },
+      { "id": 1173, "price": 5500 },
+      { "id": 1179, "price": 3800 },
+      { "id": 1181, "price": 3100 },
+      { "id": 1182, "price": 3300 },
+      { "id": 1188, "price": 3800 },
+      { "id": 1189, "price": 4100 },
+      { "id": 1190, "price": 1800 },
+      { "id": 1191, "price": 2000 }
+    ]
+  },
+  {
+    "category": "rear_bumpers",
+    "parts": [
+      { "id": 1140, "price": 5500 },
+      { "id": 1141, "price": 6000 },
+      { "id": 1148, "price": 5000 },
+      { "id": 1149, "price": 5500 },
+      { "id": 1151, "price": 4000 },
+      { "id": 1154, "price": 5000 },
+      { "id": 1156, "price": 4750 },
+      { "id": 1159, "price": 5250 },
+      { "id": 1161, "price": 4500 },
+      { "id": 1167, "price": 4250 },
+      { "id": 1168, "price": 4000 },
+      { "id": 1178, "price": 2800 },
+      { "id": 1180, "price": 3800 },
+      { "id": 1183, "price": 3300 },
+      { "id": 1184, "price": 3100 },
+      { "id": 1186, "price": 4400 },
+      { "id": 1187, "price": 4000 },
+      { "id": 1193, "price": 2600 }
+    ]
+  },
+  {
+    "category": "roofs",
+    "parts": [
+      { "id": 1006, "price": 900 },
+      { "id": 1032, "price": 1800 },
+      { "id": 1033, "price": 2600 },
+      { "id": 1035, "price": 2300 },
+      { "id": 1053, "price": 1800 },
+      { "id": 1054, "price": 1100 },
+      { "id": 1055, "price": 1200 },
+      { "id": 1061, "price": 1500 },
+      { "id": 1067, "price": 1400 },
+      { "id": 1068, "price": 2200 },
+      { "id": 1088, "price": 1300 },
+      { "id": 1091, "price": 1900 },
+      { "id": 1128, "price": 7000 },
+      { "id": 1131, "price": null }
+    ]
+  },
+  {
+    "category": "hoods",
+    "parts": [
+      { "id": 1011, "price": 3900 },
+      { "id": 1012, "price": 4200 },
+      { "id": 1142, "price": 3500 },
+      { "id": 1144, "price": 3200 }
+    ]
+  },
+  {
+    "category": "tail_lights",
+    "parts": [
+      { "id": 1109, "price": 1800 },
+      { "id": 1110, "price": 1500 }
+    ]
+  },
+  {
+    "category": "headlights",
+    "parts": [
+      { "id": 1115, "price": 2800 },
+      { "id": 1116, "price": 3500 }
+    ]
+  },
+  {
+    "category": "fog_lights",
+    "parts": [
+      { "id": 1013, "price": 500 },
+      { "id": 1024, "price": 500 }
+    ]
+  },
+  {
+    "category": "vents",
+    "parts": [
+      { "id": 1004, "price": 4200 },
+      { "id": 1005, "price": 3900 }
+    ]
+  }
+]

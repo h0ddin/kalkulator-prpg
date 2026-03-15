@@ -1,0 +1,53 @@
+{
+  "ecu": [
+    { "version": "V1", "price": 10500 },
+    { "version": "V2", "price": 18000 },
+    { "version": "V3", "price": 30000 },
+    { "version": "V4", "price": 40000 }
+  ],
+  "turbo": [
+    { "version": "V1", "price": 15000 },
+    { "version": "V2", "price": 25000 },
+    { "version": "V3", "price": 40000 },
+    { "version": "V4", "price": 50000 },
+    { "version": "V5", "price": 60000 }
+  ],
+  "lpg": [
+    { "capacity_l": 25, "price": 20000 },
+    { "capacity_l": 50, "price": 25000 },
+    { "capacity_l": 75, "price": 35000 }
+  ],
+  "zestaw": [
+    { "name": "Uliczny", "price": 50000 },
+    { "name": "Wyścigowy", "price": 100000 },
+    { "name": "Drifterski", "price": 150000 },
+    { "name": "Torowy", "price": 250000 }
+  ],
+  "cfi": [
+    { "version": "V1", "price": 125000 },
+    { "version": "V2", "price": 150000 },
+    { "version": "V3", "price": 175000 },
+    { "version": "V4", "price": 225000 },
+    { "version": "V5", "price": 250000 }
+  ],
+  "drivetrain": [
+    { "type": "FWD", "price": 20000 },
+    { "type": "RWD", "price": 30000 },
+    { "type": "AWD", "price": 50000 },
+    { "type": "MZN", "price": 75000 }
+  ],
+  "fuel_tank": [
+    { "capacity_l": 100, "price": 45000 },
+    { "capacity_l": 125, "price": 55000 },
+    { "capacity_l": 150, "price": 65000 }
+  ],
+  "misc": [
+    { "name": "Radio", "price": 500 },
+    { "name": "CB-radio", "price": 1500 },
+    { "name": "Ogranicznik", "price": 2000 },
+    { "name": "Wykrywacz fotoradarów", "price": 2500 },
+    { "name": "System ABS", "price": 15000 },
+    { "name": "Gwintowane zawieszenie", "price": 32500 },
+    { "name": "Hydraulika", "price": 45000 }
+  ]
+}

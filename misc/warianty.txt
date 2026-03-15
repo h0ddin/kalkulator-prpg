@@ -1,0 +1,351 @@
+Admiral (445)			
+Nazwa wariantu			Cena
+Brak wariantu			2 500
+Szyberdach			10 000
+Relingi			5 000
+Szyberdach + relingi			15 000
+Benson (499)			
+Nazwa wariantu			Cena
+Brak reklam			10 000
+Reklama: Shady Industries			5 000
+Reklama: Los Santos Deliverye			5 000
+Reklama: The Uphill Gardener			5 000
+Reklama: Discount Furniture			5 000
+BF Injection (424)			
+Nazwa wariantu			Cena
+Bez paneli bocznych			5 000
+Dodatkowe panele boczne			10 000
+BF-400 (581)			
+Nazwa wariantu			Cena
+Domyślny (bez owiewek i tłumików)			2 000
+Pojedynczy tłumik			5 000
+Pojedynczy karbonowy tłumik			7 000
+Podwójny tłumik			9 500
+Owiewki niepełne			5 000
+Pojedynczy tłumik + owiewki niepełne			7 000
+Pojedynczy karbonowy tłumik + owiewki niepełne			9 000
+Pojedynczy tłumik + owiewki pełne			11 500
+Pojedynczy karbonowy tłumik + owiewki pełne			13 500
+Podwójny tłumik + owiewki niepełne			15 000
+Podwójny tłumik + owiewki pełne			18 000
+Blista Compact (496)			
+Nazwa wariantu			Cena
+Podstawowy grill			2 500
+Niestandardowy grill			7 500
+Bobcat (422)			
+Nazwa wariantu			Cena
+Pusta paka			6 000
+Koło zapasowe			3 000
+Puszki po napojach			3 000
+Zabudowa			10 000
+Buccaneer (518)			
+Nazwa wariantu			Cena
+Twardy dach			5 000
+Cabrio			15 000
+Vinylowy dach			7 500
+Osłony błotników			10 000
+Cabrio + osłony błotników			25 000
+Vinylowy dach + osłony błotników			17 500
+Burrito (482)			
+Nazwa wariantu			Cena
+Bez dodaktów na dachu			5 000
+Reflektory + spojler			12 500
+Cadrona (527)			
+Nazwa wariantu			Cena
+Twardy dach			5 000
+Cabrio			15 000
+Camper (483)			
+Nazwa wariantu			Cena
+Bez dodaktów			5 000
+Odsłonięte zasłony			10 000
+Otwarty wywietrznik dachowy, zasłonięte zasłony			10 000
+Bagażnik dachowy z deskami surfingowymi			15 000
+Bagażnik dachowy z deskami surfingowymi, odsłonięte zasłony			15 000
+Celsion (420)			
+Nazwa wariantu			Cena
+Brak wariantu			2 500
+Lotka na dachu			5000
+Szyberdach			10000
+Szyberdach + lotka na dachu			15 000
+Cheetah (415)			
+Nazwa wariantu			Cena
+Bez dodatków			1 000
+Klatka bezpieczeństwa			10 000
+Spojler LM			12 500
+Spojler LBWK			15 000
+Spojler GT			15 000
+Klatka bezpieczeństwa + spojler LM			22 500
+Klatka bezpieczeństwa + spojler LBWK			25 000
+Klatka bezpieczeństwa + spojler GT			25 000
+Clover (542)			
+Nazwa wariantu			Cena
+Twardy dach			2 500
+Cabrio			10 000
+Brak dodatków			1 000
+Bagażnik dachowy			5 000
+Bagażnik dachowy z bagażem			10 000
+Comet (480)			
+Nazwa wariantu			Cena
+Twardy dach targa			15 000
+Targa			12 500
+Cabrio			12 500
+Contander (605)			
+Nazwa wariantu			Cena
+Brak dodatków			5 000
+Klatka			10 000
+DeLuxo (504)			
+Nazwa wariantu			Cena
+Domyślny			2 000
+Spojler 1			14 000
+Spojler 2			14 000
+Roleta			6 000
+Roleta + spojler 1			20 000
+Roleta + spojler 2			20 000
+Elegant (507)			
+Nazwa wariantu			Cena
+Brak wariantu			2 500
+Szyberdach			10 000
+Elegy (562)			
+Nazwa wariantu			Cena
+Bez dodatków			1 000
+Klatka bezpieczeństwa			10 000
+Emperor (585)			
+Nazwa wariantu			Cena
+Brak wariantu			2 500
+Szyberdach			10 000
+Euros (587)			
+Nazwa wariantu			Cena
+Przeszklony dach			5 000
+Twardy dach			7 500
+Przeszklony dach + żaluzja			15 000
+Twardy dach + żaluzja			17 500
+FCR-900 (521)			
+Nazwa wariantu			Cena
+Domyślny (bez owiewek i tłumików)			5 000
+Pojedynczy tłumik			6 500
+Podwójny tłumik			8 000
+Podwójny karbonowy tłumik			10 500
+Owiewki niepełne			6 500
+Pojedynczy tłumik + owiewki niepełne			8 500
+Podwójny tłumik + owiewki niepełne			10 500
+Pojedynczy tłumik + owiewki pełne			13 000
+Podwójny tłumik + owiewki pełne			15 000
+Podwójny karbonowy tłumik + owiewki niepełne			17 000
+Podwójny karbonowy tłumik + owiewki pełne			19 000
+Feltzer (533)			
+Nazwa wariantu			Cena
+Brak wariantu			1 000
+Cabrio			15 000
+Twardy dach z szyberdachem			25 000
+Feroci (503)			
+Nazwa wariantu			Cena
+Brak dachu			10 000
+Z dachem			15 000
+Flash (565)			
+Nazwa wariantu			Cena
+Bez dodatków			1 000
+Klatka bezpieczeństwa			10 000
+Szyberdach			15 000
+Szyberdach + klatka			25 000
+Freeway (463)			
+Nazwa wariantu			Cena
+Bez dodaktów			1 000
+Skórzane torby			2 500
+Plastikowe kufry			5 000
+Owiewka			5 000
+Owiewka + skórzane torby			7 500
+Owiewka + plastikowe kufry			10 000
+Hermes (474)			
+Nazwa wariantu			Cena
+Twardy dach			5 000
+Cabrio			15 000
+Hotknife (434)			
+Nazwa wariantu			Cena
+Odkryty silnik			5 000
+Częściowo zabudowany silnik			10 000
+Jester (559)			
+Nazwa wariantu			Cena
+Bez dodatków			1 000
+Klatka bezpieczeństwa			10 000
+Targa			15 000
+Targa + klatka			25 000
+Kart (571)			
+Nazwa wariantu			Cena
+Brak obudowy karoserii			5 000
+Boczna obudowa karoserii			10 000
+Manana (410)			
+Nazwa wariantu			Cena
+Twardy dach			2 500
+Cabrio			10 000
+Merit (551)			
+Nazwa wariantu			Cena
+Brak wariantu			2 500
+Szyberdach			10 000
+Mesa (500)			
+Nazwa wariantu			Cena
+Brak dachu i klatki			5 000
+Dach			7 500
+Klatka			7 500
+Dach + klatka			15 000
+Mule (414)			
+Nazwa wariantu			Cena
+Brak reklamy			10 000
+Reklama: Toy Corne			5 000
+Reklama: Binco			5 000
+Reklama: Semi			5 000
+Reklama: Shafted Appliances			5 000
+NRG-500 (522)			
+Nazwa wariantu			Cena
+Zwykła karoseria			5 000
+Karoseria z wcięciami			10 000
+Tłumik karbonowy			8 000
+Tłumik zwykły			5 000
+Tłumik karbonowy podwójny			15 000
+Tłumik karbonowy, karoseria z wcięciami			17 500
+Tłumik zwykły, karoseria z wcięciami			15 500
+Tłumik karbonowy podwójny, karoseria z wcięciami			20 500
+Patriot (470)			
+Nazwa wariantu			Cena
+Brak tkaniny			5 000
+Niepełna tkanina			7 000
+Zabudowa do bodykitu			25 000
+Pełna tkanina			12 500
+Klatka			12 500
+Perennial (404)			
+Nazwa wariantu			Cena
+Brak dodatków			5 000
+Kratka na dachu			5 000
+Kratka na dachu z zapasowym kołe			10 000
+Kratka na dachu			5 000
+Kratka na dachu z zapasowym kołem			10 000
+Picador (600)			
+Nazwa wariantu			Cena
+Pusta paka			6 000
+Deski			3 000
+Puszki po napojach			3 000
+Zapasowe koła			5 000
+Zasłonięta paka			7 500
+Previon (436)			
+Nazwa wariantu			Cena
+Brak wariantu			2 500
+Szyberdach			10 000
+Primo (547)			
+Nazwa wariantu			Cena
+Brak wariantu			2 500
+Szyberdach			7 500
+Relingi			5 000
+Bagażnik dachowy			10 000
+Szyberdach + relingi			12 500
+Szyberdach + bagażnik dachowy			17 500
+Regina, Regina Sedan (479)			
+Nazwa wariantu			Cena
+Brak wariantu			2500
+Bagażnik dachowy			7500
+Bagażnik dachowy z bagażem #1			10000
+Bagażnik dachowy z bagażem #3			10000
+Bagażnik dachowy z bagażem #2			10000
+Bagażnik dachowy			7500
+Bagażnik dachowy z bagażem			10000
+Sadler (543)			
+Nazwa wariantu			Cena
+Brak dodatków			1 000
+Zabudowa			10 000
+Zasłonięta paka			7 500
+Tylnia lotka			7 500
+Zasłonięta paka + tylnia lotka			15 000
+Schafter (604)			
+Nazwa wariantu			Cena
+Brak wariantu			2 500
+Szyberdach			10 000
+Relingi			5 000
+Bagażnik dachowy			10 000
+Szyberdach + relingi			15 000
+Szyberdach + bagażnik dachowy			20 000
+Securicar (428)			
+Nazwa wariantu			Cena
+Brak reklamy			10 000
+Reklama: Lock&Load			5 000
+Sentinel (405)			
+Nazwa wariantu			Cena
+Brak wariantu			2 500
+Szyberdach			10 000
+Relingi			5 000
+Bagażnik dachowy			10 000
+Szyberdach + relingi			15 000
+Szyberdach + bagażnik dachowy			20 000
+Slamvan (535)			
+Nazwa wariantu			Cena
+Zwykła kierownica			5 000
+Kierownica z łańcucha			7 500
+Solair (458)			
+Nazwa wariantu			Cena
+Brak wariantu			2 500
+Szyberdach			10 000
+Relingi			5 000
+Bagażnik dachowy			10 000
+Szyberdach + relingi			15 000
+Szyberdach + bagażnik dachowy			20 000
+Speedvan (459)			
+Nazwa wariantu			Cena
+Bez dodaktów na dachu			5 000
+Reflektory + spojler			12 500
+Bagażnik dachowy			15 000
+Stratum (561)			
+Nazwa wariantu			Cena
+Brak wariantu			1 000
+Relingi			5 000
+Bagażnik dachowy			7 500
+Szyberdach			10 000
+Szyberdach + relingi			15 000
+Szyberdach + bagażnik dachowy			17 500
+Sunrise (550)			
+Nazwa wariantu			Cena
+Brak wariantu			2 500
+Szyberdach			10 000
+Relingi			5 000
+Bagażnik dachowy			10 000
+Szyberdach + relingi			15 000
+Szyberdach + bagażnik dachowy			20 000
+Super GT (506)			
+Nazwa wariantu			Cena
+Brak dachu			7 000
+Dach			15 000
+Uranus (558)			
+Nazwa wariantu			Cena
+Standardowy dach			2 500
+Czarny dach			7 500
+Targa			15 000
+Washington (421)			
+Nazwa wariantu			Cena
+Brak wariantu			2 500
+Szyberdach			10 000
+Relingi			5 000
+Bagażnik dachowy			10 000
+Szyberdach + relingi			15 000
+Szyberdach + bagażnik dachowy			20 000
+Willard (529)			
+Nazwa wariantu			Cena
+Brak wariantu			2 500
+Szyberdach			10 000
+Relingi #1			5 000
+Relingi #2			10 000
+Szyberdach + relingi #1			15 000
+Szyberdach + relingi #2			20 000
+Windsor (555)			
+Nazwa wariantu			Cena
+Brak dachu			15 000
+Dach			25 000
+Yankee (456)			
+Nazwa wariantu			Cena
+Brak reklamy			10 000
+Reklama: Big Gas			5 000
+Reklama: RS Haul			5 000
+Reklama: Star Balls			5 000
+Reklama: Flower Power			5 000
+ZR-350 (477)			
+Nazwa wariantu			Cena
+Brak spojlera			2 500
+Spojler standardowy			7 500
+Spojler RB			10 000
+Wysoki spojler			12 500
+Wysoki karbonowy spojler			15 000

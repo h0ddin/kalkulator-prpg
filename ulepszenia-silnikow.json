@@ -1,0 +1,2711 @@
+[
+  {
+    "name": "Admiral",
+    "engine_levels": [
+      {
+        "engine": 2.3,
+        "total_cost": 14000
+      },
+      {
+        "engine": 2.5,
+        "total_cost": 30000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 48000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 68000
+      }
+    ]
+  },
+  {
+    "name": "Admiral Kombi",
+    "engine_levels": [
+      {
+        "engine": 2.3,
+        "total_cost": 14000
+      },
+      {
+        "engine": 2.5,
+        "total_cost": 30000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 48000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 68000
+      }
+    ]
+  },
+  {
+    "name": "Alpha",
+    "engine_levels": [
+      {
+        "engine": 2.4,
+        "total_cost": 14000
+      },
+      {
+        "engine": 2.6,
+        "total_cost": 30000
+      },
+      {
+        "engine": 2.8,
+        "total_cost": 48000
+      },
+      {
+        "engine": 3.0,
+        "total_cost": 68000
+      }
+    ]
+  },
+  {
+    "name": "Banshee",
+    "engine_levels": [
+      {
+        "engine": 4.0,
+        "total_cost": 32000
+      },
+      {
+        "engine": 4.3,
+        "total_cost": 68000
+      },
+      {
+        "engine": 4.6,
+        "total_cost": 108000
+      },
+      {
+        "engine": 4.9,
+        "total_cost": 152000
+      }
+    ]
+  },
+  {
+    "name": "Banshee Viper GTS",
+    "engine_levels": [
+      {
+        "engine": 4.0,
+        "total_cost": 32000
+      },
+      {
+        "engine": 4.3,
+        "total_cost": 68000
+      },
+      {
+        "engine": 4.6,
+        "total_cost": 108000
+      },
+      {
+        "engine": 4.9,
+        "total_cost": 152000
+      }
+    ]
+  },
+  {
+    "name": "Benson",
+    "engine_levels": [
+      {
+        "engine": 1.2,
+        "total_cost": 6000
+      },
+      {
+        "engine": 1.3,
+        "total_cost": 12000
+      },
+      {
+        "engine": 1.4,
+        "total_cost": 18000
+      },
+      {
+        "engine": 1.5,
+        "total_cost": 26000
+      }
+    ]
+  },
+  {
+    "name": "BF Injection",
+    "engine_levels": [
+      {
+        "engine": 3.5,
+        "total_cost": 26000
+      },
+      {
+        "engine": 3.8,
+        "total_cost": 56000
+      },
+      {
+        "engine": 4.1,
+        "total_cost": 90000
+      },
+      {
+        "engine": 4.4,
+        "total_cost": 126000
+      }
+    ]
+  },
+  {
+    "name": "BF-400",
+    "engine_levels": [
+      {
+        "engine": 0.45,
+        "total_cost": 6000
+      },
+      {
+        "engine": 0.5,
+        "total_cost": 14000
+      },
+      {
+        "engine": 0.55,
+        "total_cost": 22000
+      },
+      {
+        "engine": 0.6,
+        "total_cost": 30000
+      }
+    ]
+  },
+  {
+    "name": "Blade",
+    "engine_levels": [
+      {
+        "engine": 2.5,
+        "total_cost": 16000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 54000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 76000
+      }
+    ]
+  },
+  {
+    "name": "Blista Compact",
+    "engine_levels": [
+      {
+        "engine": 2.8,
+        "total_cost": 18000
+      },
+      {
+        "engine": 3.0,
+        "total_cost": 38000
+      },
+      {
+        "engine": 3.2,
+        "total_cost": 60000
+      },
+      {
+        "engine": 3.4,
+        "total_cost": 86000
+      }
+    ]
+  },
+  {
+    "name": "Bobcat",
+    "engine_levels": [
+      {
+        "engine": 1.9,
+        "total_cost": 10000
+      },
+      {
+        "engine": 2.0,
+        "total_cost": 22000
+      },
+      {
+        "engine": 2.1,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.2,
+        "total_cost": 48000
+      }
+    ]
+  },
+  {
+    "name": "Boxville",
+    "engine_levels": [
+      {
+        "engine": 1.2,
+        "total_cost": 6000
+      },
+      {
+        "engine": 1.3,
+        "total_cost": 12000
+      },
+      {
+        "engine": 1.4,
+        "total_cost": 18000
+      },
+      {
+        "engine": 1.5,
+        "total_cost": 26000
+      }
+    ]
+  },
+  {
+    "name": "Bravura",
+    "engine_levels": [
+      {
+        "engine": 1.3,
+        "total_cost": 6000
+      },
+      {
+        "engine": 1.4,
+        "total_cost": 12000
+      },
+      {
+        "engine": 1.5,
+        "total_cost": 20000
+      },
+      {
+        "engine": 1.6,
+        "total_cost": 28000
+      }
+    ]
+  },
+  {
+    "name": "Broadway",
+    "engine_levels": [
+      {
+        "engine": 1.9,
+        "total_cost": 10000
+      },
+      {
+        "engine": 2.0,
+        "total_cost": 22000
+      },
+      {
+        "engine": 2.1,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.2,
+        "total_cost": 48000
+      }
+    ]
+  },
+  {
+    "name": "Buccaneer",
+    "engine_levels": [
+      {
+        "engine": 2.5,
+        "total_cost": 16000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 54000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 76000
+      }
+    ]
+  },
+  {
+    "name": "Buffalo",
+    "engine_levels": [
+      {
+        "engine": 3.1,
+        "total_cost": 22000
+      },
+      {
+        "engine": 3.3,
+        "total_cost": 46000
+      },
+      {
+        "engine": 3.5,
+        "total_cost": 72000
+      },
+      {
+        "engine": 3.7,
+        "total_cost": 100000
+      }
+    ]
+  },
+  {
+    "name": "Bullet",
+    "engine_levels": [
+      {
+        "engine": 3.5,
+        "total_cost": 26000
+      },
+      {
+        "engine": 3.8,
+        "total_cost": 56000
+      },
+      {
+        "engine": 4.1,
+        "total_cost": 90000
+      },
+      {
+        "engine": 4.4,
+        "total_cost": 126000
+      }
+    ]
+  },
+  {
+    "name": "Bullet GT",
+    "engine_levels": [
+      {
+        "engine": 3.5,
+        "total_cost": 26000
+      },
+      {
+        "engine": 3.8,
+        "total_cost": 56000
+      },
+      {
+        "engine": 4.1,
+        "total_cost": 90000
+      },
+      {
+        "engine": 4.4,
+        "total_cost": 126000
+      }
+    ]
+  },
+  {
+    "name": "Burrito",
+    "engine_levels": [
+      {
+        "engine": 2.7,
+        "total_cost": 18000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 38000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 60000
+      },
+      {
+        "engine": 3.3,
+        "total_cost": 84000
+      }
+    ]
+  },
+  {
+    "name": "Cadrona",
+    "engine_levels": [
+      {
+        "engine": 1.9,
+        "total_cost": 10000
+      },
+      {
+        "engine": 2.0,
+        "total_cost": 22000
+      },
+      {
+        "engine": 2.1,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.2,
+        "total_cost": 48000
+      }
+    ]
+  },
+  {
+    "name": "Cadrona DTM",
+    "engine_levels": [
+      {
+        "engine": 1.9,
+        "total_cost": 10000
+      },
+      {
+        "engine": 2.0,
+        "total_cost": 22000
+      },
+      {
+        "engine": 2.1,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.2,
+        "total_cost": 48000
+      }
+    ]
+  },
+  {
+    "name": "Camper",
+    "engine_levels": [
+      {
+        "engine": 1.4,
+        "total_cost": 6000
+      },
+      {
+        "engine": 1.5,
+        "total_cost": 14000
+      },
+      {
+        "engine": 1.6,
+        "total_cost": 22000
+      },
+      {
+        "engine": 1.7,
+        "total_cost": 30000
+      }
+    ]
+  },
+  {
+    "name": "Celsion",
+    "engine_levels": [
+      {
+        "engine": 2.8,
+        "total_cost": 18000
+      },
+      {
+        "engine": 3.2,
+        "total_cost": 40000
+      },
+      {
+        "engine": 3.6,
+        "total_cost": 68000
+      },
+      {
+        "engine": 4.0,
+        "total_cost": 100000
+      }
+    ]
+  },
+  {
+    "name": "Cheetah",
+    "engine_levels": [
+      {
+        "engine": 3.5,
+        "total_cost": 26000
+      },
+      {
+        "engine": 3.8,
+        "total_cost": 56000
+      },
+      {
+        "engine": 4.1,
+        "total_cost": 90000
+      },
+      {
+        "engine": 4.4,
+        "total_cost": 126000
+      }
+    ]
+  },
+  {
+    "name": "Cheetah '76",
+    "engine_levels": [
+      {
+        "engine": 3.1,
+        "total_cost": 22000
+      },
+      {
+        "engine": 3.3,
+        "total_cost": 46000
+      },
+      {
+        "engine": 3.5,
+        "total_cost": 72000
+      },
+      {
+        "engine": 3.7,
+        "total_cost": 100000
+      }
+    ]
+  },
+  {
+    "name": "Clover",
+    "engine_levels": [
+      {
+        "engine": 2.5,
+        "total_cost": 16000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 54000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 76000
+      }
+    ]
+  },
+  {
+    "name": "Clover Wagon",
+    "engine_levels": [
+      {
+        "engine": 2.5,
+        "total_cost": 16000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 54000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 76000
+      }
+    ]
+  },
+  {
+    "name": "Club",
+    "engine_levels": [
+      {
+        "engine": 3.5,
+        "total_cost": 26000
+      },
+      {
+        "engine": 3.8,
+        "total_cost": 56000
+      },
+      {
+        "engine": 4.1,
+        "total_cost": 90000
+      },
+      {
+        "engine": 4.4,
+        "total_cost": 126000
+      }
+    ]
+  },
+  {
+    "name": "Comet",
+    "engine_levels": [
+      {
+        "engine": 3.5,
+        "total_cost": 26000
+      },
+      {
+        "engine": 3.8,
+        "total_cost": 56000
+      },
+      {
+        "engine": 4.1,
+        "total_cost": 90000
+      },
+      {
+        "engine": 4.4,
+        "total_cost": 126000
+      }
+    ]
+  },
+  {
+    "name": "Contander",
+    "engine_levels": [
+      {
+        "engine": 2.7,
+        "total_cost": 18000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 38000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 60000
+      },
+      {
+        "engine": 3.3,
+        "total_cost": 84000
+      }
+    ]
+  },
+  {
+    "name": "DeLuxo",
+    "engine_levels": [
+      {
+        "engine": 3.0,
+        "total_cost": 20000
+      },
+      {
+        "engine": 3.2,
+        "total_cost": 42000
+      },
+      {
+        "engine": 3.4,
+        "total_cost": 68000
+      },
+      {
+        "engine": 3.6,
+        "total_cost": 96000
+      }
+    ]
+  },
+  {
+    "name": "Elegant",
+    "engine_levels": [
+      {
+        "engine": 1.9,
+        "total_cost": 10000
+      },
+      {
+        "engine": 2.0,
+        "total_cost": 22000
+      },
+      {
+        "engine": 2.1,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.2,
+        "total_cost": 48000
+      }
+    ]
+  },
+  {
+    "name": "Elegy",
+    "engine_levels": [
+      {
+        "engine": 3.1,
+        "total_cost": 22000
+      },
+      {
+        "engine": 3.3,
+        "total_cost": 46000
+      },
+      {
+        "engine": 3.5,
+        "total_cost": 72000
+      },
+      {
+        "engine": 3.7,
+        "total_cost": 100000
+      }
+    ]
+  },
+  {
+    "name": "Emperor",
+    "engine_levels": [
+      {
+        "engine": 2.0,
+        "total_cost": 12000
+      },
+      {
+        "engine": 2.1,
+        "total_cost": 24000
+      },
+      {
+        "engine": 2.2,
+        "total_cost": 38000
+      },
+      {
+        "engine": 2.3,
+        "total_cost": 52000
+      }
+    ]
+  },
+  {
+    "name": "Esperanto",
+    "engine_levels": [
+      {
+        "engine": 1.6,
+        "total_cost": 8000
+      },
+      {
+        "engine": 1.7,
+        "total_cost": 16000
+      },
+      {
+        "engine": 1.8,
+        "total_cost": 26000
+      },
+      {
+        "engine": 1.9,
+        "total_cost": 36000
+      }
+    ]
+  },
+  {
+    "name": "Euros",
+    "engine_levels": [
+      {
+        "engine": 2.5,
+        "total_cost": 16000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 54000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 76000
+      }
+    ]
+  },
+  {
+    "name": "Faggio",
+    "engine_levels": [
+      {
+        "engine": 0.07,
+        "total_cost": 4000
+      },
+      {
+        "engine": 0.09,
+        "total_cost": 8000
+      },
+      {
+        "engine": 0.11,
+        "total_cost": 12000
+      },
+      {
+        "engine": 0.13,
+        "total_cost": 16000
+      }
+    ]
+  },
+  {
+    "name": "FCR-900",
+    "engine_levels": [
+      {
+        "engine": 0.85,
+        "total_cost": 10000
+      },
+      {
+        "engine": 0.9,
+        "total_cost": 20000
+      },
+      {
+        "engine": 0.95,
+        "total_cost": 30000
+      },
+      {
+        "engine": 1.0,
+        "total_cost": 34000
+      }
+    ]
+  },
+  {
+    "name": "FCR-900 RR",
+    "engine_levels": [
+      {
+        "engine": 0.85,
+        "total_cost": 10000
+      },
+      {
+        "engine": 0.9,
+        "total_cost": 20000
+      },
+      {
+        "engine": 0.95,
+        "total_cost": 30000
+      },
+      {
+        "engine": 1.0,
+        "total_cost": 34000
+      }
+    ]
+  },
+  {
+    "name": "Feltzer",
+    "engine_levels": [
+      {
+        "engine": 3.1,
+        "total_cost": 22000
+      },
+      {
+        "engine": 3.3,
+        "total_cost": 46000
+      },
+      {
+        "engine": 3.5,
+        "total_cost": 72000
+      },
+      {
+        "engine": 3.7,
+        "total_cost": 100000
+      }
+    ]
+  },
+  {
+    "name": "Feltzer GT",
+    "engine_levels": [
+      {
+        "engine": 3.1,
+        "total_cost": 22000
+      },
+      {
+        "engine": 3.3,
+        "total_cost": 46000
+      },
+      {
+        "engine": 3.5,
+        "total_cost": 72000
+      },
+      {
+        "engine": 3.7,
+        "total_cost": 100000
+      }
+    ]
+  },
+  {
+    "name": "Feroci",
+    "engine_levels": [
+      {
+        "engine": 3.3,
+        "total_cost": 24000
+      },
+      {
+        "engine": 3.6,
+        "total_cost": 52000
+      },
+      {
+        "engine": 3.9,
+        "total_cost": 82000
+      },
+      {
+        "engine": 4.2,
+        "total_cost": 116000
+      }
+    ]
+  },
+  {
+    "name": "Flash",
+    "engine_levels": [
+      {
+        "engine": 2.5,
+        "total_cost": 16000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 54000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 76000
+      }
+    ]
+  },
+  {
+    "name": "Fortune",
+    "engine_levels": [
+      {
+        "engine": 1.9,
+        "total_cost": 10000
+      },
+      {
+        "engine": 2.0,
+        "total_cost": 22000
+      },
+      {
+        "engine": 2.1,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.2,
+        "total_cost": 48000
+      }
+    ]
+  },
+  {
+    "name": "Fortune 240SX",
+    "engine_levels": [
+      {
+        "engine": 1.9,
+        "total_cost": 10000
+      },
+      {
+        "engine": 2.0,
+        "total_cost": 22000
+      },
+      {
+        "engine": 2.1,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.2,
+        "total_cost": 48000
+      }
+    ]
+  },
+  {
+    "name": "Freeway",
+    "engine_levels": [
+      {
+        "engine": 1.1,
+        "total_cost": 4000
+      },
+      {
+        "engine": 1.2,
+        "total_cost": 10000
+      },
+      {
+        "engine": 1.3,
+        "total_cost": 16000
+      },
+      {
+        "engine": 1.4,
+        "total_cost": 22000
+      }
+    ]
+  },
+  {
+    "name": "Glendale",
+    "engine_levels": [
+      {
+        "engine": 2.3,
+        "total_cost": 14000
+      },
+      {
+        "engine": 2.3,
+        "total_cost": 30000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 48000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 68000
+      }
+    ]
+  },
+  {
+    "name": "Greenwood",
+    "engine_levels": [
+      {
+        "engine": 1.9,
+        "total_cost": 10000
+      },
+      {
+        "engine": 2.0,
+        "total_cost": 22000
+      },
+      {
+        "engine": 2.1,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.2,
+        "total_cost": 48000
+      }
+    ]
+  },
+  {
+    "name": "Hermes",
+    "engine_levels": [
+      {
+        "engine": 1.6,
+        "total_cost": 8000
+      },
+      {
+        "engine": 1.7,
+        "total_cost": 16000
+      },
+      {
+        "engine": 1.8,
+        "total_cost": 26000
+      },
+      {
+        "engine": 1.9,
+        "total_cost": 36000
+      }
+    ]
+  },
+  {
+    "name": "Hotknife",
+    "engine_levels": [
+      {
+        "engine": 3.1,
+        "total_cost": 22000
+      },
+      {
+        "engine": 3.3,
+        "total_cost": 46000
+      },
+      {
+        "engine": 3.5,
+        "total_cost": 72000
+      },
+      {
+        "engine": 3.7,
+        "total_cost": 100000
+      }
+    ]
+  },
+  {
+    "name": "Huntley",
+    "engine_levels": [
+      {
+        "engine": 2.7,
+        "total_cost": 18000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 38000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 60000
+      },
+      {
+        "engine": 3.3,
+        "total_cost": 84000
+      }
+    ]
+  },
+  {
+    "name": "Hustler",
+    "engine_levels": [
+      {
+        "engine": 2.3,
+        "total_cost": 14000
+      },
+      {
+        "engine": 2.5,
+        "total_cost": 30000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 48000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 68000
+      }
+    ]
+  },
+  {
+    "name": "Infernus",
+    "engine_levels": [
+      {
+        "engine": 3.5,
+        "total_cost": 26000
+      },
+      {
+        "engine": 3.8,
+        "total_cost": 56000
+      },
+      {
+        "engine": 4.1,
+        "total_cost": 90000
+      },
+      {
+        "engine": 4.4,
+        "total_cost": 126000
+      }
+    ]
+  },
+  {
+    "name": "Infernus Kakimoto",
+    "engine_levels": [
+      {
+        "engine": 3.5,
+        "total_cost": 26000
+      },
+      {
+        "engine": 3.8,
+        "total_cost": 56000
+      },
+      {
+        "engine": 4.1,
+        "total_cost": 90000
+      },
+      {
+        "engine": 4.4,
+        "total_cost": 126000
+      }
+    ]
+  },
+  {
+    "name": "Infernus NSX",
+    "engine_levels": [
+      {
+        "engine": 3.5,
+        "total_cost": 26000
+      },
+      {
+        "engine": 3.8,
+        "total_cost": 56000
+      },
+      {
+        "engine": 4.1,
+        "total_cost": 90000
+      },
+      {
+        "engine": 4.4,
+        "total_cost": 126000
+      }
+    ]
+  },
+  {
+    "name": "Infernus Pandem",
+    "engine_levels": [
+      {
+        "engine": 3.5,
+        "total_cost": 26000
+      },
+      {
+        "engine": 3.8,
+        "total_cost": 56000
+      },
+      {
+        "engine": 4.1,
+        "total_cost": 90000
+      },
+      {
+        "engine": 4.4,
+        "total_cost": 126000
+      }
+    ]
+  },
+  {
+    "name": "Intruder",
+    "engine_levels": [
+      {
+        "engine": 1.6,
+        "total_cost": 8000
+      },
+      {
+        "engine": 1.7,
+        "total_cost": 16000
+      },
+      {
+        "engine": 1.8,
+        "total_cost": 26000
+      },
+      {
+        "engine": 1.9,
+        "total_cost": 36000
+      }
+    ]
+  },
+  {
+    "name": "Jester",
+    "engine_levels": [
+      {
+        "engine": 3.1,
+        "total_cost": 22000
+      },
+      {
+        "engine": 3.3,
+        "total_cost": 46000
+      },
+      {
+        "engine": 3.5,
+        "total_cost": 72000
+      },
+      {
+        "engine": 3.7,
+        "total_cost": 100000
+      }
+    ]
+  },
+  {
+    "name": "Journey",
+    "engine_levels": [
+      {
+        "engine": 1.2,
+        "total_cost": 6000
+      },
+      {
+        "engine": 1.3,
+        "total_cost": 12000
+      },
+      {
+        "engine": 1.4,
+        "total_cost": 18000
+      },
+      {
+        "engine": 1.5,
+        "total_cost": 26000
+      }
+    ]
+  },
+  {
+    "name": "Landstalker",
+    "engine_levels": [
+      {
+        "engine": 2.7,
+        "total_cost": 18000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 38000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 60000
+      },
+      {
+        "engine": 3.3,
+        "total_cost": 84000
+      }
+    ]
+  },
+  {
+    "name": "Majestic",
+    "engine_levels": [
+      {
+        "engine": 2.3,
+        "total_cost": 14000
+      },
+      {
+        "engine": 2.5,
+        "total_cost": 30000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 48000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 68000
+      }
+    ]
+  },
+  {
+    "name": "Manana",
+    "engine_levels": [
+      {
+        "engine": 1.8,
+        "total_cost": 10000
+      },
+      {
+        "engine": 1.9,
+        "total_cost": 20000
+      },
+      {
+        "engine": 2.0,
+        "total_cost": 32000
+      },
+      {
+        "engine": 2.1,
+        "total_cost": 44000
+      }
+    ]
+  },
+  {
+    "name": "Manana DTM",
+    "engine_levels": [
+      {
+        "engine": 1.8,
+        "total_cost": 10000
+      },
+      {
+        "engine": 1.9,
+        "total_cost": 20000
+      },
+      {
+        "engine": 2.0,
+        "total_cost": 32000
+      },
+      {
+        "engine": 2.1,
+        "total_cost": 44000
+      }
+    ]
+  },
+  {
+    "name": "Merit",
+    "engine_levels": [
+      {
+        "engine": 2.3,
+        "total_cost": 14000
+      },
+      {
+        "engine": 2.5,
+        "total_cost": 30000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 48000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 68000
+      }
+    ]
+  },
+  {
+    "name": "Mesa",
+    "engine_levels": [
+      {
+        "engine": 2.5,
+        "total_cost": 16000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 54000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 76000
+      }
+    ]
+  },
+  {
+    "name": "Mesa Rubicon",
+    "engine_levels": [
+      {
+        "engine": 2.5,
+        "total_cost": 16000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 54000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 76000
+      }
+    ]
+  },
+  {
+    "name": "Monroe",
+    "engine_levels": [
+      {
+        "engine": 3.3,
+        "total_cost": 24000
+      },
+      {
+        "engine": 3.6,
+        "total_cost": 52000
+      },
+      {
+        "engine": 3.9,
+        "total_cost": 82000
+      },
+      {
+        "engine": 4.2,
+        "total_cost": 116000
+      }
+    ]
+  },
+  {
+    "name": "Moonbeam",
+    "engine_levels": [
+      {
+        "engine": 1.3,
+        "total_cost": 6000
+      },
+      {
+        "engine": 1.4,
+        "total_cost": 14000
+      },
+      {
+        "engine": 1.5,
+        "total_cost": 22000
+      },
+      {
+        "engine": 1.6,
+        "total_cost": 30000
+      }
+    ]
+  },
+  {
+    "name": "Mule",
+    "engine_levels": [
+      {
+        "engine": 1.6,
+        "total_cost": 8000
+      },
+      {
+        "engine": 1.7,
+        "total_cost": 16000
+      },
+      {
+        "engine": 1.8,
+        "total_cost": 26000
+      },
+      {
+        "engine": 1.9,
+        "total_cost": 36000
+      }
+    ]
+  },
+  {
+    "name": "Nebula",
+    "engine_levels": [
+      {
+        "engine": 1.9,
+        "total_cost": 10000
+      },
+      {
+        "engine": 2.0,
+        "total_cost": 22000
+      },
+      {
+        "engine": 2.1,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.2,
+        "total_cost": 48000
+      }
+    ]
+  },
+  {
+    "name": "NRG-500",
+    "engine_levels": [
+      {
+        "engine": 1.05,
+        "total_cost": 4000
+      },
+      {
+        "engine": 1.1,
+        "total_cost": 8000
+      },
+      {
+        "engine": 1.15,
+        "total_cost": 12000
+      },
+      {
+        "engine": 1.2,
+        "total_cost": 18000
+      }
+    ]
+  },
+  {
+    "name": "Oceanic",
+    "engine_levels": [
+      {
+        "engine": 1.4,
+        "total_cost": 6000
+      },
+      {
+        "engine": 1.5,
+        "total_cost": 14000
+      },
+      {
+        "engine": 1.6,
+        "total_cost": 22000
+      },
+      {
+        "engine": 1.7,
+        "total_cost": 30000
+      }
+    ]
+  },
+  {
+    "name": "Patriot",
+    "engine_levels": [
+      {
+        "engine": 2.7,
+        "total_cost": 18000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 38000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 60000
+      },
+      {
+        "engine": 3.3,
+        "total_cost": 84000
+      }
+    ]
+  },
+  {
+    "name": "PCJ-600",
+    "engine_levels": [
+      {
+        "engine": 0.55,
+        "total_cost": 8000
+      },
+      {
+        "engine": 0.6,
+        "total_cost": 16000
+      },
+      {
+        "engine": 0.65,
+        "total_cost": 24000
+      },
+      {
+        "engine": 0.7,
+        "total_cost": 32000
+      }
+    ]
+  },
+  {
+    "name": "PCJ-600 XR",
+    "engine_levels": [
+      {
+        "engine": 0.55,
+        "total_cost": 8000
+      },
+      {
+        "engine": 0.6,
+        "total_cost": 16000
+      },
+      {
+        "engine": 0.65,
+        "total_cost": 24000
+      },
+      {
+        "engine": 0.7,
+        "total_cost": 32000
+      }
+    ]
+  },
+  {
+    "name": "Perennial",
+    "engine_levels": [
+      {
+        "engine": 1.6,
+        "total_cost": 8000
+      },
+      {
+        "engine": 1.7,
+        "total_cost": 16000
+      },
+      {
+        "engine": 1.8,
+        "total_cost": 26000
+      },
+      {
+        "engine": 1.9,
+        "total_cost": 36000
+      }
+    ]
+  },
+  {
+    "name": "Phoenix",
+    "engine_levels": [
+      {
+        "engine": 2.8,
+        "total_cost": 18000
+      },
+      {
+        "engine": 3.0,
+        "total_cost": 38000
+      },
+      {
+        "engine": 3.2,
+        "total_cost": 60000
+      },
+      {
+        "engine": 3.4,
+        "total_cost": 86000
+      }
+    ]
+  },
+  {
+    "name": "Picador",
+    "engine_levels": [
+      {
+        "engine": 2.7,
+        "total_cost": 18000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 38000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 60000
+      },
+      {
+        "engine": 3.3,
+        "total_cost": 84000
+      }
+    ]
+  },
+  {
+    "name": "Premier",
+    "engine_levels": [
+      {
+        "engine": 2.3,
+        "total_cost": 14000
+      },
+      {
+        "engine": 2.5,
+        "total_cost": 30000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 48000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 68000
+      }
+    ]
+  },
+  {
+    "name": "Previon",
+    "engine_levels": [
+      {
+        "engine": 1.6,
+        "total_cost": 8000
+      },
+      {
+        "engine": 1.7,
+        "total_cost": 16000
+      },
+      {
+        "engine": 1.8,
+        "total_cost": 26000
+      },
+      {
+        "engine": 1.9,
+        "total_cost": 36000
+      }
+    ]
+  },
+  {
+    "name": "Primo",
+    "engine_levels": [
+      {
+        "engine": 1.6,
+        "total_cost": 8000
+      },
+      {
+        "engine": 1.7,
+        "total_cost": 16000
+      },
+      {
+        "engine": 1.8,
+        "total_cost": 26000
+      },
+      {
+        "engine": 1.9,
+        "total_cost": 36000
+      }
+    ]
+  },
+  {
+    "name": "Primo Kombi",
+    "engine_levels": [
+      {
+        "engine": 1.6,
+        "total_cost": 8000
+      },
+      {
+        "engine": 1.7,
+        "total_cost": 16000
+      },
+      {
+        "engine": 1.8,
+        "total_cost": 26000
+      },
+      {
+        "engine": 1.9,
+        "total_cost": 36000
+      }
+    ]
+  },
+  {
+    "name": "Quadbike",
+    "engine_levels": [
+      {
+        "engine": 0.48,
+        "total_cost": 8000
+      },
+      {
+        "engine": 0.56,
+        "total_cost": 16000
+      },
+      {
+        "engine": 0.64,
+        "total_cost": 24000
+      },
+      {
+        "engine": 0.72,
+        "total_cost": 34000
+      }
+    ]
+  },
+  {
+    "name": "Rancher",
+    "engine_levels": [
+      {
+        "engine": 1.9,
+        "total_cost": 10000
+      },
+      {
+        "engine": 2.0,
+        "total_cost": 22000
+      },
+      {
+        "engine": 2.1,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.2,
+        "total_cost": 48000
+      }
+    ]
+  },
+  {
+    "name": "Regina",
+    "engine_levels": [
+      {
+        "engine": 4.0,
+        "total_cost": 32000
+      },
+      {
+        "engine": 4.4,
+        "total_cost": 68000
+      },
+      {
+        "engine": 4.8,
+        "total_cost": 110000
+      },
+      {
+        "engine": 5.2,
+        "total_cost": 158000
+      }
+    ]
+  },
+  {
+    "name": "Regina Sedan",
+    "engine_levels": [
+      {
+        "engine": 4.0,
+        "total_cost": 32000
+      },
+      {
+        "engine": 4.4,
+        "total_cost": 68000
+      },
+      {
+        "engine": 4.8,
+        "total_cost": 110000
+      },
+      {
+        "engine": 5.2,
+        "total_cost": 158000
+      }
+    ]
+  },
+  {
+    "name": "Remington",
+    "engine_levels": [
+      {
+        "engine": 2.4,
+        "total_cost": 14000
+      },
+      {
+        "engine": 2.6,
+        "total_cost": 30000
+      },
+      {
+        "engine": 2.8,
+        "total_cost": 48000
+      },
+      {
+        "engine": 3.0,
+        "total_cost": 68000
+      }
+    ]
+  },
+  {
+    "name": "Rumpo",
+    "engine_levels": [
+      {
+        "engine": 1.6,
+        "total_cost": 8000
+      },
+      {
+        "engine": 1.7,
+        "total_cost": 16000
+      },
+      {
+        "engine": 1.8,
+        "total_cost": 26000
+      },
+      {
+        "engine": 1.9,
+        "total_cost": 36000
+      }
+    ]
+  },
+  {
+    "name": "Sabre",
+    "engine_levels": [
+      {
+        "engine": 2.5,
+        "total_cost": 16000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 54000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 76000
+      }
+    ]
+  },
+  {
+    "name": "Sadler",
+    "engine_levels": [
+      {
+        "engine": 2.7,
+        "total_cost": 18000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 38000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 60000
+      },
+      {
+        "engine": 3.3,
+        "total_cost": 84000
+      }
+    ]
+  },
+  {
+    "name": "Sanchez",
+    "engine_levels": [
+      {
+        "engine": 0.375,
+        "total_cost": 6000
+      },
+      {
+        "engine": 0.45,
+        "total_cost": 12000
+      },
+      {
+        "engine": 0.525,
+        "total_cost": 20000
+      },
+      {
+        "engine": 0.6,
+        "total_cost": 28000
+      }
+    ]
+  },
+  {
+    "name": "Sandking",
+    "engine_levels": [
+      {
+        "engine": 3.1,
+        "total_cost": 22000
+      },
+      {
+        "engine": 3.3,
+        "total_cost": 46000
+      },
+      {
+        "engine": 3.5,
+        "total_cost": 72000
+      },
+      {
+        "engine": 3.7,
+        "total_cost": 100000
+      }
+    ]
+  },
+  {
+    "name": "Savanna",
+    "engine_levels": [
+      {
+        "engine": 2.5,
+        "total_cost": 16000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 54000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 76000
+      }
+    ]
+  },
+  {
+    "name": "Schafter",
+    "engine_levels": [
+      {
+        "engine": 2.3,
+        "total_cost": 14000
+      },
+      {
+        "engine": 2.5,
+        "total_cost": 30000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 48000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 68000
+      }
+    ]
+  },
+  {
+    "name": "Securicar",
+    "engine_levels": [
+      {
+        "engine": 1.3,
+        "total_cost": 6000
+      },
+      {
+        "engine": 1.4,
+        "total_cost": 12000
+      },
+      {
+        "engine": 1.5,
+        "total_cost": 20000
+      },
+      {
+        "engine": 1.6,
+        "total_cost": 28000
+      }
+    ]
+  },
+  {
+    "name": "Sentinel",
+    "engine_levels": [
+      {
+        "engine": 2.5,
+        "total_cost": 16000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 54000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 76000
+      }
+    ]
+  },
+  {
+    "name": "Sentinel Kombi",
+    "engine_levels": [
+      {
+        "engine": 2.5,
+        "total_cost": 16000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 54000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 76000
+      }
+    ]
+  },
+  {
+    "name": "Slamvan",
+    "engine_levels": [
+      {
+        "engine": 5.2,
+        "total_cost": 48000
+      },
+      {
+        "engine": 5.6,
+        "total_cost": 102000
+      },
+      {
+        "engine": 6.0,
+        "total_cost": 160000
+      },
+      {
+        "engine": 6.4,
+        "total_cost": 224000
+      }
+    ]
+  },
+  {
+    "name": "Solair",
+    "engine_levels": [
+      {
+        "engine": 1.9,
+        "total_cost": 10000
+      },
+      {
+        "engine": 2.0,
+        "total_cost": 22000
+      },
+      {
+        "engine": 2.1,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.2,
+        "total_cost": 48000
+      }
+    ]
+  },
+  {
+    "name": "Speedvan",
+    "engine_levels": [
+      {
+        "engine": 2.7,
+        "total_cost": 18000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 38000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 60000
+      },
+      {
+        "engine": 3.3,
+        "total_cost": 84000
+      }
+    ]
+  },
+  {
+    "name": "Stafford",
+    "engine_levels": [
+      {
+        "engine": 2.5,
+        "total_cost": 16000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 54000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 76000
+      }
+    ]
+  },
+  {
+    "name": "Stallion",
+    "engine_levels": [
+      {
+        "engine": 2.4,
+        "total_cost": 14000
+      },
+      {
+        "engine": 2.6,
+        "total_cost": 30000
+      },
+      {
+        "engine": 2.8,
+        "total_cost": 48000
+      },
+      {
+        "engine": 3.0,
+        "total_cost": 68000
+      }
+    ]
+  },
+  {
+    "name": "Stallion GTT",
+    "engine_levels": [
+      {
+        "engine": 2.4,
+        "total_cost": 14000
+      },
+      {
+        "engine": 2.6,
+        "total_cost": 30000
+      },
+      {
+        "engine": 2.8,
+        "total_cost": 48000
+      },
+      {
+        "engine": 3.0,
+        "total_cost": 68000
+      }
+    ]
+  },
+  {
+    "name": "Stanier",
+    "engine_levels": [
+      {
+        "engine": 3.4,
+        "total_cost": 26000
+      },
+      {
+        "engine": 3.8,
+        "total_cost": 56000
+      },
+      {
+        "engine": 4.2,
+        "total_cost": 90000
+      },
+      {
+        "engine": 4.6,
+        "total_cost": 130000
+      }
+    ]
+  },
+  {
+    "name": "Stratum",
+    "engine_levels": [
+      {
+        "engine": 1.9,
+        "total_cost": 10000
+      },
+      {
+        "engine": 2.0,
+        "total_cost": 22000
+      },
+      {
+        "engine": 2.1,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.2,
+        "total_cost": 48000
+      }
+    ]
+  },
+  {
+    "name": "Stretch",
+    "engine_levels": [
+      {
+        "engine": 1.6,
+        "total_cost": 8000
+      },
+      {
+        "engine": 1.7,
+        "total_cost": 16000
+      },
+      {
+        "engine": 1.8,
+        "total_cost": 26000
+      },
+      {
+        "engine": 1.9,
+        "total_cost": 36000
+      }
+    ]
+  },
+  {
+    "name": "Sultan",
+    "engine_levels": [
+      {
+        "engine": 3.1,
+        "total_cost": 22000
+      },
+      {
+        "engine": 3.3,
+        "total_cost": 46000
+      },
+      {
+        "engine": 3.5,
+        "total_cost": 72000
+      },
+      {
+        "engine": 3.7,
+        "total_cost": 100000
+      }
+    ]
+  },
+  {
+    "name": "Sultan Kombi",
+    "engine_levels": [
+      {
+        "engine": 3.1,
+        "total_cost": 22000
+      },
+      {
+        "engine": 3.3,
+        "total_cost": 46000
+      },
+      {
+        "engine": 3.5,
+        "total_cost": 72000
+      },
+      {
+        "engine": 3.7,
+        "total_cost": 100000
+      }
+    ]
+  },
+  {
+    "name": "Sunrise",
+    "engine_levels": [
+      {
+        "engine": 1.5,
+        "total_cost": 8000
+      },
+      {
+        "engine": 1.6,
+        "total_cost": 16000
+      },
+      {
+        "engine": 1.7,
+        "total_cost": 24000
+      },
+      {
+        "engine": 1.8,
+        "total_cost": 34000
+      }
+    ]
+  },
+  {
+    "name": "Sunrise Kombi",
+    "engine_levels": [
+      {
+        "engine": 1.5,
+        "total_cost": 8000
+      },
+      {
+        "engine": 1.6,
+        "total_cost": 16000
+      },
+      {
+        "engine": 1.7,
+        "total_cost": 24000
+      },
+      {
+        "engine": 1.8,
+        "total_cost": 34000
+      }
+    ]
+  },
+  {
+    "name": "Super GT",
+    "engine_levels": [
+      {
+        "engine": 2.8,
+        "total_cost": 18000
+      },
+      {
+        "engine": 3.0,
+        "total_cost": 38000
+      },
+      {
+        "engine": 3.2,
+        "total_cost": 60000
+      },
+      {
+        "engine": 3.4,
+        "total_cost": 86000
+      }
+    ]
+  },
+  {
+    "name": "Tahoma",
+    "engine_levels": [
+      {
+        "engine": 2.5,
+        "total_cost": 16000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 54000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 76000
+      }
+    ]
+  },
+  {
+    "name": "Tampa",
+    "engine_levels": [
+      {
+        "engine": 2.5,
+        "total_cost": 16000
+      },
+      {
+        "engine": 2.7,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 54000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 76000
+      }
+    ]
+  },
+  {
+    "name": "Tornado",
+    "engine_levels": [
+      {
+        "engine": 1.9,
+        "total_cost": 10000
+      },
+      {
+        "engine": 2.0,
+        "total_cost": 22000
+      },
+      {
+        "engine": 2.1,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.2,
+        "total_cost": 48000
+      }
+    ]
+  },
+  {
+    "name": "Turismo",
+    "engine_levels": [
+      {
+        "engine": 3.5,
+        "total_cost": 26000
+      },
+      {
+        "engine": 3.8,
+        "total_cost": 56000
+      },
+      {
+        "engine": 4.1,
+        "total_cost": 90000
+      },
+      {
+        "engine": 4.4,
+        "total_cost": 126000
+      }
+    ]
+  },
+  {
+    "name": "Turismo Competizione",
+    "engine_levels": [
+      {
+        "engine": 3.5,
+        "total_cost": 26000
+      },
+      {
+        "engine": 3.8,
+        "total_cost": 56000
+      },
+      {
+        "engine": 4.1,
+        "total_cost": 90000
+      },
+      {
+        "engine": 4.4,
+        "total_cost": 126000
+      }
+    ]
+  },
+  {
+    "name": "Uranus",
+    "engine_levels": [
+      {
+        "engine": 1.9,
+        "total_cost": 10000
+      },
+      {
+        "engine": 2.0,
+        "total_cost": 22000
+      },
+      {
+        "engine": 2.1,
+        "total_cost": 34000
+      },
+      {
+        "engine": 2.2,
+        "total_cost": 48000
+      }
+    ]
+  },
+  {
+    "name": "Vincent",
+    "engine_levels": [
+      {
+        "engine": 1.6,
+        "total_cost": 8000
+      },
+      {
+        "engine": 1.7,
+        "total_cost": 16000
+      },
+      {
+        "engine": 1.8,
+        "total_cost": 26000
+      },
+      {
+        "engine": 1.9,
+        "total_cost": 36000
+      }
+    ]
+  },
+  {
+    "name": "Virgo",
+    "engine_levels": [
+      {
+        "engine": 1.6,
+        "total_cost": 8000
+      },
+      {
+        "engine": 1.7,
+        "total_cost": 16000
+      },
+      {
+        "engine": 1.8,
+        "total_cost": 26000
+      },
+      {
+        "engine": 1.9,
+        "total_cost": 36000
+      }
+    ]
+  },
+  {
+    "name": "Voodoo",
+    "engine_levels": [
+      {
+        "engine": 2.4,
+        "total_cost": 14000
+      },
+      {
+        "engine": 2.6,
+        "total_cost": 30000
+      },
+      {
+        "engine": 2.8,
+        "total_cost": 48000
+      },
+      {
+        "engine": 3.0,
+        "total_cost": 68000
+      }
+    ]
+  },
+  {
+    "name": "Walton",
+    "engine_levels": [
+      {
+        "engine": 1.2,
+        "total_cost": 6000
+      },
+      {
+        "engine": 1.3,
+        "total_cost": 12000
+      },
+      {
+        "engine": 1.4,
+        "total_cost": 18000
+      },
+      {
+        "engine": 1.5,
+        "total_cost": 26000
+      }
+    ]
+  },
+  {
+    "name": "Washington",
+    "engine_levels": [
+      {
+        "engine": 2.0,
+        "total_cost": 12000
+      },
+      {
+        "engine": 2.1,
+        "total_cost": 24000
+      },
+      {
+        "engine": 2.2,
+        "total_cost": 38000
+      },
+      {
+        "engine": 2.3,
+        "total_cost": 52000
+      }
+    ]
+  },
+  {
+    "name": "Wayfarer",
+    "engine_levels": [
+      {
+        "engine": 1.5,
+        "total_cost": 8000
+      },
+      {
+        "engine": 1.6,
+        "total_cost": 16000
+      },
+      {
+        "engine": 1.7,
+        "total_cost": 24000
+      },
+      {
+        "engine": 1.8,
+        "total_cost": 34000
+      }
+    ]
+  },
+  {
+    "name": "Willard",
+    "engine_levels": [
+      {
+        "engine": 1.6,
+        "total_cost": 8000
+      },
+      {
+        "engine": 1.7,
+        "total_cost": 16000
+      },
+      {
+        "engine": 1.8,
+        "total_cost": 26000
+      },
+      {
+        "engine": 1.9,
+        "total_cost": 36000
+      }
+    ]
+  },
+  {
+    "name": "Willard Kombi",
+    "engine_levels": [
+      {
+        "engine": 1.6,
+        "total_cost": 8000
+      },
+      {
+        "engine": 1.7,
+        "total_cost": 16000
+      },
+      {
+        "engine": 1.8,
+        "total_cost": 26000
+      },
+      {
+        "engine": 1.9,
+        "total_cost": 36000
+      }
+    ]
+  },
+  {
+    "name": "Windsor",
+    "engine_levels": [
+      {
+        "engine": 3.5,
+        "total_cost": 26000
+      },
+      {
+        "engine": 3.8,
+        "total_cost": 56000
+      },
+      {
+        "engine": 4.1,
+        "total_cost": 90000
+      },
+      {
+        "engine": 4.4,
+        "total_cost": 126000
+      }
+    ]
+  },
+  {
+    "name": "Yankee",
+    "engine_levels": [
+      {
+        "engine": 1.2,
+        "total_cost": 6000
+      },
+      {
+        "engine": 1.3,
+        "total_cost": 12000
+      },
+      {
+        "engine": 1.4,
+        "total_cost": 18000
+      },
+      {
+        "engine": 1.5,
+        "total_cost": 26000
+      }
+    ]
+  },
+  {
+    "name": "Yosemite",
+    "engine_levels": [
+      {
+        "engine": 2.7,
+        "total_cost": 18000
+      },
+      {
+        "engine": 2.9,
+        "total_cost": 38000
+      },
+      {
+        "engine": 3.1,
+        "total_cost": 60000
+      },
+      {
+        "engine": 3.3,
+        "total_cost": 84000
+      }
+    ]
+  },
+  {
+    "name": "ZR-350",
+    "engine_levels": [
+      {
+        "engine": 3.1,
+        "total_cost": 22000
+      },
+      {
+        "engine": 3.3,
+        "total_cost": 46000
+      },
+      {
+        "engine": 3.5,
+        "total_cost": 72000
+      },
+      {
+        "engine": 3.7,
+        "total_cost": 100000
+      }
+    ]
+  }
+]

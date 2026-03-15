@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulator Pojazdu</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #262626;
+    --bg2: #1e1e1e;
+    --bg3: #2f2f2f;
+    --gold: #CFA33E;
+    --gold-dim: #9a7820;
+    --gold-light: #e8c464;
+    --text: #d4d4d4;
+    --text-dim: #888;
+    --border: #3a3a3a;
+    --border-gold: rgba(207,163,62,0.3);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Barlow', sans-serif; font-size: 17px; min-height: 100vh; }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, #1a1a1a 0%, #222 50%, #1a1a1a 100%);
+    border-bottom: 2px solid var(--gold);
+    padding: 16px 28px;
+    display: flex; align-items: center; gap: 14px;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.6);
+  }
+  .logo-icon { width: 40px; height: 40px; background: var(--gold); clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%); display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+  .logo-inner { width: 22px; height: 22px; background: var(--bg); clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%); }
+  header h1 { font-family:'Barlow Condensed',sans-serif; font-size:19px; font-weight:700; color:var(--gold); letter-spacing:3px; text-transform:uppercase; }
+  header p { font-size:11px; color:var(--text-dim); letter-spacing:1px; }
+
+  /* LOADING */
+  #loading-overlay {
+    position:fixed;inset:0;background:rgba(22,22,22,0.97);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    z-index:9999;gap:14px;transition:opacity 0.4s;
+  }
+  #loading-overlay.hidden { opacity:0; pointer-events:none; }
+  .loading-spinner { width:44px;height:44px;border:3px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin 0.8s linear infinite; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  .loading-text { font-family:'Barlow Condensed',sans-serif;font-size:13px;color:var(--gold);letter-spacing:3px; }
+  .loading-error { color:#e74c3c;font-size:13px;text-align:center;max-width:440px;line-height:1.5;white-space:pre-line; }
+
+  /* MAIN LAYOUT */
+  .main-layout {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    max-width:1600px;
+    margin:0 auto;
+    padding:14px 14px 60px;
+    align-items:start;
+  }
+  .full-width { grid-column: 1 / -1; }
+
+  /* SECTION */
+  .section {
+    background:var(--bg2); border:1px solid var(--border); border-radius:4px;
+    overflow:visible; animation:fadeUp 0.3s ease both;
+  }
+  .section.active { border-color:var(--border-gold); }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+  .section-header {
+    display:flex;align-items:center;padding:10px 14px;
+    background:var(--bg3);border-bottom:1px solid var(--border);gap:10px;user-select:none;
+  }
+  .section-num {
+    width:24px;height:24px;background:var(--gold);color:var(--bg);
+    font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+    clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);flex-shrink:0;
+  }
+  .section-title { font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:1.5px;color:var(--gold-light);text-transform:uppercase;flex:1; }
+  .section-badge { font-size:12px;color:var(--text-dim);font-weight:500; }
+  .section-body { padding:14px; }
+
+  /* FORM */
+  label.field-label { display:block;font-size:12px;font-weight:700;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px; }
+  select {
+    width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:3px;
+    color:var(--text);font-family:'Barlow',sans-serif;font-size:15px;font-weight:500;
+    padding:9px 32px 9px 12px;outline:none;appearance:none;-webkit-appearance:none;cursor:pointer;
+    transition:border-color 0.2s;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23CFA33E' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 12px center;
+  }
+  select:focus { border-color:var(--gold); background-color:#333; }
+  select option { background:#222;color:var(--text); font-size:15px; }
+  .grid-2 { display:grid;grid-template-columns:1fr 1fr;gap:10px; }
+  .grid-3 { display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px; }
+  .grid-4 { display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px; }
+  .form-group { margin-bottom:10px; }
+  .form-group:last-child { margin-bottom:0; }
+
+  /* SLIDER */
+  .slider-row {
+    display:flex;align-items:center;gap:10px;padding:8px 12px;
+    background:rgba(207,163,62,0.05);border:1px solid var(--border-gold);
+    border-radius:3px;margin-bottom:12px;
+  }
+  .slider-label { font-size:10px;font-weight:600;color:var(--gold-dim);text-transform:uppercase;letter-spacing:1px;white-space:nowrap;flex-shrink:0; }
+  input[type="range"] {
+    flex:1;-webkit-appearance:none;appearance:none;height:4px;
+    background:linear-gradient(to right,var(--gold) 0%,var(--gold) 50%,var(--border) 50%,var(--border) 100%);
+    border-radius:2px;outline:none;cursor:pointer;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance:none;width:14px;height:14px;background:var(--gold);
+    border-radius:50%;cursor:pointer;box-shadow:0 0 6px rgba(207,163,62,0.5);
+  }
+  .slider-val { font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;color:var(--gold);min-width:36px;text-align:right; }
+
+  /* CHECKBOX */
+  .checkbox-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:5px; }
+  .checkbox-item {
+    display:flex;align-items:center;gap:7px;padding:7px 10px;
+    background:var(--bg3);border:1px solid var(--border);border-radius:3px;cursor:pointer;
+    transition:border-color 0.15s,background 0.15s;user-select:none;
+  }
+  .checkbox-item:hover { border-color:var(--gold-dim);background:#333; }
+  .checkbox-item input[type="checkbox"] {
+    width:14px;height:14px;appearance:none;-webkit-appearance:none;
+    background:var(--bg);border:2px solid var(--border);border-radius:2px;
+    flex-shrink:0;cursor:pointer;position:relative;transition:background 0.15s,border-color 0.15s;
+  }
+  .checkbox-item input[type="checkbox"]:checked { background:var(--gold);border-color:var(--gold); }
+  .checkbox-item input[type="checkbox"]:checked::after {
+    content:'';position:absolute;left:2px;top:-1px;width:5px;height:8px;
+    border:2px solid var(--bg);border-top:none;border-left:none;transform:rotate(45deg);
+  }
+  .cb-label { font-size:14px;font-weight:500;color:var(--text);flex:1;cursor:pointer; }
+  .checkbox-price { font-size:13px;color:var(--gold-dim);font-weight:600;white-space:nowrap; }
+  .checkbox-item:has(input:checked) { border-color:var(--gold);background:rgba(207,163,62,0.08); }
+
+  /* KEY QUANTITY */
+  .key-row {
+    display:flex;align-items:center;gap:10px;padding:9px 12px;
+    background:var(--bg3);border:1px solid var(--border);border-radius:3px;
+  }
+  .key-qty-wrap { display:flex;align-items:center;gap:5px; flex-shrink:0; }
+  .key-qty-btn {
+    width:26px;height:26px;background:var(--bg);border:1px solid var(--border);
+    color:var(--gold);font-size:16px;font-weight:700;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;border-radius:2px;
+    transition:background 0.15s,border-color 0.15s;user-select:none;flex-shrink:0;
+  }
+  .key-qty-btn:hover { background:var(--bg3);border-color:var(--gold); }
+  .key-qty-display { font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--gold);width:22px;text-align:center; }
+  .key-total-fixed { font-size:13px;color:var(--gold-dim);font-weight:600;white-space:nowrap;min-width:90px;text-align:right;flex-shrink:0; }
+
+  /* COLOR PREVIEW SWATCH (next to select) */
+  .select-with-preview { display:flex;align-items:center;gap:8px; }
+  .select-with-preview select { flex:1; }
+  .preview-swatch {
+    width:28px;height:28px;border-radius:3px;border:1px solid var(--border);
+    flex-shrink:0;transition:background 0.2s,box-shadow 0.2s;background:var(--bg3);
+  }
+
+  /* CUSTOM COLOR DROPDOWN */
+  .color-select-wrap { position:relative; }
+  .color-select-trigger {
+    display:flex;align-items:center;gap:8px;
+    width:100%;padding:9px 32px 9px 10px;
+    background:var(--bg3);border:1px solid var(--border);border-radius:3px;
+    cursor:pointer;user-select:none;position:relative;
+    transition:border-color 0.2s;
+  }
+  .color-select-trigger:hover, .color-select-wrap.open .color-select-trigger { border-color:var(--gold); }
+  .color-select-trigger::after {
+    content:'';position:absolute;right:12px;top:50%;transform:translateY(-50%);
+    width:12px;height:8px;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23CFA33E' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center;
+  }
+  .color-dot { width:14px;height:14px;border-radius:50%;border:1px solid rgba(255,255,255,0.15);flex-shrink:0; }
+  .color-trigger-text { font-family:'Barlow',sans-serif;font-size:15px;font-weight:500;flex:1; }
+  .color-dropdown {
+    display:none;position:absolute;top:calc(100% + 4px);bottom:auto;left:0;right:0;
+    background:#1a1a1a;border:1px solid var(--gold);border-radius:3px;
+    z-index:1000;max-height:260px;overflow-y:auto;
+    box-shadow:0 8px 32px rgba(0,0,0,0.8);
+  }
+  .color-select-wrap.open .color-dropdown { display:block; }
+  .color-option {
+    display:flex;align-items:center;gap:9px;padding:8px 12px;cursor:pointer;
+    transition:background 0.1s;
+  }
+  .color-option:hover { background:#2a2a2a; }
+  .color-option.selected { background:rgba(207,163,62,0.12); }
+  .color-option-text { font-family:'Barlow',sans-serif;font-size:14px;font-weight:500;flex:1;color:var(--text); }
+  .color-option-price { font-size:12px;color:var(--gold-dim);font-weight:600;white-space:nowrap; }
+  /* scrollbar for dropdown */
+  .color-dropdown::-webkit-scrollbar { width:5px; }
+  .color-dropdown::-webkit-scrollbar-track { background:transparent; }
+  .color-dropdown::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+
+  /* DIVIDER */
+  .divider { border:none;border-top:1px solid var(--border);margin:12px 0; }
+  .subsection-title { font-size:11px;font-weight:700;color:var(--gold-dim);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--border); }
+
+  /* BUTTON */
+  .calc-btn-wrap { text-align:center;margin:18px 0 8px; }
+  #calcBtn {
+    font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;letter-spacing:4px;text-transform:uppercase;
+    color:var(--bg);background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 50%,var(--gold) 100%);
+    border:none;padding:14px 52px;
+    clip-path:polygon(12px 0%,calc(100% - 12px) 0%,100% 50%,calc(100% - 12px) 100%,12px 100%,0% 50%);
+    cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;
+    box-shadow:0 4px 20px rgba(207,163,62,0.3);
+  }
+  #calcBtn:hover { transform:translateY(-2px);box-shadow:0 8px 30px rgba(207,163,62,0.5); }
+  #calcBtn:active { transform:translateY(0); }
+
+  /* RESULTS */
+  #results { display:none;background:var(--bg2);border:1px solid var(--gold);border-radius:4px;overflow:hidden;box-shadow:0 0 40px rgba(207,163,62,0.15);animation:fadeUp 0.4s ease both; }
+  .results-header { background:linear-gradient(135deg,#1a1a1a,#222);padding:13px 18px;border-bottom:1px solid var(--gold);display:flex;align-items:center;gap:10px; }
+  .results-header h2 { font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:3px;color:var(--gold); }
+  .results-body { padding:14px 18px; }
+  .result-row { display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);gap:14px; }
+  .result-row:last-child { border-bottom:none; }
+  .result-name { font-size:13px;color:var(--text-dim);font-weight:500; }
+  .result-detail { font-size:11px;color:#666;margin-top:1px; }
+  .result-price { font-size:14px;font-weight:700;color:var(--text);white-space:nowrap; }
+  .result-price.zero { color:#555; }
+  .result-row.total { padding-top:12px;margin-top:4px;border-bottom:none;border-top:2px solid var(--gold); }
+  .result-row.total .result-name { font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;color:var(--gold-light);letter-spacing:2px;text-transform:uppercase; }
+  .result-row.total .result-price { font-family:'Barlow Condensed',sans-serif;font-size:19px;color:var(--gold); }
+  .results-section-title {
+    font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;color:var(--gold-dim);
+    letter-spacing:2px;text-transform:uppercase;
+    padding:10px 0 6px;border-bottom:1px solid var(--border);margin-bottom:6px;
+  }
+  .summary-table { margin-bottom:4px; }
+  .summary-row .result-name { font-size:14px;font-weight:600;color:var(--text); }
+  .summary-row .result-price { font-size:15px;font-weight:700;color:var(--gold-light); }
+  .result-sec-name { font-size:14px;font-weight:600;color:var(--text); }
+  .results-sep { border-top:2px solid var(--border);margin:16px 0 10px; }
+  .result-group { margin-bottom:14px; }
+  .result-group-header {
+    display:flex;justify-content:space-between;align-items:center;
+    padding:7px 10px;background:rgba(207,163,62,0.07);
+    border-left:3px solid var(--gold);border-radius:0 3px 3px 0;
+    margin-bottom:3px;
+  }
+  .result-group-name { font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;color:var(--gold-light);letter-spacing:1px;text-transform:uppercase; }
+  .result-group-total { font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;color:var(--gold); }
+  .detail-row { padding-left:12px; }
+  .detail-row .result-name { font-size:13px;color:var(--text-dim); }
+  .tag-disabled { font-size:10px;background:rgba(255,255,255,0.06);color:#666;padding:2px 7px;border-radius:2px;letter-spacing:1px;text-transform:uppercase; }
+
+  @media(max-width:960px){
+    .main-layout{grid-template-columns:1fr;}
+    .full-width{grid-column:1;}
+    .grid-3,.grid-4{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:560px){
+    .grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div id="loading-overlay">
+  <div class="loading-spinner"></div>
+  <div class="loading-text">ŁADOWANIE DANYCH...</div>
+  <div id="loading-error" class="loading-error" style="display:none"></div>
+</div>
+
+<header>
+  <div class="logo-icon"><div class="logo-inner"></div></div>
+  <div>
+    <h1>Kalkulator Pojazdu</h1>
+    <p>Wycena pojazdu wraz z tuningiem i ulepszeniami</p>
+  </div>
+</header>
+
+<div class="main-layout">
+
+  <!-- 1 SALON | 2 SILNIK -->
+  <div class="section active" id="sec-salon">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">Salon Samochodowy</div>
+      <span class="section-badge">cena stała 100%</span>
+    </div>
+    <div class="section-body">
+      <div class="form-group">
+        <label class="field-label">Salon</label>
+        <select id="sel-salon" onchange="onSalonChange()"><option value="">— wybierz salon —</option></select>
+      </div>
+      <div class="form-group">
+        <label class="field-label">Pojazd</label>
+        <select id="sel-vehicle" onchange="onVehicleChange()"><option value="">— najpierw wybierz salon —</option></select>
+      </div>
+      <div id="vehicle-info" class="notice" style="display:none"></div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-engine">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">Ulepszenie Silnika</div>
+      <span class="section-badge" id="badge-engine">opcjonalne</span>
+    </div>
+    <div class="section-body">
+      <div class="slider-row">
+        <span class="slider-label">Wartość sekcji</span>
+        <input type="range" min="0" max="100" value="50" id="slider-engine">
+        <span class="slider-val" id="sval-engine">50%</span>
+      </div>
+      <div class="form-group">
+        <label class="field-label">Poziom silnika</label>
+        <select id="sel-engine"><option value="">— najpierw wybierz pojazd —</option></select>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 WARIANT | 7 WULKANIZACJA -->
+  <div class="section" id="sec-variant">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title">Wariant Pojazdu</div>
+      <span class="section-badge" id="badge-variant">opcjonalne</span>
+    </div>
+    <div class="section-body">
+      <div class="slider-row">
+        <span class="slider-label">Wartość sekcji</span>
+        <input type="range" min="0" max="100" value="50" id="slider-variant">
+        <span class="slider-val" id="sval-variant">50%</span>
+      </div>
+      <div class="form-group">
+        <label class="field-label">Wariant</label>
+        <select id="sel-variant"><option value="">— brak wariantów —</option></select>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-wulk">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <div class="section-title">Wulkanizacja</div>
+      <span id="badge-wulk" class="section-badge">opcjonalne</span>
+    </div>
+    <div class="section-body">
+      <div class="slider-row">
+        <span class="slider-label">Wartość sekcji</span>
+        <input type="range" min="0" max="100" value="50" id="slider-wulk">
+        <span class="slider-val" id="sval-wulk">50%</span>
+      </div>
+      <div id="wulk-content"></div>
+    </div>
+  </div>
+
+  <!-- 4 MECHANICZNY — full width -->
+  <div class="section full-width" id="sec-mech">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title">Tuning Mechaniczny</div>
+      <span id="badge-mech" class="section-badge">opcjonalne</span>
+    </div>
+    <div class="section-body">
+      <div class="slider-row">
+        <span class="slider-label">Wartość sekcji</span>
+        <input type="range" min="0" max="100" value="50" id="slider-mech">
+        <span class="slider-val" id="sval-mech">50%</span>
+      </div>
+      <div id="mech-content"></div>
+    </div>
+  </div>
+
+  <!-- 5 WIZUALNY — full width -->
+  <div class="section full-width" id="sec-visual">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div class="section-title">Tuning Wizualny</div>
+      <span id="badge-visual" class="section-badge">opcjonalne</span>
+    </div>
+    <div class="section-body">
+      <div class="slider-row">
+        <span class="slider-label">Wartość sekcji</span>
+        <input type="range" min="0" max="100" value="50" id="slider-visual">
+        <span class="slider-val" id="sval-visual">50%</span>
+      </div>
+      <div id="visual-content"></div>
+    </div>
+  </div>
+
+  <!-- 6 KOMPONENTY — full width -->
+  <div class="section full-width" id="sec-komp">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div class="section-title">Komponenty</div>
+      <span id="badge-komp" class="section-badge">opcjonalne</span>
+    </div>
+    <div class="section-body">
+      <div class="slider-row">
+        <span class="slider-label">Wartość sekcji</span>
+        <input type="range" min="0" max="100" value="50" id="slider-komp">
+        <span class="slider-val" id="sval-komp">50%</span>
+      </div>
+      <div id="komp-content"></div>
+    </div>
+  </div>
+
+  <!-- ZESTAW | LPG -->
+  <div class="section" id="sec-zestaw">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <div class="section-title">Zestaw</div>
+      <span id="badge-zestaw" class="section-badge">opcjonalne</span>
+    </div>
+    <div class="section-body">
+      <div class="slider-row">
+        <span class="slider-label">Wartość sekcji</span>
+        <input type="range" min="0" max="100" value="50" id="slider-zestaw">
+        <span class="slider-val" id="sval-zestaw">50%</span>
+      </div>
+      <div class="form-group">
+        <label class="field-label">Zestaw</label>
+        <select id="sel-zestaw"><option value="">— brak —</option></select>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-lpg">
+    <div class="section-header">
+      <div class="section-num">9</div>
+      <div class="section-title">LPG</div>
+      <span id="badge-lpg" class="section-badge">opcjonalne</span>
+    </div>
+    <div class="section-body">
+      <div class="slider-row">
+        <span class="slider-label">Wartość sekcji</span>
+        <input type="range" min="0" max="100" value="50" id="slider-lpg">
+        <span class="slider-val" id="sval-lpg">50%</span>
+      </div>
+      <div class="form-group">
+        <label class="field-label">Zbiornik LPG</label>
+        <select id="sel-lpg"><option value="">— brak —</option></select>
+      </div>
+    </div>
+  </div>
+
+  <!-- CFI full width -->
+  <div class="section full-width" id="sec-cfi">
+    <div class="section-header">
+      <div class="section-num">10</div>
+      <div class="section-title">CFI</div>
+      <span id="badge-cfi" class="section-badge">opcjonalne</span>
+    </div>
+    <div class="section-body">
+      <div class="slider-row">
+        <span class="slider-label">Wartość sekcji</span>
+        <input type="range" min="0" max="100" value="50" id="slider-cfi">
+        <span class="slider-val" id="sval-cfi">50%</span>
+      </div>
+      <div class="form-group">
+        <label class="field-label">CFI</label>
+        <select id="sel-cfi"><option value="">— brak —</option></select>
+      </div>
+    </div>
+  </div>
+
+  <!-- LICZNIK | LAMPY -->
+  <div class="section" id="sec-licznik">
+    <div class="section-header">
+      <div class="section-num">11</div>
+      <div class="section-title">Licznik</div>
+      <span id="badge-licznik" class="section-badge">opcjonalne</span>
+    </div>
+    <div class="section-body">
+      <div class="slider-row">
+        <span class="slider-label">Wartość sekcji</span>
+        <input type="range" min="0" max="100" value="50" id="slider-licznik">
+        <span class="slider-val" id="sval-licznik">50%</span>
+      </div>
+      <div class="form-group" id="licznik-content"></div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-lampy">
+    <div class="section-header">
+      <div class="section-num">12</div>
+      <div class="section-title">Lampy</div>
+      <span id="badge-lampy" class="section-badge">opcjonalne</span>
+    </div>
+    <div class="section-body">
+      <div class="slider-row">
+        <span class="slider-label">Wartość sekcji</span>
+        <input type="range" min="0" max="100" value="50" id="slider-lampy">
+        <span class="slider-val" id="sval-lampy">50%</span>
+      </div>
+      <div class="form-group" id="lampy-content"></div>
+    </div>
+  </div>
+
+  <!-- CALCULATE + RESULTS -->
+  <div class="full-width">
+    <div class="calc-btn-wrap">
+      <button id="calcBtn" onclick="calculate()">&#9670; POLICZ &#9670;</button>
+    </div>
+    <div id="results">
+      <div class="results-header">
+        <div class="section-num" style="width:28px;height:28px">&#9670;</div>
+        <h2>WYNIKI WYCENY</h2>
+      </div>
+      <div class="results-body" id="results-body"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ─── DATA loaded from JSON files in same directory ───
+let SALONY=[], SILNIKI=[], WARIANTY=[], MECHANICZNY={}, WIZUALNY=[], KOMPONENTY={}, WULKANIZACJA={}, FELGI=[];
+
+const CAT_NAMES = {
+  spoilers:'Spojlery', side_skirts:'Progi boczne', exhausts:'Wydechy',
+  front_bumpers:'Zderzaki przednie', rear_bumpers:'Zderzaki tylne',
+  roofs:'Dachy', hoods:'Maski', tail_lights:'Tylne światła',
+  headlights:'Przednie światła', fog_lights:'Światła p-mgielne', vents:'Kratki wentylacyjne'
+};
+
+// RGB map for headlight colors that don't exist in gauge_backlight data
+const EXTRA_RGB = {
+  xenon:[200,220,255], oldtimer:[255,210,100], limonka:[147,246,0]
+};
+
+async function loadJSON(f) {
+  const r = await fetch(f);
+  if (!r.ok) throw new Error(`${f} (HTTP ${r.status})`);
+  return r.json();
+}
+
+async function initData() {
+  try {
+    [SALONY, SILNIKI, WARIANTY, MECHANICZNY, WIZUALNY, KOMPONENTY, WULKANIZACJA, FELGI] = await Promise.all([
+      loadJSON('ceny-salonowe.json'), loadJSON('ulepszenia-silnikow.json'),
+      loadJSON('warianty.json'), loadJSON('mechaniczny.json'),
+      loadJSON('wizualny.json'), loadJSON('komponenty.json'), loadJSON('wulkanizacja.json'),
+      loadJSON('felgi.json'),
+    ]);
+
+    // Salon select
+    const ss = document.getElementById('sel-salon');
+    SALONY.forEach(s => ss.appendChild(new Option(s.dealership, s.dealership)));
+
+    // Sliders
+    ['engine','variant','mech','visual','komp','wulk','zestaw','lpg','cfi','licznik','lampy'].forEach(id => {
+      const sl = document.getElementById('slider-'+id);
+      const lbl = document.getElementById('sval-'+id);
+      if (!sl) return;
+      const upd = () => {
+        lbl.textContent = sl.value+'%';
+        sl.style.background = `linear-gradient(to right,var(--gold) 0%,var(--gold) ${sl.value}%,var(--border) ${sl.value}%,var(--border) 100%)`;
+      };
+      sl.addEventListener('input', upd); upd();
+    });
+
+    document.getElementById('loading-overlay').classList.add('hidden');
+    setTimeout(() => document.getElementById('loading-overlay').remove(), 500);
+  } catch(e) {
+    const el = document.getElementById('loading-error');
+    el.style.display = 'block';
+    el.textContent = 'Błąd wczytywania danych:\n' + e.message + '\n\nUpewnij się że pliki JSON są w tym samym katalogu co kalkulator.html';
+  }
+}
+initData();
+
+let currentDealership=null, currentVehicle=null, keyCount=0;
+const isHeli=()=>currentDealership==='Helikopterów';
+const isBoat=()=>currentDealership==='Łodzi';
+const isMoto=()=>currentDealership==='Motocyklowy';
+const isLand=()=>!isHeli()&&!isBoat();
+
+function onSalonChange() {
+  currentDealership = document.getElementById('sel-salon').value;
+  currentVehicle = null;
+  const vSel = document.getElementById('sel-vehicle');
+  vSel.innerHTML = '<option value="">— wybierz pojazd —</option>';
+  document.getElementById('vehicle-info').style.display = 'none';
+  if (!currentDealership) return;
+  const salon = SALONY.find(s => s.dealership === currentDealership);
+  if (salon) salon.vehicles.forEach((v,i) => {
+    const engStr = v.engine!==null ? ` (${v.engine}L)` : '';
+    vSel.appendChild(new Option(`${v.name}${engStr} — ${fmt(v.price)}`, i));
+  });
+  resetSections();
+}
+
+function onVehicleChange() {
+  const idx = document.getElementById('sel-vehicle').value;
+  if (idx==='') { currentVehicle=null; resetSections(); return; }
+  const salon = SALONY.find(s=>s.dealership===currentDealership);
+  currentVehicle = salon.vehicles[parseInt(idx)];
+  const info = document.getElementById('vehicle-info');
+  info.style.display = 'block';
+  info.textContent = `Model ID: ${currentVehicle.model} | Cena: ${fmt(currentVehicle.price)}${currentVehicle.engine!==null?` | Silnik: ${currentVehicle.engine}L`:''}`;
+  updateEngine(); updateVariant(); updateMech(); updateVisual(); updateKomp(); updateWulk();
+  updateZestaw(); updateLpg(); updateCfi(); updateLicznik(); updateLampy();
+}
+
+function resetSections() {
+  document.getElementById('sel-engine').innerHTML = '<option value="">— najpierw wybierz pojazd —</option>';
+  document.getElementById('sel-variant').innerHTML = '<option value="">— brak wariantów —</option>';
+  document.getElementById('sel-zestaw').innerHTML = '<option value="">— brak —</option>';
+  document.getElementById('sel-lpg').innerHTML = '<option value="">— brak —</option>';
+  document.getElementById('sel-cfi').innerHTML = '<option value="">— brak —</option>';
+  ['mech-content','visual-content','komp-content','wulk-content','licznik-content','lampy-content'].forEach(id => { const el=document.getElementById(id); if(el) el.innerHTML=''; });
+  ['engine','variant','mech','visual','komp','wulk','zestaw','lpg','cfi','licznik','lampy'].forEach(id => document.getElementById('sec-'+id).classList.remove('active'));
+}
+
+function updateEngine() {
+  const sec=document.getElementById('sec-engine'), sel=document.getElementById('sel-engine');
+  sel.innerHTML = '<option value="">— brak ulepszenia —</option>';
+  const found = SILNIKI.find(s=>s.name===currentVehicle.name);
+  if (!found) { sec.classList.remove('active'); document.getElementById('badge-engine').textContent='brak'; return; }
+  sec.classList.add('active'); document.getElementById('badge-engine').textContent='opcjonalne';
+  found.engine_levels.forEach((lvl,i) => sel.appendChild(new Option(`${lvl.engine}L — ${fmt(lvl.total_cost)}`, i)));
+}
+
+function updateVariant() {
+  const sec=document.getElementById('sec-variant'), sel=document.getElementById('sel-variant');
+  sel.innerHTML = '<option value="">— brak wyboru —</option>';
+  const found = WARIANTY.find(w=>w.name===currentVehicle.name||
+    (currentVehicle.name==='Regina'&&w.name==='Regina / Regina Sedan')||
+    (currentVehicle.name==='Regina Sedan'&&w.name==='Regina / Regina Sedan'));
+  if (!found) { sec.classList.remove('active'); document.getElementById('badge-variant').textContent='brak'; return; }
+  sec.classList.add('active'); document.getElementById('badge-variant').textContent='opcjonalne';
+  found.wariants.forEach((w,i) => sel.appendChild(new Option(`${w.name} — ${fmt(w.price)}`, i)));
+}
+
+function updateMech() {
+  const sec=document.getElementById('sec-mech'), c=document.getElementById('mech-content');
+  c.innerHTML='';
+  if (!isLand()) { sec.classList.remove('active'); document.getElementById('badge-mech').innerHTML='<span class="tag-disabled">niedostępne</span>'; return; }
+  sec.classList.add('active'); document.getElementById('badge-mech').textContent='opcjonalne';
+
+  const cols = [
+    {key:'ecu',label:'ECU',data:MECHANICZNY.ecu,fmt:e=>`${e.version} — ${fmt(e.price)}`},
+    {key:'turbo',label:'Turbo',data:MECHANICZNY.turbo,fmt:e=>`${e.version} — ${fmt(e.price)}`},
+    {key:'drivetrain',label:'Napęd',data:MECHANICZNY.drivetrain,fmt:e=>`${e.type} — ${fmt(e.price)}`},
+    {key:'fuel_tank',label:'Zbiornik',data:MECHANICZNY.fuel_tank,fmt:e=>`${e.capacity_l}L — ${fmt(e.price)}`},
+  ];
+  const grid = mkEl('div','grid-4');
+  cols.forEach(s=>{
+    const fg=mkEl('div','form-group');
+    fg.innerHTML=`<label class="field-label">${s.label}</label>
+      <select id="mech-${s.key}"><option value="">— brak —</option>
+      ${s.data.map((e,i)=>`<option value="${i}">${s.fmt(e)}</option>`).join('')}</select>`;
+    grid.appendChild(fg);
+  });
+  c.appendChild(grid);
+  const hr=mkEl('hr','divider'); c.appendChild(hr);
+  const st=mkEl('div','subsection-title'); st.textContent='Wyposażenie dodatkowe'; c.appendChild(st);
+  const cbg=mkEl('div','checkbox-grid');
+  MECHANICZNY.misc.forEach((item,i)=>{
+    const lbl=mkEl('label','checkbox-item');
+    lbl.innerHTML=`<input type="checkbox" id="misc-${i}"><span class="cb-label">${item.name}</span><span class="checkbox-price">${fmt(item.price)}</span>`;
+    cbg.appendChild(lbl);
+  });
+  c.appendChild(cbg);
+}
+
+function updateVisual() {
+  const sec=document.getElementById('sec-visual'), c=document.getElementById('visual-content');
+  c.innerHTML='';
+  if (!isLand()||isMoto()) { sec.classList.remove('active'); document.getElementById('badge-visual').innerHTML='<span class="tag-disabled">niedostępne</span>'; return; }
+  sec.classList.add('active'); document.getElementById('badge-visual').textContent='opcjonalne';
+  const grid=mkEl('div','grid-4');
+  WIZUALNY.forEach(cat=>{
+    const fg=mkEl('div','form-group');
+    fg.innerHTML=`<label class="field-label">${CAT_NAMES[cat.category]||cat.category}</label>
+      <select id="vis-${cat.category}"><option value="">— brak —</option>
+      ${cat.parts.map((p,i)=>`<option value="${i}">ID ${p.id} — ${p.price!==null?fmt(p.price):'bezpłatny'}</option>`).join('')}</select>`;
+    grid.appendChild(fg);
+  });
+  // Felgi
+  const fgFelgi=mkEl('div','form-group');
+  fgFelgi.innerHTML=`<label class="field-label">Felgi</label>
+    <select id="vis-felgi"><option value="">— brak —</option>
+    ${FELGI.map((f,i)=>`<option value="${i}">${f.name} — ${fmt(f.price)}</option>`).join('')}</select>`;
+  grid.appendChild(fgFelgi);
+  c.appendChild(grid);
+}
+
+function updateKomp() {
+  const sec=document.getElementById('sec-komp'), c=document.getElementById('komp-content');
+  c.innerHTML=''; keyCount=0;
+  if (!isLand()) { sec.classList.remove('active'); document.getElementById('badge-komp').innerHTML='<span class="tag-disabled">niedostępne</span>'; return; }
+  sec.classList.add('active'); document.getElementById('badge-komp').textContent='opcjonalne';
+
+  const topGrid=mkEl('div','grid-2');
+
+  // Key duplication with qty 0-6
+  const kw=mkEl('div','form-group');
+  kw.innerHTML=`<label class="field-label">Duplikat kluczyka (0–6 szt.) — ${fmt(KOMPONENTY.key_duplication.price)} / szt.</label>
+    <div class="key-row">
+      <span class="cb-label">Liczba kluczyków</span>
+      <div class="key-qty-wrap">
+        <button class="key-qty-btn" onclick="changeKey(-1)">−</button>
+        <span class="key-qty-display" id="key-display">0</span>
+        <button class="key-qty-btn" onclick="changeKey(1)">+</button>
+      </div>
+      <span class="key-total-fixed" id="key-total">0 $</span>
+    </div>`;
+  topGrid.appendChild(kw);
+
+  // Transport app - 3 options select
+  const aw=mkEl('div','form-group');
+  const appOpts = KOMPONENTY.transport_app.options
+    ? KOMPONENTY.transport_app.options
+    : [{name:'brak',price:0},{name:'Apka',price:15000},{name:'Apka PRO',price:30000}];
+  aw.innerHTML=`<label class="field-label">Aplikacja transportowa <small style="color:#555;text-transform:none;letter-spacing:0">(pojazdy 4-osobowe)</small></label>
+    <select id="komp-app">
+      ${appOpts.map((o,i)=>`<option value="${i}">${o.name}${o.price>0?' — '+fmt(o.price):''}</option>`).join('')}
+    </select>`;
+  topGrid.appendChild(aw);
+  c.appendChild(topGrid);
+
+  const hr=mkEl('hr','divider'); c.appendChild(hr);
+  const botGrid=mkEl('div','grid-3');
+
+  // Window tint
+  const tw=mkEl('div','form-group');
+  tw.innerHTML=`<label class="field-label">Przyciemnienie szyb</label>
+    <select id="komp-tint"><option value="">— brak —</option>
+    ${KOMPONENTY.window_tint.options.map((o,i)=>`<option value="${i}">${o.percent}%${o.percent>KOMPONENTY.window_tint.illegal_above_percent?' ⚠ nielegalne':''} — ${fmt(o.price)}</option>`).join('')}
+    </select>`;
+  botGrid.appendChild(tw);
+  c.appendChild(botGrid);
+}
+
+function updateZestaw() {
+  const sec=document.getElementById('sec-zestaw'), sel=document.getElementById('sel-zestaw');
+  sel.innerHTML='<option value="">— brak —</option>';
+  if (!isLand()) { sec.classList.remove('active'); document.getElementById('badge-zestaw').innerHTML='<span class="tag-disabled">niedostępne</span>'; return; }
+  sec.classList.add('active'); document.getElementById('badge-zestaw').textContent='opcjonalne';
+  (MECHANICZNY.zestaw||[]).forEach((e,i)=>sel.appendChild(new Option(`${e.name} — ${fmt(e.price)}`,i)));
+}
+
+function updateLpg() {
+  const sec=document.getElementById('sec-lpg'), sel=document.getElementById('sel-lpg');
+  sel.innerHTML='<option value="">— brak —</option>';
+  if (!isLand()) { sec.classList.remove('active'); document.getElementById('badge-lpg').innerHTML='<span class="tag-disabled">niedostępne</span>'; return; }
+  sec.classList.add('active'); document.getElementById('badge-lpg').textContent='opcjonalne';
+  (MECHANICZNY.lpg||[]).forEach((e,i)=>sel.appendChild(new Option(`${e.capacity_l}L — ${fmt(e.price)}`,i)));
+}
+
+function updateCfi() {
+  const sec=document.getElementById('sec-cfi'), sel=document.getElementById('sel-cfi');
+  sel.innerHTML='<option value="">— brak —</option>';
+  if (!isLand()) { sec.classList.remove('active'); document.getElementById('badge-cfi').innerHTML='<span class="tag-disabled">niedostępne</span>'; return; }
+  sec.classList.add('active'); document.getElementById('badge-cfi').textContent='opcjonalne';
+  (MECHANICZNY.cfi||[]).forEach((e,i)=>sel.appendChild(new Option(`${e.version} — ${fmt(e.price)}`,i)));
+}
+
+function buildColorDropdown(wrapId, hiddenId, options, getRgb) {
+  return `<div class="color-select-wrap" id="${wrapId}">
+    <div class="color-select-trigger" onclick="toggleColorSelect('${wrapId}')" id="${wrapId}-trigger">
+      <span class="color-dot" id="${wrapId}-dot" style="background:#333"></span>
+      <span class="color-trigger-text" id="${wrapId}-text">— brak —</span>
+    </div>
+    <div class="color-dropdown" id="${wrapId}-dropdown">
+      <div class="color-option selected" data-val="" onclick="selectColor('${wrapId}','','— brak —',null,null)">
+        <span class="color-dot" style="background:#333;border-color:#555"></span>
+        <span class="color-option-text">— brak —</span>
+      </div>
+      ${options.map((o,i)=>{
+        const rgb=getRgb(o);
+        const bg=rgb?`rgb(${rgb.join(',')})`:'\#aaa';
+        const glow=rgb?`0 0 6px rgba(${rgb.join(',')},0.7)`:'none';
+        return `<div class="color-option" data-val="${i}" onclick="selectColor('${wrapId}','${i}','${o.name}','${bg}','${glow}')">
+          <span class="color-dot" style="background:${bg};box-shadow:${glow}"></span>
+          <span class="color-option-text">${o.name}</span>
+          <span class="color-option-price">${fmt(o.price)}</span>
+        </div>`;
+      }).join('')}
+    </div>
+  </div>
+  <input type="hidden" id="${hiddenId}" value="">`;
+}
+
+function updateLicznik() {
+  const sec=document.getElementById('sec-licznik'), c=document.getElementById('licznik-content');
+  c.innerHTML='';
+  if (!isLand()) { sec.classList.remove('active'); document.getElementById('badge-licznik').innerHTML='<span class="tag-disabled">niedostępne</span>'; return; }
+  sec.classList.add('active'); document.getElementById('badge-licznik').textContent='opcjonalne';
+  c.innerHTML=buildColorDropdown('gauge-wrap','komp-gauge',KOMPONENTY.gauge_backlight.options,
+    o=>o.rgb||null);
+}
+
+function updateLampy() {
+  const sec=document.getElementById('sec-lampy'), c=document.getElementById('lampy-content');
+  c.innerHTML='';
+  if (!isLand()) { sec.classList.remove('active'); document.getElementById('badge-lampy').innerHTML='<span class="tag-disabled">niedostępne</span>'; return; }
+  sec.classList.add('active'); document.getElementById('badge-lampy').textContent='opcjonalne';
+  const extraRgb={xenon:[200,220,255],oldtimer:[255,210,100],limonka:[147,246,0]};
+  c.innerHTML=buildColorDropdown('hl-wrap','komp-hl',KOMPONENTY.headlight_color.options, o=>{
+    const g=KOMPONENTY.gauge_backlight.options.find(x=>x.name===o.name);
+    return (g&&g.rgb)?g.rgb:(extraRgb[o.name]||null);
+  });
+}
+
+// ─── CUSTOM COLOR SELECT ───
+function toggleColorSelect(wrapId) {
+  const wrap = document.getElementById(wrapId);
+  const wasOpen = wrap.classList.contains('open');
+  document.querySelectorAll('.color-select-wrap.open').forEach(w => w.classList.remove('open'));
+  if (!wasOpen) {
+    wrap.classList.add('open');
+    const dropdown = wrap.querySelector('.color-dropdown');
+    dropdown.style.top = 'auto';
+    dropdown.style.bottom = 'calc(100% + 4px)';
+  }
+}
+
+function selectColor(wrapId, val, name, bg, glow) {
+  const wrap = document.getElementById(wrapId);
+  // update hidden input — id is set directly in buildColorDropdown as second arg
+  const hidden = wrap.parentElement.querySelector('input[type="hidden"]');
+  if (hidden) hidden.value = val;
+  // update trigger display — IDs are wrapId+"-dot" / wrapId+"-text"
+  const dot  = document.getElementById(wrapId+'-dot');
+  const text = document.getElementById(wrapId+'-text');
+  if (dot)  { dot.style.background = bg||'#333'; dot.style.boxShadow = glow||'none'; }
+  if (text) { text.style.color = (bg&&bg!=='null'&&bg!=='undefined') ? bg : 'var(--text)'; text.textContent = name; }
+  // mark selected
+  wrap.querySelectorAll('.color-option').forEach(opt => {
+    opt.classList.toggle('selected', opt.dataset.val === String(val));
+  });
+  wrap.classList.remove('open');
+}
+
+// Close dropdowns on outside click
+document.addEventListener('click', e => {
+  if (!e.target.closest('.color-select-wrap')) {
+    document.querySelectorAll('.color-select-wrap.open').forEach(w => w.classList.remove('open'));
+  }
+});
+
+function changeKey(d) {
+  keyCount = Math.max(0, Math.min(6, keyCount+d));
+  document.getElementById('key-display').textContent = keyCount;
+  document.getElementById('key-total').textContent = fmt(keyCount * KOMPONENTY.key_duplication.price);
+}
+
+function updateWulk() {
+  const sec=document.getElementById('sec-wulk'), c=document.getElementById('wulk-content');
+  c.innerHTML='';
+  if (!isLand()) { sec.classList.remove('active'); document.getElementById('badge-wulk').innerHTML='<span class="tag-disabled">niedostępne</span>'; return; }
+  sec.classList.add('active'); document.getElementById('badge-wulk').textContent='opcjonalne';
+  const grid=mkEl('div','grid-3');
+
+  const ws=mkEl('div','form-group');
+  ws.innerHTML=`<label class="field-label">Rozmiar felg</label>
+    <select id="wulk-size"><option value="">— brak —</option>
+    ${WULKANIZACJA.wheel_size.map((w,i)=>`<option value="${i}">${w.name} — ${fmt(w.price)}</option>`).join('')}</select>`;
+  grid.appendChild(ws);
+
+  const fw=mkEl('div','form-group');
+  fw.innerHTML=`<label class="field-label">Szerokość kół (przód)</label>
+    <select id="wulk-front"><option value="">— domyślna —</option>
+    ${WULKANIZACJA.wheel_width.front_axle.map((w,i)=>`<option value="${i}">Poz. ${w.level} — ${fmt(w.price)}</option>`).join('')}</select>`;
+  grid.appendChild(fw);
+
+  const rw=mkEl('div','form-group');
+  rw.innerHTML=`<label class="field-label">Szerokość kół (tył)</label>
+    <select id="wulk-rear"><option value="">— domyślna —</option>
+    ${WULKANIZACJA.wheel_width.rear_axle.map((w,i)=>`<option value="${i}">Poz. ${w.level} — ${fmt(w.price)}</option>`).join('')}</select>`;
+  grid.appendChild(rw);
+  c.appendChild(grid);
+}
+
+// ─── CALCULATE ───
+function calculate() {
+  if (!currentVehicle) { alert('Wybierz salon i pojazd!'); return; }
+  const rows=[]; let total=0;
+  function add(name, raw, pct, detail='') {
+    const adj=Math.round(raw*pct/100); total+=adj;
+    rows.push({name,raw,adj,pct,detail});
+  }
+
+  add(`Zakup — ${currentVehicle.name}`, currentVehicle.price, 100, 'Salon');
+
+  const engIdx=val('sel-engine');
+  if (engIdx!=='') { const f=SILNIKI.find(s=>s.name===currentVehicle.name); if(f){const l=f.engine_levels[+engIdx]; add(`Silnik ${l.engine}L`,l.total_cost,getPct('engine'),'Ulepszenie silnika');} }
+
+  const varIdx=val('sel-variant');
+  if (varIdx!=='') { const f=WARIANTY.find(w=>w.name===currentVehicle.name||(currentVehicle.name==='Regina'&&w.name==='Regina / Regina Sedan')); if(f){const v=f.wariants[+varIdx];add(`Wariant — ${v.name}`,v.price,getPct('variant'),'Wariant pojazdu');} }
+
+  if (isLand()) {
+    const mp=getPct('mech');
+    [{key:'ecu',d:MECHANICZNY.ecu,f:e=>`ECU ${e.version}`},{key:'turbo',d:MECHANICZNY.turbo,f:e=>`Turbo ${e.version}`},
+     {key:'drivetrain',d:MECHANICZNY.drivetrain,f:e=>`Napęd ${e.type}`},
+     {key:'fuel_tank',d:MECHANICZNY.fuel_tank,f:e=>`Zbiornik ${e.capacity_l}L`}
+    ].forEach(s=>{const v=val('mech-'+s.key);if(v!==''){const it=s.d[+v];add(s.f(it),it.price,mp,'Tuning mechaniczny');}});
+    MECHANICZNY.misc.forEach((item,i)=>{ const cb=document.getElementById('misc-'+i); if(cb&&cb.checked) add(item.name,item.price,mp,'Tuning mechaniczny'); });
+  }
+
+  if (isLand()) {
+    const zv=val('sel-zestaw');
+    if (zv!=='') { const z=(MECHANICZNY.zestaw||[])[+zv]; if(z) add(z.name,z.price,getPct('zestaw'),'Zestaw'); }
+  }
+
+  if (isLand()) {
+    const lv=val('sel-lpg');
+    if (lv!=='') { const l=(MECHANICZNY.lpg||[])[+lv]; if(l) add(`LPG ${l.capacity_l}L`,l.price,getPct('lpg'),'LPG'); }
+  }
+
+  if (isLand()) {
+    const cv=val('sel-cfi');
+    if (cv!=='') { const c=(MECHANICZNY.cfi||[])[+cv]; if(c) add(`CFI ${c.version}`,c.price,getPct('cfi'),'CFI'); }
+  }
+
+  if (isLand()&&!isMoto()) {
+    const vp=getPct('visual');
+    WIZUALNY.forEach(cat=>{ const sv=val('vis-'+cat.category); if(sv!==''){const p=cat.parts[+sv];if(p.price!==null)add(`${CAT_NAMES[cat.category]} ID${p.id}`,p.price,vp,'Tuning wizualny');} });
+    const fv=val('vis-felgi'); if(fv!==''){const f=FELGI[+fv]; add(`Felgi — ${f.name}`,f.price,vp,'Tuning wizualny');}
+  }
+
+  if (isLand()) {
+    const kp=getPct('komp');
+    if (keyCount>0) add(`Duplikat kluczyka ×${keyCount}`,keyCount*KOMPONENTY.key_duplication.price,kp,'Komponenty');
+    const appOpts = KOMPONENTY.transport_app.options || [{name:'brak',price:0},{name:'Apka',price:15000},{name:'Apka PRO',price:30000}];
+    const appV=val('komp-app'); if(appV!==''&&appV!=='0'){ const ao=appOpts[+appV]; if(ao&&ao.price>0) add(`Aplikacja — ${ao.name}`,ao.price,kp,'Komponenty'); }
+    const tv=val('komp-tint'); if(tv!==''){const t=KOMPONENTY.window_tint.options[+tv];add(`Przyciemnienie ${t.percent}%${t.percent>60?' ⚠':''}`,t.price,kp,'Komponenty');}
+    const gv=val('komp-gauge'); if(gv!==''){const g=KOMPONENTY.gauge_backlight.options[+gv];add(`Licznik — ${g.name}`,g.price,getPct('licznik'),'Licznik');}
+    const hv=val('komp-hl'); if(hv!==''){const h=KOMPONENTY.headlight_color.options[+hv];add(`Lampy — ${h.name}`,h.price,getPct('lampy'),'Lampy');}
+  }
+
+  if (isLand()) {
+    const wp=getPct('wulk');
+    const sv=val('wulk-size'); if(sv!==''){const w=WULKANIZACJA.wheel_size[+sv];if(w.price>0)add(`Felgi ${w.name}`,w.price,wp,'Wulkanizacja');}
+    const fv=val('wulk-front'); if(fv!==''){const w=WULKANIZACJA.wheel_width.front_axle[+fv];if(w.price>0)add(`Koła przód poz.${w.level}`,w.price,wp,'Wulkanizacja');}
+    const rv=val('wulk-rear'); if(rv!==''){const w=WULKANIZACJA.wheel_width.rear_axle[+rv];if(w.price>0)add(`Koła tył poz.${w.level}`,w.price,wp,'Wulkanizacja');}
+  }
+
+  const body=document.getElementById('results-body');
+  body.innerHTML='';
+
+  // ── Group rows by section ──
+  const sections = {};
+  rows.forEach(r => {
+    const key = r.detail || 'Zakup pojazdu';
+    if (!sections[key]) sections[key] = [];
+    sections[key].push(r);
+  });
+
+  // ── SUMMARY TABLE ──
+  const sumTitle = mkEl('div','results-section-title'); sumTitle.textContent = 'PODSUMOWANIE PER SEKCJA'; body.appendChild(sumTitle);
+  const sumTable = mkEl('div','results-table summary-table'); body.appendChild(sumTable);
+  let grandCheck = 0;
+  Object.entries(sections).forEach(([sec, items]) => {
+    const secTotal = items.reduce((a,r) => a+r.adj, 0);
+    grandCheck += secTotal;
+    const row = mkEl('div','result-row summary-row');
+    row.innerHTML = `<div class="result-name result-sec-name">${sec}</div><div class="result-price">${fmt(secTotal)}</div>`;
+    sumTable.appendChild(row);
+  });
+  const sumTotalRow = mkEl('div','result-row total');
+  sumTotalRow.innerHTML = `<div class="result-name">ŁĄCZNY KOSZT</div><div class="result-price">${fmt(total)}</div>`;
+  sumTable.appendChild(sumTotalRow);
+
+  // ── DETAILED TABLE ──
+  const detSep = mkEl('div','results-sep'); body.appendChild(detSep);
+  const detTitle = mkEl('div','results-section-title'); detTitle.textContent = 'SZCZEGÓŁOWE WYNIKI'; body.appendChild(detTitle);
+
+  Object.entries(sections).forEach(([sec, items]) => {
+    const secTotal = items.reduce((a,r) => a+r.adj, 0);
+    const grp = mkEl('div','result-group');
+
+    const grpHeader = mkEl('div','result-group-header');
+    grpHeader.innerHTML = `<span class="result-group-name">${sec}</span><span class="result-group-total">${fmt(secTotal)}</span>`;
+    grp.appendChild(grpHeader);
+
+    items.forEach(r => {
+      const row = mkEl('div','result-row detail-row');
+      row.innerHTML = `<div><div class="result-name">${r.name}</div></div>
+        <div style="text-align:right">
+          <div class="result-price${r.adj===0?' zero':''}">${fmt(r.adj)}</div>
+          ${r.pct!==100?`<div class="result-detail">${fmt(r.raw)} × ${r.pct}%</div>`:''}
+        </div>`;
+      grp.appendChild(row);
+    });
+
+    body.appendChild(grp);
+  });
+
+  const res=document.getElementById('results');
+  res.style.display='block';
+  setTimeout(()=>res.scrollIntoView({behavior:'smooth',block:'start'}),100);
+}
+
+// ─── HELPERS ───
+function mkEl(tag, cls='') { const el=document.createElement(tag); if(cls) el.className=cls; return el; }
+function fmt(n) { if(n===null||n===undefined) return '—'; return n.toLocaleString('pl-PL')+' $'; }
+function getPct(id) { return parseInt(document.getElementById('slider-'+id).value); }
+function val(id) { const el=document.getElementById(id); return el?el.value:''; }
+</script>
+</body>
+</html>

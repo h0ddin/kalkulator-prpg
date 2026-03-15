@@ -1,0 +1,27 @@
+Napisz stronę html która będzie posiadała możliwości wyliczenia ceny pojazdu bazując na modelu i tuningu.
+niech strona ma nowoczesny wygladach w barwach:
+Tło: Ciemna szarość, wpadająca w czerń.
+
+Wartość RGB: (38, 38, 38)
+
+Logo/Symbol: Odcień złota lub ciemnej żółci.
+
+Wartość RGB: (207, 163, 62)
+
+Chce aby znalazła się tam opcja wyboru:
+Salon samochodowy -> każdy ma odpowiednią listę pojazdów do sprzedaży (ma być zawężanie gdyż dany pojazd jest tylko w jednym salonie) plik ceny-salonowe.json
+Wybor silniku ddla danego pojazdu -> kazdy pojazd na ograniczona liczbe dostepnyych silnikow z roznymi cenami - plik ulepszenia-silnikow.json
+Wariant pojazdu -> kazdy pojazd ma ograniczona liczbe dostepnych wariantow pojazddu z roznymi cenami - plik warianty.json
+tuning mechaniczny -> kazdy pojazd oprócz z Helikopterów i Łodzi salonów może posiadać tuning mechaniczny - plik mechaniczny.json, rzeczy z json obiektu misc przedstaw w formie checkboxa,
+czyli do wyboru poniewaz jest tam tylko jedna opcja do montazu czyli posiada albo nie
+tuning wizualny -> kazdy pojazd oprócz z Helikopterów i Łodzi i Motocyklowy salonów a dalej to samo co mechaniczny - plik wizualny.json
+komponenty -> pojazdy ladowe moga miec komponenty - plik komponenty.json, pomin pole custom_plate 
+
+wulkanizacja -> pojazdy ladowe moga miec ulepszenia wulkanizacyjne - plik wulkanizacja.json 
+
+Wiele reczy ma rozne rzeczy do wyboru wiec niech pojawia sie select boxy z wyborem 1 opcji tylko
+
+Chce aby tez kazda sekcja miala suwak z informacja o "wartosc sekcji ..." domyslnie 50%.
+
+Majac to wszystko i jak gracz uzupelni to chce aby byl przycisk POLICZ i niech wtedy strona policzy cala wartosc z podzialem na sekcje i calkowity koszt bazujac 
+na cenie z pliku json ale tez wartosci suwaka tej kategorii

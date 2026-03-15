@@ -1,0 +1,19 @@
+[
+  { "name": "Access", "price": 4500 },
+  { "name": "Ahab", "price": 5000 },
+  { "name": "Atomic", "price": 4750 },
+  { "name": "Classic", "price": 4000 },
+  { "name": "Cutter", "price": 5750 },
+  { "name": "Dollar", "price": 3250 },
+  { "name": "Grove", "price": 4750 },
+  { "name": "Import", "price": 5000 },
+  { "name": "Mega", "price": 5500 },
+  { "name": "Offroad", "price": 5000 },
+  { "name": "Rimshine", "price": 4500 },
+  { "name": "Shadow", "price": 4250 },
+  { "name": "Switch", "price": 6500 },
+  { "name": "Trance", "price": 6000 },
+  { "name": "Twist", "price": 5250 },
+  { "name": "Virtual", "price": 5750 },
+  { "name": "Wires", "price": 6250 }
+]

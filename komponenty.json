@@ -1,0 +1,755 @@
+{
+  "key_duplication": {
+    "price": 10000
+  },
+  "custom_plate": {
+    "price": 12000
+  },
+  "window_tint": {
+    "illegal_above_percent": 60,
+    "options": [
+      {
+        "percent": 0,
+        "price": 5000
+      },
+      {
+        "percent": 10,
+        "price": 25000
+      },
+      {
+        "percent": 20,
+        "price": 30000
+      },
+      {
+        "percent": 30,
+        "price": 35000
+      },
+      {
+        "percent": 40,
+        "price": 40000
+      },
+      {
+        "percent": 50,
+        "price": 45000
+      },
+      {
+        "percent": 60,
+        "price": 50000
+      },
+      {
+        "percent": 70,
+        "price": 55000
+      },
+      {
+        "percent": 80,
+        "price": 60000
+      },
+      {
+        "percent": 90,
+        "price": 65000
+      },
+      {
+        "percent": 100,
+        "price": 70000
+      }
+    ]
+  },
+  "transport_app": {
+    "options": [
+      { "name": "brak", "price": 0 },
+      { "name": "Apka", "price": 15000 },
+      { "name": "Apka PRO", "price": 30000 }
+    ],
+    "note": "Only usable in 4-seat vehicles"
+  },
+  "gauge_backlight": {
+    "options": [
+      {
+        "name": "brak",
+        "rgb": null,
+        "price": 5000
+      },
+      {
+        "name": "biały",
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "price": 15000
+      },
+      {
+        "name": "marchwiowy",
+        "rgb": [
+          255,
+          165,
+          0
+        ],
+        "price": 25000
+      },
+      {
+        "name": "pomarańczowy",
+        "rgb": [
+          255,
+          69,
+          0
+        ],
+        "price": 25000
+      },
+      {
+        "name": "żółty",
+        "rgb": [
+          255,
+          255,
+          0
+        ],
+        "price": 25000
+      },
+      {
+        "name": "czerwony",
+        "rgb": [
+          255,
+          0,
+          0
+        ],
+        "price": 35000
+      },
+      {
+        "name": "niebieski",
+        "rgb": [
+          0,
+          0,
+          255
+        ],
+        "price": 35000
+      },
+      {
+        "name": "czekoladowy",
+        "rgb": [
+          102,
+          51,
+          0
+        ],
+        "price": 35000
+      },
+      {
+        "name": "lazurowy",
+        "rgb": [
+          0,
+          127,
+          255
+        ],
+        "price": 35000
+      },
+      {
+        "name": "czarny",
+        "rgb": [
+          0,
+          0,
+          0
+        ],
+        "price": 35000
+      },
+      {
+        "name": "fioletowy",
+        "rgb": [
+          128,
+          0,
+          128
+        ],
+        "price": 35000
+      },
+      {
+        "name": "aqua",
+        "rgb": [
+          30,
+          200,
+          255
+        ],
+        "price": 35000
+      },
+      {
+        "name": "miętowy",
+        "rgb": [
+          0,
+          102,
+          51
+        ],
+        "price": 35000
+      },
+      {
+        "name": "zielony",
+        "rgb": [
+          20,
+          140,
+          0
+        ],
+        "price": 35000
+      },
+      {
+        "name": "limonkowy",
+        "rgb": [
+          147,
+          246,
+          0
+        ],
+        "price": 35000
+      },
+      {
+        "name": "różowy",
+        "rgb": [
+          255,
+          140,
+          240
+        ],
+        "price": 35000
+      },
+      {
+        "name": "złoty",
+        "rgb": [
+          226,
+          200,
+          105
+        ],
+        "price": 35000
+      },
+      {
+        "name": "kiwi",
+        "rgb": [
+          66,
+          245,
+          182
+        ],
+        "price": 35000
+      },
+      {
+        "name": "pistacja",
+        "rgb": [
+          0,
+          255,
+          148
+        ],
+        "price": 35000
+      },
+      {
+        "name": "jadeitowy",
+        "rgb": [
+          0,
+          128,
+          128
+        ],
+        "price": 40000
+      },
+      {
+        "name": "purpurowy",
+        "rgb": [
+          102,
+          0,
+          51
+        ],
+        "price": 40000
+      },
+      {
+        "name": "malinowy",
+        "rgb": [
+          235,
+          1,
+          101
+        ],
+        "price": 40000
+      },
+      {
+        "name": "magenta",
+        "rgb": [
+          255,
+          0,
+          255
+        ],
+        "price": 40000
+      },
+      {
+        "name": "herbaciany",
+        "rgb": [
+          204,
+          93,
+          43
+        ],
+        "price": 40000
+      },
+      {
+        "name": "cynamonowy",
+        "rgb": [
+          157,
+          91,
+          3
+        ],
+        "price": 40000
+      },
+      {
+        "name": "ocean",
+        "rgb": [
+          51,
+          102,
+          204
+        ],
+        "price": 45000
+      },
+      {
+        "name": "lodowy",
+        "rgb": [
+          0,
+          255,
+          251
+        ],
+        "price": 45000
+      },
+      {
+        "name": "butelkowa_zieleń",
+        "rgb": [
+          50,
+          102,
+          71
+        ],
+        "price": 45000
+      },
+      {
+        "name": "ametystowy",
+        "rgb": [
+          153,
+          102,
+          204
+        ],
+        "price": 45000
+      },
+      {
+        "name": "wiśniowy",
+        "rgb": [
+          220,
+          20,
+          60
+        ],
+        "price": 45000
+      },
+      {
+        "name": "eozyna",
+        "rgb": [
+          195,
+          92,
+          111
+        ],
+        "price": 45000
+      },
+      {
+        "name": "gruszkowy",
+        "rgb": [
+          188,
+          226,
+          113
+        ],
+        "price": 45000
+      },
+      {
+        "name": "luka",
+        "rgb": [
+          12,
+          60,
+          99
+        ],
+        "price": 45000
+      },
+      {
+        "name": "różany",
+        "rgb": [
+          188,
+          143,
+          143
+        ],
+        "price": 50000
+      },
+      {
+        "name": "very_peri",
+        "rgb": [
+          104,
+          104,
+          172
+        ],
+        "price": 50000
+      },
+      {
+        "name": "rubinowy",
+        "rgb": [
+          120,
+          18,
+          11
+        ],
+        "price": 55000
+      },
+      {
+        "name": "winogronowy",
+        "rgb": [
+          102,
+          5,
+          181
+        ],
+        "price": 55000
+      },
+      {
+        "name": "oliwkowy",
+        "rgb": [
+          121,
+          128,
+          0
+        ],
+        "price": 55000
+      }
+    ]
+  },
+  "headlight_color": {
+    "options": [
+      {
+        "name": "biały",
+        "price": 5000,
+        "rgb": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "name": "xenon",
+        "price": 10000,
+        "rgb": [
+          200,
+          220,
+          255
+        ],
+        "note": "RGB wymyślone — zimny błękit ksenonu"
+      },
+      {
+        "name": "oldtimer",
+        "price": 25000,
+        "rgb": [
+          255,
+          214,
+          120
+        ],
+        "note": "RGB wymyślone — ciepła żółtawa barwa starych żarówek"
+      },
+      {
+        "name": "marchwiowy",
+        "price": 45000,
+        "rgb": [
+          255,
+          165,
+          0
+        ]
+      },
+      {
+        "name": "pomarańczowy",
+        "price": 45000,
+        "rgb": [
+          255,
+          69,
+          0
+        ]
+      },
+      {
+        "name": "żółty",
+        "price": 45000,
+        "rgb": [
+          255,
+          255,
+          0
+        ]
+      },
+      {
+        "name": "limonka",
+        "price": 55000,
+        "rgb": [
+          147,
+          246,
+          0
+        ]
+      },
+      {
+        "name": "różowy",
+        "price": 55000,
+        "rgb": [
+          255,
+          140,
+          240
+        ]
+      },
+      {
+        "name": "niebieski",
+        "price": 55000,
+        "rgb": [
+          0,
+          0,
+          255
+        ]
+      },
+      {
+        "name": "zielony",
+        "price": 55000,
+        "rgb": [
+          20,
+          140,
+          0
+        ]
+      },
+      {
+        "name": "fioletowy",
+        "price": 55000,
+        "rgb": [
+          128,
+          0,
+          128
+        ]
+      },
+      {
+        "name": "czerwony",
+        "price": 60000,
+        "rgb": [
+          255,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "lazurowy",
+        "price": 65000,
+        "rgb": [
+          0,
+          127,
+          255
+        ]
+      },
+      {
+        "name": "aqua",
+        "price": 65000,
+        "rgb": [
+          30,
+          200,
+          255
+        ]
+      },
+      {
+        "name": "miętowy",
+        "price": 65000,
+        "rgb": [
+          0,
+          102,
+          51
+        ]
+      },
+      {
+        "name": "złoty",
+        "price": 65000,
+        "rgb": [
+          226,
+          200,
+          105
+        ]
+      },
+      {
+        "name": "kiwi",
+        "price": 65000,
+        "rgb": [
+          66,
+          245,
+          182
+        ]
+      },
+      {
+        "name": "pistacja",
+        "price": 65000,
+        "rgb": [
+          0,
+          255,
+          148
+        ]
+      },
+      {
+        "name": "jadeitowy",
+        "price": 70000,
+        "rgb": [
+          0,
+          128,
+          128
+        ]
+      },
+      {
+        "name": "purpurowy",
+        "price": 70000,
+        "rgb": [
+          102,
+          0,
+          51
+        ]
+      },
+      {
+        "name": "malinowy",
+        "price": 70000,
+        "rgb": [
+          235,
+          1,
+          101
+        ]
+      },
+      {
+        "name": "magenta",
+        "price": 70000,
+        "rgb": [
+          255,
+          0,
+          255
+        ]
+      },
+      {
+        "name": "czekoladowy",
+        "price": 70000,
+        "rgb": [
+          102,
+          51,
+          0
+        ]
+      },
+      {
+        "name": "eozyna",
+        "price": 75000,
+        "rgb": [
+          195,
+          92,
+          111
+        ]
+      },
+      {
+        "name": "gruszkowy",
+        "price": 75000,
+        "rgb": [
+          188,
+          226,
+          113
+        ]
+      },
+      {
+        "name": "luka",
+        "price": 75000,
+        "rgb": [
+          12,
+          60,
+          99
+        ]
+      },
+      {
+        "name": "ocean",
+        "price": 75000,
+        "rgb": [
+          51,
+          102,
+          204
+        ]
+      },
+      {
+        "name": "lodowy",
+        "price": 75000,
+        "rgb": [
+          0,
+          255,
+          251
+        ]
+      },
+      {
+        "name": "herbaciany",
+        "price": 75000,
+        "rgb": [
+          204,
+          93,
+          43
+        ]
+      },
+      {
+        "name": "wiśniowy",
+        "price": 80000,
+        "rgb": [
+          220,
+          20,
+          60
+        ]
+      },
+      {
+        "name": "cynamonowy",
+        "price": 80000,
+        "rgb": [
+          157,
+          91,
+          3
+        ]
+      },
+      {
+        "name": "butelkowa_zieleń",
+        "price": 80000,
+        "rgb": [
+          50,
+          102,
+          71
+        ]
+      },
+      {
+        "name": "ametystowy",
+        "price": 80000,
+        "rgb": [
+          153,
+          102,
+          204
+        ]
+      },
+      {
+        "name": "różany",
+        "price": 85000,
+        "rgb": [
+          188,
+          143,
+          143
+        ]
+      },
+      {
+        "name": "very_peri",
+        "price": 85000,
+        "rgb": [
+          104,
+          104,
+          172
+        ]
+      },
+      {
+        "name": "rubinowy",
+        "price": 90000,
+        "rgb": [
+          120,
+          18,
+          11
+        ]
+      },
+      {
+        "name": "winogronowy",
+        "price": 90000,
+        "rgb": [
+          102,
+          5,
+          181
+        ]
+      },
+      {
+        "name": "oliwkowy",
+        "price": 90000,
+        "rgb": [
+          121,
+          128,
+          0
+        ]
+      }
+    ]
+  }
+}
