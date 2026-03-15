@@ -276,7 +276,7 @@
   <div class="logo-icon"><div class="logo-inner"></div></div>
   <div>
     <h1>Kalkulator Pojazdu</h1>
-    <p>Wycena pojazdu wraz z tuningiem i ulepszeniami &nbsp;<span style="opacity:0.4;font-size:10px;letter-spacing:2px">v1.5</span></p>
+    <p>Wycena pojazdu wraz z tuningiem i ulepszeniami &nbsp;<span style="opacity:0.4;font-size:10px;letter-spacing:2px">v1.6</span></p>
   </div>
 </header>
 
@@ -1010,15 +1010,25 @@ function autoFillFromURL() {
   const p = new URLSearchParams(window.location.search);
   if (!p.has('model')) return;
 
+  const LOG = (param, value, mapped, status) => {
+    const style = status === 'OK'   ? 'color:#4caf50;font-weight:bold'
+                : status === 'BRAK' ? 'color:#ff9800;font-weight:bold'
+                :                     'color:#f44336;font-weight:bold';
+    console.log(
+      `%c[AutoFill ${status}]%c param=%s | wartość=%s | mapowanie=%s`,
+      style, 'color:inherit', param, value, mapped
+    );
+  };
+
   const modelName      = p.get('model')          || '';
-  const engineSize     = p.get('engine')         || ''; // np. "2.2" — pojemność silnika
+  const engineSize     = p.get('engine')         || '';
   const ecuVer         = p.get('ecu')            || '';
   const turboVer       = p.get('turbo')          || '';
   const cfiVer         = p.get('cfi')            || '';
   const zestawKey      = p.get('zestaw')         || '';
-  const drivetrainType = p.get('drivetrain')     || ''; // np. "AWD", "MZN"
-  const fuelTankL      = p.get('fuelTank')       || ''; // np. "150"
-  const lpgL           = p.get('lpg')            || ''; // np. "75"
+  const drivetrainType = p.get('drivetrain')     || '';
+  const fuelTankL      = p.get('fuelTank')       || '';
+  const lpgL           = p.get('lpg')            || '';
   const tintPct        = p.get('tint')           || '';
   const felgiName      = p.get('felgiName')      || '';
   const wydechId       = p.get('wydechId')       || '';
@@ -1027,7 +1037,7 @@ function autoFillFromURL() {
   const zderzakRearId  = p.get('zderzakRearId')  || '';
   const spoilerId      = p.get('spoilerId')      || '';
   const dachId         = p.get('dachId')         || '';
-  const appTransport   = p.get('appTransport')   || ''; // 'apka' | 'apka_pro'
+  const appTransport   = p.get('appTransport')   || '';
   const wulkSize       = p.get('wulkSize')       || '';
   const poszerzenieF   = p.get('poszerzenieF')   || '';
   const poszerzenieR   = p.get('poszerzenieR')   || '';
@@ -1037,25 +1047,38 @@ function autoFillFromURL() {
   const lightsRgb      = p.get('lightsRgb')      || '';
   const gaugeRgb       = p.get('gaugeRgb')       || '';
 
-  // ── Znajdź salon i pojazd po nazwie modelu ──
+  console.groupCollapsed('%c[AutoFill] Parametry z URL', 'color:#2196f3;font-weight:bold');
+  console.log('Pełny URL:', window.location.search);
+  console.log('Odczytane parametry:', {
+    model: modelName, engine: engineSize, ecu: ecuVer, turbo: turboVer, cfi: cfiVer,
+    zestaw: zestawKey, drivetrain: drivetrainType, fuelTank: fuelTankL, lpg: lpgL,
+    tint: tintPct, felgiName, wydechId, progiId, zderzakFrontId, zderzakRearId,
+    spoilerId, dachId, appTransport, wulkSize, poszerzenieF, poszerzenieR,
+    misc: miscRaw, lightsRgb, lightsColor, gaugeRgb, gaugeColor
+  });
+  console.groupEnd();
+
+  // ── Salon i pojazd ──
   let foundSalon = null, foundVehIdx = -1;
   for (const salon of SALONY) {
     const idx = salon.vehicles.findIndex(v => v.name === modelName);
     if (idx !== -1) { foundSalon = salon; foundVehIdx = idx; break; }
   }
-  if (!foundSalon) return;
+  if (!foundSalon) {
+    LOG('model', modelName, '—', 'ERR');
+    console.error('[AutoFill] Nie znaleziono modelu "' + modelName + '" w żadnym salonie!');
+    return;
+  }
+  LOG('model', modelName, foundSalon.dealership + ' → ' + modelName, 'OK');
 
-  // Ustaw salon
   const salonSel = document.getElementById('sel-salon');
   salonSel.value = foundSalon.dealership;
   onSalonChange();
-
-  // Ustaw pojazd
   const vehSel = document.getElementById('sel-vehicle');
   vehSel.value = foundVehIdx;
   onVehicleChange();
 
-  // ── Silnik — dopasuj po pojemności (np. "2.2" → engine_level z ulepszenia-silnikow) ──
+  // ── Silnik ──
   if (engineSize) {
     const engNum = parseFloat(engineSize);
     const found  = SILNIKI.find(s => s.name === currentVehicle.name);
@@ -1063,63 +1086,90 @@ function autoFillFromURL() {
       const lvlIdx = found.engine_levels.findIndex(l => Math.abs(l.engine - engNum) < 0.01);
       if (lvlIdx !== -1) {
         const sel = document.getElementById('sel-engine');
-        if (sel) sel.value = lvlIdx;
-      }
+        if (sel) { sel.value = lvlIdx; LOG('engine', engineSize, 'sel-engine → poziom ' + lvlIdx + ' (' + found.engine_levels[lvlIdx].engine + 'L)', 'OK'); }
+      } else { LOG('engine', engineSize, 'brak poziomu ' + engineSize + 'L w ulepszeniach silnika dla ' + currentVehicle.name, 'BRAK'); }
+    } else { LOG('engine', engineSize, 'brak wpisów silnika dla modelu ' + currentVehicle.name, 'BRAK'); }
+  }
+
+  // ── Napęd ──
+  if (drivetrainType) {
+    const sel = document.getElementById('mech-drivetrain');
+    if (sel) {
+      const before = sel.value;
+      setSelectByText(sel, drivetrainType);
+      sel.value !== before
+        ? LOG('drivetrain', drivetrainType, 'mech-drivetrain → ' + sel.options[sel.selectedIndex]?.text, 'OK')
+        : LOG('drivetrain', drivetrainType, 'nie znaleziono "' + drivetrainType + '" w opcjach napędu', 'BRAK');
     }
   }
 
-  // ── Napęd (FWD / RWD / AWD / MZN) ──
-  if (drivetrainType) {
-    const sel = document.getElementById('mech-drivetrain');
-    if (sel) setSelectByText(sel, drivetrainType);
-  }
-
-  // ── Zbiornik paliwa (np. 150 → capacity_l: 150) ──
+  // ── Zbiornik paliwa ──
   if (fuelTankL && MECHANICZNY.fuel_tank) {
     const cap = parseInt(fuelTankL);
     const idx = MECHANICZNY.fuel_tank.findIndex(t => t.capacity_l === cap);
     if (idx !== -1) {
       const sel = document.getElementById('mech-fuel_tank');
-      if (sel) sel.value = idx;
-    }
+      if (sel) { sel.value = idx; LOG('fuelTank', fuelTankL + 'L', 'mech-fuel_tank → ' + cap + 'L', 'OK'); }
+    } else { LOG('fuelTank', fuelTankL + 'L', 'brak zbiornika ' + cap + 'L w mechaniczny.fuel_tank', 'BRAK'); }
   }
 
-  // ── LPG (np. 75 → capacity_l: 75) ──
+  // ── LPG ──
   if (lpgL && MECHANICZNY.lpg) {
     const cap = parseInt(lpgL);
     const idx = MECHANICZNY.lpg.findIndex(t => t.capacity_l === cap);
     if (idx !== -1) {
       const sel = document.getElementById('sel-lpg');
-      if (sel) sel.value = idx;
-    }
+      if (sel) { sel.value = idx; LOG('lpg', lpgL + 'L', 'sel-lpg → ' + cap + 'L (index ' + idx + ')', 'OK'); }
+      else { LOG('lpg', lpgL + 'L', 'sel-lpg nie istnieje w DOM (pojazd bez LPG?)', 'BRAK'); }
+    } else { LOG('lpg', lpgL + 'L', 'brak butli ' + cap + 'L w mechaniczny.lpg', 'BRAK'); }
   }
 
   // ── ECU ──
-  if (ecuVer) { const s = document.getElementById('mech-ecu'); if (s) setSelectByText(s, ecuVer); }
+  if (ecuVer) {
+    const s = document.getElementById('mech-ecu');
+    if (s) { const b = s.value; setSelectByText(s, ecuVer); s.value !== b ? LOG('ecu', ecuVer, 'mech-ecu → ' + s.options[s.selectedIndex]?.text, 'OK') : LOG('ecu', ecuVer, 'nie znaleziono "' + ecuVer + '" w ECU', 'BRAK'); }
+  }
 
   // ── Turbo ──
-  if (turboVer) { const s = document.getElementById('mech-turbo'); if (s) setSelectByText(s, turboVer); }
+  if (turboVer) {
+    const s = document.getElementById('mech-turbo');
+    if (s) { const b = s.value; setSelectByText(s, turboVer); s.value !== b ? LOG('turbo', turboVer, 'mech-turbo → ' + s.options[s.selectedIndex]?.text, 'OK') : LOG('turbo', turboVer, 'nie znaleziono "' + turboVer + '" w Turbo', 'BRAK'); }
+  }
 
   // ── CFI ──
-  if (cfiVer) { const s = document.getElementById('sel-cfi'); if (s) setSelectByText(s, cfiVer); }
+  if (cfiVer) {
+    const s = document.getElementById('sel-cfi');
+    if (s) { const b = s.value; setSelectByText(s, cfiVer); s.value !== b ? LOG('cfi', cfiVer, 'sel-cfi → ' + s.options[s.selectedIndex]?.text, 'OK') : LOG('cfi', cfiVer, 'nie znaleziono "' + cfiVer + '" w CFI', 'BRAK'); }
+  }
 
-  // ── Zestaw (pełna nazwa np. "Uliczny", "Wyścigowy") ──
-  if (zestawKey) { const s = document.getElementById('sel-zestaw'); if (s) setSelectByText(s, zestawKey); }
+  // ── Zestaw ──
+  if (zestawKey) {
+    const s = document.getElementById('sel-zestaw');
+    if (s) { const b = s.value; setSelectByText(s, zestawKey); s.value !== b ? LOG('zestaw', zestawKey, 'sel-zestaw → ' + s.options[s.selectedIndex]?.text, 'OK') : LOG('zestaw', zestawKey, 'nie znaleziono "' + zestawKey + '" w Zestawie', 'BRAK'); }
+  }
 
-  // ── Misc checkboxy — fuzzy match (obsługuje skrócone nazwy z popup) ──
+  // ── Misc checkboxy ──
   if (miscRaw && MECHANICZNY.misc) {
     const miscItems = miscRaw.split('|').map(s => s.trim().toLowerCase());
     MECHANICZNY.misc.forEach((item, i) => {
       const jsonName = item.name.toLowerCase();
       const matched = miscItems.some(m => {
-        // Normalizuj oba stringi: usuń spacje, myślniki, kropki
         const norm = s => s.replace(/[-. ]/g,'');
         return norm(jsonName).includes(norm(m)) || norm(m).includes(norm(jsonName));
       });
       if (matched) {
         const cb = document.getElementById('misc-' + i);
-        if (cb) cb.checked = true;
+        if (cb) { cb.checked = true; LOG('misc', item.name, 'checkbox misc-' + i + ' → zaznaczono', 'OK'); }
       }
+    });
+    // Zaloguj misc-itemy z URL które nie zostały dopasowane
+    miscItems.forEach(m => {
+      const norm = s => s.replace(/[-. ]/g,'');
+      const anyMatch = MECHANICZNY.misc.some(item => {
+        const j = item.name.toLowerCase();
+        return norm(j).includes(norm(m)) || norm(m).includes(norm(j));
+      });
+      if (!anyMatch) LOG('misc', m, 'nie znaleziono pasującego checkboxa w misc', 'BRAK');
     });
   }
 
@@ -1128,54 +1178,66 @@ function autoFillFromURL() {
     const sel = document.getElementById('komp-tint');
     if (sel) {
       const tintNum = parseInt(tintPct);
+      let found = false;
       Array.from(sel.options).forEach((opt, i) => {
-        if (KOMPONENTY.window_tint.options[i] &&
-            KOMPONENTY.window_tint.options[i].percent === tintNum) sel.value = i;
+        if (KOMPONENTY.window_tint.options[i] && KOMPONENTY.window_tint.options[i].percent === tintNum) {
+          sel.value = i; found = true;
+        }
       });
+      found ? LOG('tint', tintPct + '%', 'komp-tint → ' + tintNum + '%', 'OK')
+            : LOG('tint', tintPct + '%', 'brak opcji ' + tintNum + '% w przyciemnieniu', 'BRAK');
     }
   }
 
-  // ── Felgi (po nazwie, case-insensitive) ──
+  // ── Felgi ──
   if (felgiName) {
     const sel = document.getElementById('vis-felgi');
-    if (sel) setSelectByText(sel, felgiName);
+    if (sel) {
+      const b = sel.value; setSelectByText(sel, felgiName);
+      sel.value !== b ? LOG('felgiName', felgiName, 'vis-felgi → ' + sel.options[sel.selectedIndex]?.text, 'OK')
+                      : LOG('felgiName', felgiName, 'nie znaleziono felg "' + felgiName + '"', 'BRAK');
+    }
   }
 
   // ── Tuning wizualny — po ID ──
-  setVisById('vis-wydechy',             wydechId);
-  setVisById('vis-progi',               progiId);
-  setVisById('vis-zderzaki przednie',   zderzakFrontId);
-  setVisById('vis-zderzaki tylnie',     zderzakRearId);
-  setVisById('vis-spoilery',            spoilerId);
-  setVisById('vis-dachy',               dachId);
+  setVisById('vis-wydechy',           wydechId,       'wydechId');
+  setVisById('vis-progi',             progiId,        'progiId');
+  setVisById('vis-zderzaki przednie', zderzakFrontId, 'zderzakFrontId');
+  setVisById('vis-zderzaki tylnie',   zderzakRearId,  'zderzakRearId');
+  setVisById('vis-spoilery',          spoilerId,      'spoilerId');
+  setVisById('vis-dachy',             dachId,         'dachId');
 
   // ── Aplikacja transportowa ──
   if (appTransport) {
     const sel = document.getElementById('komp-app');
     if (sel && KOMPONENTY.transport_app) {
       const opts = KOMPONENTY.transport_app.options || [];
-      // 'apka_pro' → szukaj 'PRO', 'apka' → szukaj 'Apka' ale nie PRO
       const idx = appTransport === 'apka_pro'
         ? opts.findIndex(o => /pro/i.test(o.name))
         : opts.findIndex(o => /apka/i.test(o.name) && !/pro/i.test(o.name));
-      if (idx !== -1) sel.value = idx;
+      if (idx !== -1) { sel.value = idx; LOG('appTransport', appTransport, 'komp-app → ' + opts[idx].name, 'OK'); }
+      else { LOG('appTransport', appTransport, 'nie znaleziono opcji aplikacji', 'BRAK'); }
     }
   }
 
-  // ── Wulkanizacja — rozmiar felg (case-insensitive, np. "Duże" → "duże") ──
+  // ── Wulkanizacja — rozmiar felg ──
   if (wulkSize) {
     const sel = document.getElementById('wulk-size');
-    if (sel) setSelectByText(sel, wulkSize);
+    if (sel) {
+      const b = sel.value; setSelectByText(sel, wulkSize);
+      sel.value !== b ? LOG('wulkSize', wulkSize, 'wulk-size → ' + sel.options[sel.selectedIndex]?.text, 'OK')
+                      : LOG('wulkSize', wulkSize, 'nie znaleziono rozmiaru "' + wulkSize + '"', 'BRAK');
+    }
   }
 
-  // ── Wulkanizacja — szerokość kół (Poszerzenia X,Y → poziom)
-  //    JSON ma level jako int (1,2) lub string "domyślne" — porównaj jako Number ──
+  // ── Wulkanizacja — szerokość kół ──
   if (poszerzenieF && WULKANIZACJA.wheel_width) {
     const levelF = Number(poszerzenieF);
     const sel = document.getElementById('wulk-front');
     if (sel) {
       const idx = WULKANIZACJA.wheel_width.front_axle.findIndex(w => Number(w.level) === levelF);
-      if (idx !== -1) sel.value = idx;
+      idx !== -1 ? (sel.value = idx, LOG('poszerzenieF', poszerzenieF, 'wulk-front → Poz. ' + levelF, 'OK'))
+                 : LOG('poszerzenieF', poszerzenieF, 'brak poziomu ' + levelF + ' w front_axle', 'BRAK');
     }
   }
   if (poszerzenieR && WULKANIZACJA.wheel_width) {
@@ -1183,11 +1245,12 @@ function autoFillFromURL() {
     const sel = document.getElementById('wulk-rear');
     if (sel) {
       const idx = WULKANIZACJA.wheel_width.rear_axle.findIndex(w => Number(w.level) === levelR);
-      if (idx !== -1) sel.value = idx;
+      idx !== -1 ? (sel.value = idx, LOG('poszerzenieR', poszerzenieR, 'wulk-rear → Poz. ' + levelR, 'OK'))
+                 : LOG('poszerzenieR', poszerzenieR, 'brak poziomu ' + levelR + ' w rear_axle', 'BRAK');
     }
   }
 
-  // ── Kolor świateł (po RGB → priorytet, fallback po nazwie) ──
+  // ── Kolor świateł ──
   if (lightsRgb && KOMPONENTY.headlight_color) {
     const rgb = lightsRgb.split(',').map(Number);
     const idx = KOMPONENTY.headlight_color.options.findIndex(o =>
@@ -1195,7 +1258,8 @@ function autoFillFromURL() {
     if (idx !== -1) {
       const o = KOMPONENTY.headlight_color.options[idx];
       selectColor('hl-wrap', String(idx), o.name, `rgb(${o.rgb.join(',')})`, `0 0 6px rgba(${o.rgb.join(',')},0.7)`);
-    }
+      LOG('lightsRgb', lightsRgb, 'hl-wrap → ' + o.name, 'OK');
+    } else { LOG('lightsRgb', lightsRgb, 'brak koloru o RGB ' + lightsRgb + ' w headlight_color', 'BRAK'); }
   } else if (lightsColor && KOMPONENTY.headlight_color) {
     const needle = lightsColor.split(' - ')[0].toLowerCase().trim();
     const idx = KOMPONENTY.headlight_color.options.findIndex(o => o.name.toLowerCase() === needle);
@@ -1203,10 +1267,11 @@ function autoFillFromURL() {
       const o = KOMPONENTY.headlight_color.options[idx];
       const bg = o.rgb ? `rgb(${o.rgb.join(',')})` : '#aaa';
       selectColor('hl-wrap', String(idx), o.name, bg, o.rgb ? `0 0 6px rgba(${o.rgb.join(',')},0.7)` : 'none');
-    }
+      LOG('lightsColor', lightsColor, 'hl-wrap → ' + o.name + ' (fallback nazwa)', 'OK');
+    } else { LOG('lightsColor', lightsColor, 'brak koloru "' + needle + '" w headlight_color', 'BRAK'); }
   }
 
-  // ── Kolor licznika (po RGB → priorytet, fallback po nazwie) ──
+  // ── Kolor licznika ──
   if (gaugeRgb && KOMPONENTY.gauge_backlight) {
     const rgb = gaugeRgb.split(',').map(Number);
     const idx = KOMPONENTY.gauge_backlight.options.findIndex(o =>
@@ -1214,7 +1279,8 @@ function autoFillFromURL() {
     if (idx !== -1) {
       const o = KOMPONENTY.gauge_backlight.options[idx];
       selectColor('gauge-wrap', String(idx), o.name, `rgb(${o.rgb.join(',')})`, `0 0 6px rgba(${o.rgb.join(',')},0.7)`);
-    }
+      LOG('gaugeRgb', gaugeRgb, 'gauge-wrap → ' + o.name, 'OK');
+    } else { LOG('gaugeRgb', gaugeRgb, 'brak koloru o RGB ' + gaugeRgb + ' w gauge_backlight', 'BRAK'); }
   } else if (gaugeColor && KOMPONENTY.gauge_backlight) {
     const needle = gaugeColor.split(' - ')[0].toLowerCase().trim();
     const idx = KOMPONENTY.gauge_backlight.options.findIndex(o => o.name.toLowerCase() === needle);
@@ -1222,18 +1288,28 @@ function autoFillFromURL() {
       const o = KOMPONENTY.gauge_backlight.options[idx];
       const bg = o.rgb ? `rgb(${o.rgb.join(',')})` : '#aaa';
       selectColor('gauge-wrap', String(idx), o.name, bg, o.rgb ? `0 0 6px rgba(${o.rgb.join(',')},0.7)` : 'none');
-    }
+      LOG('gaugeColor', gaugeColor, 'gauge-wrap → ' + o.name + ' (fallback nazwa)', 'OK');
+    } else { LOG('gaugeColor', gaugeColor, 'brak koloru "' + needle + '" w gauge_backlight', 'BRAK'); }
   }
+
+  console.log('%c[AutoFill] Zakończono uzupełnianie', 'color:#2196f3;font-weight:bold');
 }
 
-// Ustaw select tuning wizualnego po ID (opcje mają tekst "ID 1127 — ...")
-function setVisById(selId, partId) {
+// Ustaw select tuning wizualnego po ID — z logowaniem
+function setVisById(selId, partId, paramName) {
   if (!partId) return;
   const sel = document.getElementById(selId);
-  if (!sel) return;
+  if (!sel) {
+    console.warn('[AutoFill BRAK] param=' + (paramName||selId) + ' | wartość=ID ' + partId + ' | select "' + selId + '" nie istnieje w DOM');
+    return;
+  }
+  let found = false;
   Array.from(sel.options).forEach(opt => {
-    if (opt.text.includes('ID ' + partId)) sel.value = opt.value;
+    if (opt.text.includes('ID ' + partId)) { sel.value = opt.value; found = true; }
   });
+  found
+    ? console.log('%c[AutoFill OK]%c param=' + (paramName||selId) + ' | wartość=ID ' + partId + ' | mapowanie=' + selId + ' → ' + sel.options[sel.selectedIndex]?.text, 'color:#4caf50;font-weight:bold', 'color:inherit')
+    : console.warn('[AutoFill BRAK] param=' + (paramName||selId) + ' | wartość=ID ' + partId + ' | nie znaleziono ID ' + partId + ' w ' + selId);
 }
 
 // Pomocnik: ustaw <select> na pierwszą opcję zawierającą needle (case-insensitive)
